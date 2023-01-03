@@ -1,13 +1,13 @@
 # Specify the compiler and any flags
-CC = gcc
-CFLAGS = -g -pedantic -Wall -Werror -O2 -std=gnu11
+CC = g++
+CFLAGS = -g -pedantic -Wall -Werror -O2 -std=c++17
 
 #Folders
 BIN = bin
 SRC = src
 
 #Programs
-PROG = client server
+PROG = roguelike
 # Specify the target executables
 TARGETS = $(addprefix $(BIN)/, $(PROG))
 
@@ -15,12 +15,8 @@ TARGETS = $(addprefix $(BIN)/, $(PROG))
 # Specify the object files for each target
 
 $(foreach prog, $(PROG), \
-$(eval $(prog)_SRC = $(wildcard $(SRC)/$(prog)/*.c)) \
-$(eval $(prog)_OBJS = $(patsubst %.c,%.o,$($(prog)_SRC))) \
-$(info $($(prog)_SRC)))
-
-$(foreach prog, $(PROG), \
-$(eval $(prog)_HEADERS = $(wildcard $(SRC)/$(prog)/*.h)))
+$(eval $(prog)_SRC = $(wildcard $(SRC)/*.cpp)) \
+$(eval $(prog)_OBJS = $(patsubst %.cpp,%.o,$($(prog)_SRC))))
 
 #build all
 .PHONY: all
@@ -33,14 +29,16 @@ $(BIN):
 
 #define building
 define make-target
-$(BIN)/$(1): $$($1_OBJS) $$($1_HEADERS)
+$(BIN)/$(1): $$($1_OBJS)
 endef
 
+$(info $(PROG))
+$(info $(TARGETS))
 #Create compiling rules
 $(foreach prog,$(PROG), $(eval $(call make-target,$(prog))))
 
 $(TARGETS):
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) $^ -o $@
 
 # Create a rule to clean up the built executables and object files
 .PHONY: clean
