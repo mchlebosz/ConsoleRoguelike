@@ -1,6 +1,6 @@
 # Specify the compiler and any flags
 CC = g++
-CFLAGS = -g -pedantic -Wall -Werror -O2 -std=c++17
+CFLAGS = -g -pedantic -m64 -Wall -Werror -O2 -std=c++17
 
 #Folders
 BIN = bin
@@ -20,7 +20,11 @@ $(eval $(prog)_OBJS = $(patsubst %.cpp,%.o,$($(prog)_SRC))))
 
 #build all
 .PHONY: all
-all: $(BIN) $(TARGETS)
+all: $(BIN) $(TARGETS) $(foreach prog, $(PROG), $($(prog)_OBJS))
+
+#build objects
+%.o: %.cpp
+	$(CC) -std=c++17 -c $< -o $@
 
 #create binaries directories if not exists
 

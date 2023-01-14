@@ -1,12 +1,29 @@
-#include <iostream>
+#include <Windows.h>
 
-#include "Enemy.h"
-// #include "Map.h"
-#include "Player.h"
+// #include "FontLoader.hpp"
+#include "Game.h"
 
-int main() {
-	// Create a map and add a player and an enemy to it
-	std::cout << "Creating map...\n";
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
+				   LPSTR lpCmdLine, int nCmdShow) {
+	// HANDLE font;
+	// HDC hdc;
+	// loadFont(&font, &hdc);
+
+	// GetConsoleOutputCP(void);
+	std::cout << GetConsoleOutputCP() << std::endl;
+
+	if (SetConsoleOutputCP(CP_UTF8)) {
+		Game game;
+		//  cls
+		system("cls");
+		game.Run();
+
+	} else {
+		std::cout << "Error: " << GetLastError() << std::endl;
+	}
+	// Remove fonts
+	// RemoveFontMemResourceEx(font);
+	// ReleaseDC(GetConsoleWindow(), hdc);
 
 	return 0;
 }

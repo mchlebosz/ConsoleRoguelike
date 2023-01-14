@@ -1,8 +1,20 @@
 #include "Enemy.h"
 
-Enemy::Enemy(int id, std::string name, char appearance, int x, int y,
-			 int health, int attackPower) :
-	Creature(id, name, appearance, x, y, health), m_attackPower(attackPower) {}
+Enemy::Enemy(int id) : Creature() {
+	m_id          = id;
+	m_appearance  = U'X';
+	m_type        = "None";
+	m_dodgeChance = 0;
+	m_attackPower = 1;
+	m_items       = std::vector<Item>();
+	m_health      = 10;
+	m_x           = 0;
+	m_y           = 0;
+}
+
+Enemy::Enemy(int id, char appearance, int x, int y, int health,
+			 int attackPower) :
+	Creature(id, appearance, x, y, health), m_attackPower(attackPower) {}
 
 Enemy::~Enemy() {}
 
@@ -12,14 +24,6 @@ void Enemy::move() {
 
 void Enemy::attack(Creature &other) {
 	// TODO: Implement enemy attack
-}
-
-wchar_t Enemy::getAppearance() const {
-	return m_appearance;
-}
-
-void Enemy::setAppearance(wchar_t appearance) {
-	m_appearance = appearance;
 }
 
 std::string Enemy::getType() const {

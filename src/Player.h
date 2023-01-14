@@ -5,21 +5,22 @@
 // Class representing a player
 class Player : public Creature {
 public:
+	// Empty constructor taking only the ID
+	Player(int id);
 	// Constructor taking name, position on the map, health points, experience,
 	// level, attack power, maximum health and starting inventory
-	Player(int id, std::string name, char appearance, int x, int y, int health,
-		   int maxHealth, int level, int attackPower);
+	Player(int id, char32_t appearance, int x, int y, int health, int maxHealth,
+		   int level, int attackPower);
 	// Destructor
 	virtual ~Player();
 
 	// Method responsible for moving the player
-	virtual void move();
+	virtual void moveUp();
+	virtual void moveDown();
+	virtual void moveLeft();
+	virtual void moveRight();
 	// Method responsible for attacking another creature
 	virtual void attack(Creature &other);
-
-	// Getters and setters for appearance
-	wchar_t getAppearance() const;
-	void setAppearance(wchar_t appearance);
 
 	// Getters and setters for inventory
 	std::vector<Item> getInventory() const;
@@ -34,16 +35,12 @@ public:
 	void setLevel(int level);
 	int getAttackPower() const;
 	void setAttackPower(int attackPower);
-	int getHealth() const;
-	void setHealth(int health);
 
 	// Getter and setter for maximum health
 	int getMaxHealth() const;
 	void setMaxHealth(int maxHealth);
 
 protected:
-	// Appearance of the player (single character)
-	wchar_t m_appearance;
 	// Inventory of the player (list of items)
 	std::vector<Item> m_inventory;
 	// Current experience points of the player

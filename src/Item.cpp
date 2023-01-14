@@ -1,6 +1,6 @@
 #include "Item.h"
 
-Item::Item(std::string name, std::string appearance, int value) :
+Item::Item(std::string name, std::u32string appearance, int value) :
 	m_name(name), m_appearance(appearance), m_value(value) {}
 
 Item::~Item() {}
@@ -13,11 +13,11 @@ void Item::setName(std::string name) {
 	m_name = name;
 }
 
-std::string Item::getAppearance() const {
+std::u32string Item::getAppearance() const {
 	return m_appearance;
 }
 
-void Item::setAppearance(std::string appearance) {
+void Item::setAppearance(std::u32string appearance) {
 	m_appearance = appearance;
 }
 

@@ -1,0 +1,134 @@
+@startuml Roguelike
+
+  class Creature {
+    -int m_id
+    -std::string m_name
+    -int m_x
+    -int m_y
+    -int m_health
+    -char32_t m_appearance
+    .. Constructors ..
+    +Creature()
+    +Creature(int id, std::string name, char32_t appearance, int x, int y, int health)
+    +{abstract} virtual ~Creature()
+    .. Getters ..
+    +int getId() const
+    +std::string getName() const
+    +int getX() const
+    +int getY() const
+    +int getHealth() const
+    +char32_t getAppearance() const
+    .. Setters ..
+    +void setName(std::string name)
+    +void setX(int x)
+    +void setY(int y)
+    +void setHealth(int health)
+    +void setAppearance(char32_t appearance)
+    -- Other Methods --
+    +{abstract} virtual void move()
+    +{abstract} virtual void attack(Creature &other)
+  }
+
+  class Player {
+    -std::vector<Item> m_items
+    -int m_attackPower
+    -int m_defence
+    .. Constructors ..
+    +Player(int id, std::string name, char appearance, int x, int y, int health, int attackPower, int defence)
+    +~Player()
+    .. Getters ..
+    +std::vector<Item> getItems() const
+    +int getAttackPower() const
+    +int getDefence() const
+    .. Setters ..
+    +void setItems(std::vector<Item> items)
+    +void setDefence(int defence)
+    +void setAttackPower(int attackPower)
+    -- Other Methods --
+    +void addToItems(Item item)
+
+    +virtual void move()
+    +virtual void attack(Creature &other)
+  }
+  class Enemy {
+    -char32_t m_appearance
+    -std::string m_type
+    -int m_dodgeChance
+    -int m_attackPower
+    -std::vector<Item> m_items
+    .. Constructors ..
+    +Enemy(int id, std::string name, char appearance, int x, int y, int health, int attackPower)
+    +virtual ~Enemy()
+    .. Getters ..
+    +char32_t getAppearance() const
+    +std::string getType() const
+    +int getDodgeChance() const
+    +int getAttackPower() const
+    +std::vector<Item> getItems() const
+
+    .. Setters ..
+    +void setAppearance(char32_t appearance)
+    +void setType(std::string type)
+    +void setDodgeChance(int dodgeChance)
+    +void setAttackPower(int attackPower)
+    +void setItems(std::vector<Item> items)
+    -- Other Methods --
+    +void addToItems(Item item)
+
+    +virtual void move()
+    +virtual void attack(Creature &other)
+  }
+
+
+  class Item {
+    -std::string m_name
+    -std::string m_appearance
+    -int m_value
+
+    +Item(std::string name, std::string appearance, int value)
+    +virtual ~Item()
+
+    +std::string getName() const
+    +void setName(std::string name)
+    +std::string getAppearance() const
+    +void setAppearance(std::string appearance)
+    +int getValue() const
+    +void setValue(int value)
+  }
+
+
+  class Map {
+    -int m_width
+    -int m_height
+    -std::vector<std::vector<char32_t>> m_tiles
+    -std::vector<Creature> m_creatures
+
+    +Map(int width, int height)
+    +~Map()
+
+    +int getWidth() const
+    +void setWidth(int width)
+    +int getHeight() const
+    +void setHeight(int height)
+
+    +void setTileAppearance(int x, int y, char32_t appearance)
+    +char32_t getTileAppearance(int x, int y) const
+
+    +void addCreature(Creature &creature)
+    +void removeCreature(Creature &creature)
+    +void moveCreature(Creature &creature, int x, int y)
+    +std::vector<Creature> getCreatures() const
+
+    +void display() const
+  }
+
+
+Creature <|-- Enemy
+Creature <|-- Player
+
+Creature o-- Map
+Item o-- Enemy
+Item o-- Player
+
+
+@enduml
