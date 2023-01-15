@@ -35,6 +35,8 @@ public:
 	void setLevel(int level);
 	int getAttackPower() const;
 	void setAttackPower(int attackPower);
+	// Method for getting the experience needed to reach the next level
+	int getNextLevelExp() const;
 
 	// Getter and setter for maximum health
 	int getMaxHealth() const;

@@ -9,26 +9,40 @@
 #include <locale>
 #include <thread>
 
+#include "AllLevels.hpp"
+#include "Utils.hpp"
+
 Game::Game() :
-	m_map(50, 30),
+	m_map(100, 30),
 	m_lastId(0),
 	m_player(0),
 	m_isRunning(true),
 	m_lastTicks(GetTickCount()),
 	m_fps(30),
-	SCREEN_WIDTH(80),
+	SCREEN_WIDTH(110),
 	SCREEN_HEIGHT(50),
 	visibleBuffer(new CHAR_INFO[SCREEN_WIDTH * SCREEN_HEIGHT]),
 	hiddenBuffer(new CHAR_INFO[SCREEN_WIDTH * SCREEN_HEIGHT]) {
-	m_player.setX(1);
-	m_player.setY(1);
-	m_player.setAppearance(U'🧧');
+	allLevels = initLevels();
+	m_player.setX(allLevels[0].getStartingPosition().first);
+	m_player.setY(allLevels[0].getStartingPosition().second);
+	m_player.setAppearance(U'😀');
+	m_player.setHealth(3);
+	m_player.setMaxHealth(5);
+	m_player.setExperience(1);
+	m_map.loadMap(allLevels[0].getMap());
 	m_map.addCreature(0, &m_player);
 }
 
 Game::~Game() {}
 
 void Game::Run() {
+	// Load first map from Levels folder
+	m_map.loadMap(allLevels[0].getMap());
+	m_player.setX(allLevels[0].getStartingPosition().first);
+	m_player.setY(allLevels[0].getStartingPosition().second);
+	m_map.addCreature(0, &m_player);
+
 	while (m_isRunning) {
 		DWORD currentTime = GetTickCount();
 		DWORD elapsedTime = currentTime - m_lastTicks;
@@ -88,14 +102,56 @@ void Game::HealPlayer(int health) {
 
 std::wstring Game::showStats() {
 	std::wstring output = L"";
-	std::wstring health = L"Health: " + std::to_wstring(m_player.getHealth());
+
+	int health                    = m_player.getHealth();
+	std::wstring fullHeartString  = char32to16(U'💗');
+	std::wstring halfHeartString  = char32to16(U'💔');
+	std::wstring emptyHeartString = char32to16(U'🤍');
+	// create hearts for health
+	std::wstring healthHearts = L"";
+	// for each 2 health, add a full heart, otherwise add a half heart
+	for (int i = 0; i < health / 2; i++) {
+		for (int j = 0; j < 2; j++) {
+			healthHearts += fullHeartString[j];
+		}
+	}
+	if (health % 2 == 1) {
+		for (int j = 0; j < 2; j++) {
+			healthHearts += halfHeartString[j];
+		}
+	}
+	// add empty hearts
+	for (int i = 0; i < m_player.getMaxHealth() / 2 - health / 2; i++) {
+		for (int j = 0; j < 2; j++) {
+			healthHearts += emptyHeartString[j];
+		}
+	}
+
 	std::wstring attack =
 		L"Attack: " + std::to_wstring(m_player.getAttackPower());
-	std::wstring level = L"Level: " + std::to_wstring(m_player.getLevel());
-	std::wstring exp =
-		L"Experience: " + std::to_wstring(m_player.getExperience());
+	std::wstring level     = L"Level: " + std::to_wstring(m_player.getLevel());
+	std::wstring emptyExp  = char32to16(U'⬜');
+	std::wstring fullExp   = char32to16(U'⬛');
+	std::wstring expString = L"XP: ";
 
-	output += health + L'\t' + attack + L'\t' + level + L'\t' + exp + L'\n';
+	int exp          = m_player.getExperience();
+	int nextLevelExp = m_player.getNextLevelExp();
+	// always show 20 exp bars proportionally to the exp
+	short int expBars = 20;
+	for (int i = 0; i < expBars; i++) {
+		if (i < exp * expBars / nextLevelExp) {
+			for (int j = 0; j < fullExp.length(); j++) {
+				expString += fullExp[j];
+			}
+		} else {
+			for (int j = 0; j < emptyExp.length(); j++) {
+				expString += emptyExp[j];
+			}
+		}
+	}
+
+	output += attack + L'\t' + healthHearts + L'\n' + level + L'\t' +
+			  expString + L'\n';
 	return output;
 }
 
@@ -114,6 +170,10 @@ std::string Game::showInventory() {
 // Not using SDL
 
 void Game::Update() {
+	char32_t forbiddenTile = U'█';
+	int prevX              = m_player.getX();
+	int prevY              = m_player.getY();
+
 	// get input
 	if (GetAsyncKeyState(VK_UP) || GetAsyncKeyState(0x57)) {
 		// check if player can move up
@@ -125,13 +185,23 @@ void Game::Update() {
 			m_player.moveDown();
 		}
 	} else if (GetAsyncKeyState(VK_LEFT) || GetAsyncKeyState(0x41)) {
-		if (m_player.getX() > 0) {
+		if (m_player.getX() > 1) {
 			m_player.moveLeft();
 		}
 	} else if (GetAsyncKeyState(VK_RIGHT) || GetAsyncKeyState(0x44)) {
-		if (m_player.getX() < m_map.getWidth() - 2) {
+		if (m_player.getX() < m_map.getWidth() - 3) {
 			m_player.moveRight();
 		}
+	}
+
+	// check if player is on a tile that is forbidden
+	if (m_map.getTileAppearance(m_player.getX(), m_player.getY()) ==
+			forbiddenTile ||
+		m_map.getTileAppearance(m_player.getX() + 1, m_player.getY()) ==
+			forbiddenTile) {
+		// if so, move player back to previous position
+		m_player.setX(prevX);
+		m_player.setY(prevY);
 	}
 }
 
@@ -154,7 +224,7 @@ void Game::PreRender() {
 			for (int j = 0; j < 4; j++) {
 				hiddenBuffer[x + SCREEN_WIDTH * y].Char.UnicodeChar = ' ';
 				hiddenBuffer[x + SCREEN_WIDTH * y].Attributes =
-					FOREGROUND_GREEN | FOREGROUND_BLUE;
+					FG_COLORS::FG_GREEN;
 				x += 1;
 			}
 		} else if (stats[i] == '\n') {
@@ -162,8 +232,7 @@ void Game::PreRender() {
 			y += 1;
 		} else {
 			hiddenBuffer[x + SCREEN_WIDTH * y].Char.UnicodeChar = stats[i];
-			hiddenBuffer[x + SCREEN_WIDTH * y].Attributes =
-				FOREGROUND_GREEN | FOREGROUND_BLUE;
+			hiddenBuffer[x + SCREEN_WIDTH * y].Attributes = FG_COLORS::FG_GREEN;
 			x += 1;
 		}
 	}
@@ -176,31 +245,19 @@ void Game::PreRender() {
 			x = 0;
 			y += 1;
 		} else {
-			char32_t c = map[i];
-			// convert char32_t to two wchars that support utf16 surrogate pairs
-			wchar_t wchars[2];
-			int numWchars = 0;
-			if (c <= 0xFFFF) {
-				wchars[0] = c;
-				numWchars = 1;
-			} else {
-				wchars[0] = 0xD800 + ((c - 0x10000) >> 10);
-				wchars[1] = 0xDC00 + ((c - 0x10000) & 0x3FF);
-				numWchars = 2;
-				// skip next char32_t
+			// if map[i] bigger than wchar size, split into two wchars
+			bool isSurrogatePair;
+			std::wstring wstr = char32to16(map[i], &isSurrogatePair);
+
+			if (isSurrogatePair) {
 				i += 1;
-			}
-			// convert wchars to utf16 wstring
-			std::wstring wstr = L"";
-			for (int j = 0; j < numWchars; j++) {
-				wstr += wchars[j];
 			}
 
 			// add bytes to hidden buffer
 			for (int j = 0; j < wstr.length(); j++) {
 				hiddenBuffer[x + SCREEN_WIDTH * y].Char.UnicodeChar = wstr[j];
 				hiddenBuffer[x + SCREEN_WIDTH * y].Attributes =
-					FOREGROUND_GREEN | FOREGROUND_BLUE;
+					FG_COLORS::FG_WHITE;
 				x += 1;
 			}
 		}
@@ -214,7 +271,7 @@ void Game::PreRender() {
 			for (int j = 0; j < 4; j++) {
 				hiddenBuffer[x + SCREEN_WIDTH * y].Char.UnicodeChar = ' ';
 				hiddenBuffer[x + SCREEN_WIDTH * y].Attributes =
-					FOREGROUND_RED | FOREGROUND_GREEN;
+					FG_COLORS::FG_GREEN;
 				x += 1;
 			}
 		} else if (inventory[i] == '\n') {
@@ -222,8 +279,7 @@ void Game::PreRender() {
 			y += 1;
 		} else {
 			hiddenBuffer[x + SCREEN_WIDTH * y].Char.UnicodeChar = inventory[i];
-			hiddenBuffer[x + SCREEN_WIDTH * y].Attributes =
-				FOREGROUND_RED | FOREGROUND_GREEN;
+			hiddenBuffer[x + SCREEN_WIDTH * y].Attributes = FG_COLORS::FG_BROWN;
 			x += 1;
 		}
 	}

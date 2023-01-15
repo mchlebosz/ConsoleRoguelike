@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "Creature.h"
+#include "Level.h"
 
 // Class responsible for storing information about the map and displaying it
 class Map {
@@ -43,6 +44,8 @@ public:
 	void display() const;
 
 	std::u32string getMapString() const;
+
+	void loadMap(std::vector<std::u32string> newMap);
 
 private:
 	// Width of the map

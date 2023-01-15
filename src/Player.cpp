@@ -31,11 +31,11 @@ void Player::moveDown() {
 }
 
 void Player::moveLeft() {
-	m_x--;
+	m_x -= 2;
 }
 
 void Player::moveRight() {
-	m_x++;
+	m_x += 2;
 }
 
 void Player::attack(Creature &other) {
@@ -60,6 +60,14 @@ int Player::getExperience() const {
 
 void Player::setExperience(int experience) {
 	m_experience = experience;
+	int newlevel = getLevel();
+	// adapt level to experience without substracting sum of experience from
+	// player
+	while (experience >= getNextLevelExp()) {
+		experience -= getNextLevelExp();
+		newlevel++;
+	}
+	setLevel(newlevel);
 }
 
 int Player::getLevel() const {
@@ -68,6 +76,13 @@ int Player::getLevel() const {
 
 void Player::setLevel(int level) {
 	m_level = level;
+	// adapt health and attack power to level (linearly)
+	//  1 health point per odd level
+	//  1 attack power per 4th level
+	if (m_level % 2 == 1) setMaxHealth(getMaxHealth() + 1);
+	if (m_level % 4 == 0) setAttackPower(m_level / 4);
+
+	setHealth(getMaxHealth());
 }
 
 int Player::getAttackPower() const {
@@ -84,4 +99,9 @@ int Player::getMaxHealth() const {
 
 void Player::setMaxHealth(int maxHealth) {
 	m_maxHealth = maxHealth;
+}
+
+int Player::getNextLevelExp() const {
+	// make it scale with level linearly
+	return m_level * 10;
 }

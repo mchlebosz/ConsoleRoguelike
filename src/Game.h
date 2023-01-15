@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "Enemy.h"
+#include "Level.h"
 #include "Map.h"
 #include "Player.h"
 
@@ -37,6 +38,8 @@ private:
 	Player m_player;
 
 	Map m_map;
+
+	std::vector<Level> allLevels;
 
 	bool m_isRunning;
 	DWORD m_lastTicks;

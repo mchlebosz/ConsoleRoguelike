@@ -1,5 +1,4 @@
 #include "Map.h"
-
 Map::Map(int width, int height) : m_width(width), m_height(height) {
 	// Initialize the tiles of the map with empty spaces
 	m_tiles.resize(height);
@@ -51,15 +50,15 @@ Creature* Map::getCreature(int id) const {
 
 void Map::display() const {
 	// Display the top border of the map
-	std::wcout << U" ";
+	std::wcout << U"╔";
 	for (int x = 0; x < m_width; x++) {
-		std::wcout << U"-";
+		std::wcout << U"═";
 	}
-	std::wcout << U" " << std::endl;
+	std::wcout << U"╗" << std::endl;
 
 	// Display the tiles of the map
 	for (int y = 0; y < m_height; y++) {
-		std::wcout << U"|";
+		std::wcout << U"║";
 		for (int x = 0; x < m_width; x++) {
 			// Check if there is a creature on the current tile
 			bool creatureOnTile = false;
@@ -77,29 +76,29 @@ void Map::display() const {
 				std::wcout << m_tiles[y][x];
 			}
 		}
-		std::wcout << U"|" << std::endl;
+		std::wcout << U"║" << std::endl;
 	}
 
 	// Display the bottom border of the map
-	std::wcout << U" ";
+	std::wcout << U"╚";
 	for (int x = 0; x < m_width; x++) {
-		std::wcout << U"-";
+		std::wcout << U"═";
 	}
-	std::wcout << U" " << std::endl;
+	std::wcout << U"╝" << std::endl;
 }
 
 std::u32string Map::getMapString() const {
 	std::u32string mapString = U"";
 	// Display the top border of the map
-	mapString += U" ";
+	mapString += U"╔";
 	for (int x = 0; x < m_width; x++) {
-		mapString += U"-";
+		mapString += U"═";
 	}
-	mapString += U" \n";
+	mapString += U"╗\n";
 
 	// Display the tiles of the map
 	for (int y = 0; y < m_height; y++) {
-		mapString += U"|";
+		mapString += U"║";
 		for (int x = 0; x < m_width; x++) {
 			// Check if there is a creature on the current tile
 			bool creatureOnTile = false;
@@ -117,15 +116,32 @@ std::u32string Map::getMapString() const {
 				mapString += m_tiles[y][x];
 			}
 		}
-		mapString += U"|\n";
+		mapString += U"║\n";
 	}
 
 	// Display the bottom border of the map
-	mapString += U" ";
+	mapString += U"╚";
 	for (int x = 0; x < m_width; x++) {
-		mapString += U"-";
+		mapString += U"═";
 	}
-	mapString += U" ";
+	mapString += U"╝";
 
 	return mapString;
+}
+
+void Map::loadMap(std::vector<std::u32string> newMap) {
+	// Clear the current map
+	m_tiles.clear();
+	m_creatures.clear();
+
+	// set each tile from the new map
+	m_tiles.resize(newMap.size());
+	m_width  = newMap[0].size();
+	m_height = newMap.size();
+	for (int y = 0; y < newMap.size(); y++) {
+		m_tiles[y].resize(newMap[y].size());
+		for (int x = 0; x < newMap[y].size(); x++) {
+			m_tiles[y][x] = newMap[y][x];
+		}
+	}
 }
