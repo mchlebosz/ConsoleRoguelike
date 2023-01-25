@@ -11,8 +11,6 @@ Level::Level(std::vector<std::u32string> map,
 	m_startingPosition = startingPosition;
 }
 
-Level::~Level() {}
-
 // getters
 std::vector<std::u32string> Level::getMap() const {
 	return m_tiles;

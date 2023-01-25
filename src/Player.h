@@ -10,10 +10,9 @@ public:
 	// Constructor taking name, position on the map, health points, experience,
 	// level, attack power, maximum health and starting inventory
 	Player(int id, char32_t appearance, int x, int y, int health, int maxHealth,
-		   int level, int attackPower);
-	// Destructor
-	virtual ~Player();
+		   int level, int attackPower, int speed);
 
+	virtual ~Player() = default;
 	// Method responsible for moving the player
 	virtual void moveUp();
 	virtual void moveDown();
@@ -42,6 +41,14 @@ public:
 	int getMaxHealth() const;
 	void setMaxHealth(int maxHealth);
 
+	// Getter and setter for move delay
+	int getMoveTimer() const;
+	void setMoveTimer(int moveTimer);
+
+	// Getter and setter for speed
+	int getSpeed() const;
+	void setSpeed(int speed);
+
 protected:
 	// Inventory of the player (list of items)
 	std::vector<Item> m_inventory;
@@ -53,4 +60,8 @@ protected:
 	int m_attackPower;
 	// Maximum health of the player
 	int m_maxHealth;
+	// speed of the player
+	int m_speed;
+	// move delay
+	time_t m_moveTimer;
 };

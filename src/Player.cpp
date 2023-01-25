@@ -11,31 +11,46 @@ Player::Player(int id) : Creature() {
 	m_inventory   = std::vector<Item>();
 	m_x           = 0;
 	m_y           = 0;
+	m_moveTimer   = 0;
+	m_speed       = 1;
 }
 
 Player::Player(int id, char32_t appearance, int x, int y, int health,
-			   int maxHealth, int level, int attackPower) :
+			   int maxHealth, int level, int attackPower, int speed) :
 	Creature(id, appearance, x, y, health),
-	m_maxHealth(maxHealth),
+	m_experience(0),
 	m_level(level),
-	m_attackPower(attackPower) {}
-
-Player::~Player() {}
+	m_attackPower(attackPower),
+	m_maxHealth(maxHealth),
+	m_speed(speed),
+	m_moveTimer(0) {}
 
 void Player::moveUp() {
-	m_y--;
+	if (m_moveTimer >= m_speed) {
+		m_y--;
+		m_moveTimer = 0;
+	}
 }
 
 void Player::moveDown() {
-	m_y++;
+	if (m_moveTimer >= m_speed) {
+		m_y++;
+		m_moveTimer = 0;
+	}
 }
 
 void Player::moveLeft() {
-	m_x -= 2;
+	if (m_moveTimer >= m_speed) {
+		m_x--;
+		m_moveTimer = 0;
+	}
 }
 
 void Player::moveRight() {
-	m_x += 2;
+	if (m_moveTimer >= m_speed) {
+		m_x++;
+		m_moveTimer = 0;
+	}
 }
 
 void Player::attack(Creature &other) {
@@ -104,4 +119,22 @@ void Player::setMaxHealth(int maxHealth) {
 int Player::getNextLevelExp() const {
 	// make it scale with level linearly
 	return m_level * 10;
+}
+
+// move delay
+int Player::getMoveTimer() const {
+	return m_moveTimer;
+}
+
+void Player::setMoveTimer(int moveTimer) {
+	m_moveTimer = moveTimer;
+}
+
+// speed of the player
+int Player::getSpeed() const {
+	return m_speed;
+}
+
+void Player::setSpeed(int speed) {
+	m_speed = speed;
 }

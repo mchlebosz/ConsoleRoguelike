@@ -12,7 +12,7 @@ public:
 	Level(std::vector<std::u32string> map,
 		  std::pair<int, int> startingPosition);
 
-	~Level();
+	virtual ~Level() = default;
 
 	// getters
 	std::vector<std::u32string> getMap() const;

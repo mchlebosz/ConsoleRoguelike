@@ -2,6 +2,7 @@
 #include <windows.h>
 
 #include <iostream>
+#include <memory>
 #include <vector>
 
 #include "Enemy.h"
@@ -19,13 +20,18 @@ public:
 	void ProcessInput();
 
 private:
-	void AddEnemy(int x, int y);
+	int AddEnemy(int x, int y);
 	void RemoveEnemy(int id);
-	Enemy* ModifyEnemy(int id);
+	int FindEnemy(int id);
+	Enemy& ModifyEnemy(int id);
 
+	// player methods
 	void MovePlayer(int x, int y);
 	void HurtPlayer(int damage);
 	void HealPlayer(int health);
+
+	bool isOnTile(Creature& creature, char32_t tile);
+	bool isOnEnemy(Creature& creature);
 
 	std::wstring showStats();
 	std::string showInventory();
@@ -39,11 +45,9 @@ private:
 
 	Map m_map;
 
-	std::vector<Level> allLevels;
-
 	bool m_isRunning;
 	DWORD m_lastTicks;
-	int m_fps;
+	DWORD m_fps;
 	int m_lastId;
 
 	// Windows stuff
@@ -57,4 +61,6 @@ private:
 	COORD bufferPos  = { 0, 0 };
 	SMALL_RECT rect  = { 0, 0, (short int)(SCREEN_WIDTH - 1),
 						 (short int)(SCREEN_HEIGHT - 1) };
+
+	std::vector<Level> allLevels;
 };

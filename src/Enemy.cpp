@@ -16,8 +16,6 @@ Enemy::Enemy(int id, char appearance, int x, int y, int health,
 			 int attackPower) :
 	Creature(id, appearance, x, y, health), m_attackPower(attackPower) {}
 
-Enemy::~Enemy() {}
-
 void Enemy::move() {
 	// TODO: Implement enemy movement
 }

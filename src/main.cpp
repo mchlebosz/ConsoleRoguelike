@@ -25,5 +25,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	// RemoveFontMemResourceEx(font);
 	// ReleaseDC(GetConsoleWindow(), hdc);
 
+	// cls
+	system("cls");
+
 	return 0;
 }

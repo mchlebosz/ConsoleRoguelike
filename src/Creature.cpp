@@ -6,8 +6,6 @@ Creature::Creature() :
 Creature::Creature(int id, char32_t appearance, int x, int y, int health) :
 	m_id(id), m_x(x), m_y(y), m_health(health), m_appearance(appearance) {}
 
-Creature::~Creature() {}
-
 int Creature::getId() const {
 	return m_id;
 }

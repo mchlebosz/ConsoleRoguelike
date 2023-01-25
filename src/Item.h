@@ -7,8 +7,8 @@ class Item {
 public:
 	// Constructor taking the name, appearance, and value of the item
 	Item(std::string name, std::u32string appearance, int value);
-	// Destructor
-	virtual ~Item();
+
+	virtual ~Item() = default;
 
 	// Getters and setters for name
 	std::string getName() const;

@@ -3,8 +3,6 @@
 Item::Item(std::string name, std::u32string appearance, int value) :
 	m_name(name), m_appearance(appearance), m_value(value) {}
 
-Item::~Item() {}
-
 std::string Item::getName() const {
 	return m_name;
 }

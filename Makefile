@@ -1,6 +1,6 @@
 # Specify the compiler and any flags
-CC = g++
-CFLAGS = -g -pedantic -m64 -Wall -Werror -O2 -std=c++17
+CXX = g++
+CXXFLAGS = -g -pedantic -m64 -Wall -Werror -O2 -std=c++17
 
 #Folders
 BIN = bin
@@ -16,7 +16,10 @@ TARGETS = $(addprefix $(BIN)/, $(PROG))
 
 $(foreach prog, $(PROG), \
 $(eval $(prog)_SRC = $(wildcard $(SRC)/*.cpp)) \
-$(eval $(prog)_OBJS = $(patsubst %.cpp,%.o,$($(prog)_SRC))))
+$(eval $(prog)_OBJS = $(patsubst %.cpp,%.o,$($(prog)_SRC))) \
+$(eval $(prog)_DEPS = $(patsubst %.cpp,%.d,$($(prog)_SRC))))
+
+-include $(foreach prog, $(PROG), $($(prog)_DEPS))
 
 #build all
 .PHONY: all
@@ -24,7 +27,7 @@ all: $(BIN) $(TARGETS) $(foreach prog, $(PROG), $($(prog)_OBJS))
 
 #build objects
 %.o: %.cpp
-	$(CC) -std=c++17 -c $< -o $@
+	$(CXX) $(CXXFLAGS) -MMD -MP -std=c++17 -c $< -o $@
 
 #create binaries directories if not exists
 
@@ -42,7 +45,7 @@ $(info $(TARGETS))
 $(foreach prog,$(PROG), $(eval $(call make-target,$(prog))))
 
 $(TARGETS):
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
 # Create a rule to clean up the built executables and object files
 .PHONY: clean
@@ -51,5 +54,5 @@ ifeq ($(OS),Windows_NT)
 	del /F /Q $(BIN)\*
 	del /F /s *.o *.d *.elf *.map *.log
 else
-	rm -f $(BIN)/* $(foreach prog, $(PROG), $($(prog)_OBJS))
+	rm -f $(BIN)/* $(foreach prog, $(PROG), $($(prog)_OBJS), $($(prog)_DEPS) )
 endif

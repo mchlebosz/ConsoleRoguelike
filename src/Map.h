@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <memory>
 #include <string>
 #include <unordered_map>
 #include <utility>
@@ -14,8 +15,8 @@ class Map {
 public:
 	// Constructor taking the width and height of the map
 	Map(int width, int height);
-	// Destructor
-	~Map();
+
+	virtual ~Map() = default;
 
 	// Getters and setters for the width and height of the map
 	int getWidth() const;

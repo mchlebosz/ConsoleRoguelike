@@ -13,28 +13,33 @@
 #include "Utils.hpp"
 
 Game::Game() :
-	m_map(100, 30),
-	m_lastId(0),
 	m_player(0),
+	m_map(100, 30),
 	m_isRunning(true),
 	m_lastTicks(GetTickCount()),
-	m_fps(30),
+	m_fps(60),
+	m_lastId(0),
 	SCREEN_WIDTH(110),
 	SCREEN_HEIGHT(50),
 	visibleBuffer(new CHAR_INFO[SCREEN_WIDTH * SCREEN_HEIGHT]),
 	hiddenBuffer(new CHAR_INFO[SCREEN_WIDTH * SCREEN_HEIGHT]) {
 	allLevels = initLevels();
+
 	m_player.setX(allLevels[0].getStartingPosition().first);
 	m_player.setY(allLevels[0].getStartingPosition().second);
 	m_player.setAppearance(U'😀');
 	m_player.setHealth(3);
 	m_player.setMaxHealth(5);
 	m_player.setExperience(1);
+	m_player.setSpeed(2);
 	m_map.loadMap(allLevels[0].getMap());
-	m_map.addCreature(0, &m_player);
 }
 
-Game::~Game() {}
+Game::~Game() {
+	// clean up
+	delete[] visibleBuffer;
+	delete[] hiddenBuffer;
+}
 
 void Game::Run() {
 	// Load first map from Levels folder
@@ -42,6 +47,10 @@ void Game::Run() {
 	m_player.setX(allLevels[0].getStartingPosition().first);
 	m_player.setY(allLevels[0].getStartingPosition().second);
 	m_map.addCreature(0, &m_player);
+
+	ModifyEnemy(AddEnemy(20, 8)).setAppearance(U'👹');
+
+	ModifyEnemy(AddEnemy(25, 8)).setAppearance(U'👺');
 
 	while (m_isRunning) {
 		DWORD currentTime = GetTickCount();
@@ -56,28 +65,48 @@ void Game::Run() {
 		}
 		m_lastTicks = GetTickCount();
 	}
+
+	// clean console
+	system("cls");
+	// say goodbye
+	std::wcout << L"Thanks for playing!😉" << std::endl;
+	Sleep(1000);
+	// clear console
+	system("cls");
 }
 
-void Game::AddEnemy(int x, int y) {
-	int id       = ++m_lastId;
-	Enemy* enemy = new Enemy(id);
+int Game::AddEnemy(int x, int y) {
+	Enemy* enemy = new Enemy(++m_lastId);
 	enemy->setX(x);
 	enemy->setY(y);
 	enemy->setAppearance(U'X');
 
-	m_map.addCreature(id, enemy);
+	m_map.addCreature(m_lastId, enemy);
 	m_enemies.push_back(enemy);
+
+	return m_lastId;
+}
+
+int Game::FindEnemy(int id) {
+	for (size_t i = 0; i < m_enemies.size(); i++) {
+		if (m_enemies[i]->getId() == id) {
+			return i;
+		}
+	}
+	return -1;
 }
 
 void Game::RemoveEnemy(int id) {
-	delete m_enemies[id];
+	const int index = FindEnemy(id);
+	delete m_enemies[index];
 
-	m_map.removeCreature(id);
-	m_enemies.erase(m_enemies.begin() + id);
+	m_map.removeCreature(index);
+	m_enemies.erase(m_enemies.begin() + index);
 }
 
-Enemy* Game::ModifyEnemy(int id) {
-	return m_enemies[id];
+Enemy& Game::ModifyEnemy(int id) {
+	const int index = FindEnemy(id);
+	return *m_enemies[index];
 }
 
 void Game::MovePlayer(int x, int y) {
@@ -108,7 +137,7 @@ std::wstring Game::showStats() {
 	std::wstring halfHeartString  = char32to16(U'💔');
 	std::wstring emptyHeartString = char32to16(U'🤍');
 	// create hearts for health
-	std::wstring healthHearts = L"";
+	std::wstring healthHearts = L"HP: ";
 	// for each 2 health, add a full heart, otherwise add a half heart
 	for (int i = 0; i < health / 2; i++) {
 		for (int j = 0; j < 2; j++) {
@@ -140,11 +169,11 @@ std::wstring Game::showStats() {
 	short int expBars = 20;
 	for (int i = 0; i < expBars; i++) {
 		if (i < exp * expBars / nextLevelExp) {
-			for (int j = 0; j < fullExp.length(); j++) {
+			for (UINT j = 0; j < fullExp.length(); j++) {
 				expString += fullExp[j];
 			}
 		} else {
-			for (int j = 0; j < emptyExp.length(); j++) {
+			for (UINT j = 0; j < emptyExp.length(); j++) {
 				expString += emptyExp[j];
 			}
 		}
@@ -159,7 +188,7 @@ std::string Game::showInventory() {
 	std::vector<Item> inventory = m_player.getInventory();
 
 	std::string output = "Inventory:";
-	for (int i = 0; i < inventory.size(); i++) {
+	for (UINT i = 0; i < inventory.size(); i++) {
 		output += '\t' + std::to_string(i + 1) + ". " + inventory[i].getName();
 	}
 	output += '\n';
@@ -167,12 +196,33 @@ std::string Game::showInventory() {
 	return output;
 }
 
+bool Game::isOnTile(Creature& creature, char32_t tile) {
+	return m_map.getTileAppearance(creature.getX(), creature.getY()) == tile ||
+		   m_map.getTileAppearance(creature.getX() + 1, creature.getY()) ==
+			   tile;
+}
+
+bool Game::isOnEnemy(Creature& creature) {
+	int id = creature.getId();
+	for (size_t i = 0; i < m_enemies.size(); i++) {
+		if ((m_enemies[i]->getX() == creature.getX() ||
+			 m_enemies[i]->getX() == creature.getX() + 1 ||
+			 m_enemies[i]->getX() == creature.getX() - 1) &&
+			m_enemies[i]->getY() == creature.getY() &&
+			m_enemies[i]->getId() != id) {
+			return true;
+		}
+	}
+	return false;
+}
 // Not using SDL
 
 void Game::Update() {
 	char32_t forbiddenTile = U'█';
 	int prevX              = m_player.getX();
 	int prevY              = m_player.getY();
+
+	// allow player to move only m_moveTimer ticks speed times
 
 	// get input
 	if (GetAsyncKeyState(VK_UP) || GetAsyncKeyState(0x57)) {
@@ -194,14 +244,19 @@ void Game::Update() {
 		}
 	}
 
-	// check if player is on a tile that is forbidden
-	if (m_map.getTileAppearance(m_player.getX(), m_player.getY()) ==
-			forbiddenTile ||
-		m_map.getTileAppearance(m_player.getX() + 1, m_player.getY()) ==
-			forbiddenTile) {
+	if (m_player.getMoveTimer() <= m_player.getSpeed()) {
+		m_player.setMoveTimer(m_player.getMoveTimer() + 1);
+	}
+
+	if (isOnTile(m_player, forbiddenTile) || isOnEnemy(m_player)) {
 		// if so, move player back to previous position
 		m_player.setX(prevX);
 		m_player.setY(prevY);
+	}
+
+	// exit game on escape
+	if (GetAsyncKeyState(VK_ESCAPE)) {
+		m_isRunning = false;
 	}
 }
 
@@ -216,12 +271,12 @@ void Game::PreRender() {
 	std::u32string map    = m_map.getMapString();
 	std::string inventory = showInventory();
 
-	// add stats, map, inventory to hidden buffer
+	// add stats to hidden buffer
 	int x = 0;
 	int y = 0;
-	for (int i = 0; i < stats.length(); i++) {
+	for (UINT i = 0; i < stats.length(); i++) {
 		if (stats[i] == '\t') {
-			for (int j = 0; j < 4; j++) {
+			for (UINT j = 0; j < 4; j++) {
 				hiddenBuffer[x + SCREEN_WIDTH * y].Char.UnicodeChar = ' ';
 				hiddenBuffer[x + SCREEN_WIDTH * y].Attributes =
 					FG_COLORS::FG_GREEN;
@@ -240,7 +295,7 @@ void Game::PreRender() {
 	x = 0;
 	y = 2;
 	// add map to hidden buffer
-	for (int i = 0; i < map.length(); i++) {
+	for (UINT i = 0; i < map.length(); i++) {
 		if (map[i] == '\n') {
 			x = 0;
 			y += 1;
@@ -254,7 +309,7 @@ void Game::PreRender() {
 			}
 
 			// add bytes to hidden buffer
-			for (int j = 0; j < wstr.length(); j++) {
+			for (UINT j = 0; j < wstr.length(); j++) {
 				hiddenBuffer[x + SCREEN_WIDTH * y].Char.UnicodeChar = wstr[j];
 				hiddenBuffer[x + SCREEN_WIDTH * y].Attributes =
 					FG_COLORS::FG_WHITE;
@@ -264,9 +319,9 @@ void Game::PreRender() {
 	}
 
 	x = 0;
-	y = m_map.getHeight() + 5;
+	y = m_map.getHeight() + 6;
 	// add inventory to hidden buffer
-	for (int i = 0; i < inventory.length(); i++) {
+	for (UINT i = 0; i < inventory.length(); i++) {
 		if (inventory[i] == '\t') {
 			for (int j = 0; j < 4; j++) {
 				hiddenBuffer[x + SCREEN_WIDTH * y].Char.UnicodeChar = ' ';

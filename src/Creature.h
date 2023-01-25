@@ -12,8 +12,8 @@ public:
 	Creature();
 	// Constructor taking name, position on the map and health points
 	Creature(int id, char32_t appearance, int x, int y, int health);
-	// Destructor
-	virtual ~Creature();
+
+	virtual ~Creature() = default;
 
 	// Abstract method responsible for attacking another creature
 	virtual void attack(Creature &other) = 0;

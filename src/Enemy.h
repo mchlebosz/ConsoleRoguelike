@@ -15,8 +15,8 @@ public:
 	// chance, attack power, and items
 	// Enemy.h
 	Enemy(int id, char appearance, int x, int y, int health, int attackPower);
-	// Destructor
-	virtual ~Enemy();
+
+	virtual ~Enemy() = default;
 
 	// Method responsible for moving the enemy
 	virtual void move();
