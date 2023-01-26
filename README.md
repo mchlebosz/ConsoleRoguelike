@@ -26,6 +26,7 @@ For documentation using [Doxygen](https://www.doxygen.nl/index.html)
 
 
 ## Prerequisites
+0. MS Windows (Tested on Windows 10 21H1)
 1. MinGW64 v12 with C++ 17 support
 2. Powershell v7 or Windows Terminal or any other terminal with font that supports UTF Emojis (For convinience in `src` folder there is a font that supports emojis)
 

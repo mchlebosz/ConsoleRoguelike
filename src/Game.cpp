@@ -41,7 +41,7 @@ Game::Game() :
 	m_player.setAttackPower(1);
 	m_player.setAttackRange(2);
 	m_player.setAttackSpeed(1000);
-	m_map.loadMap(allLevels[0].getMap());
+	m_map.loadMap(allLevels[m_currentLevel].getMap());
 }
 
 Game::~Game() {
@@ -525,10 +525,10 @@ void Game::Update() {
 		}
 	}
 
-	if (GetAsyncKeyState((int)'E')) {
-		// increase experience
-		m_player.setExperience(m_player.getExperience() + 1);
-	}
+	// if (GetAsyncKeyState((int)'E')) {
+	// 	// increase experience
+	// 	m_player.setExperience(m_player.getExperience() + 1);
+	// }
 
 	if (isOnTile(m_player, forbiddenTile) || isOnEnemy(m_player)) {
 		// if so, move player back to previous position
