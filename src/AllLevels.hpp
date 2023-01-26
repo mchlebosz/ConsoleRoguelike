@@ -125,5 +125,49 @@ std::vector<Level> initLevels() {
 					  scorpion.damage, scorpion.speed,
 					  scorpion.attackSpeed) }));
 
+	allLevels.push_back(Level(
+		std::vector<std::u32string> {
+			U"██████████████████████████████████████████████████████████████████████████████████████████████████",
+			U"██                                             ████                                             ██",
+			U"██                                             ████                                             ██",
+			U"██                                             ████                                             ██",
+			U"██                                             ████                                             ██",
+			U"██                                             ████                                             ██",
+			U"█████████████████████████████████              ███████████████████████████████████              ██",
+			U"██                                             ████                             ██              ██",
+			U"██                                             ████                             ██              ██",
+			U"██                                             ████                             ██              ██",
+			U"██                                                                              ██              ██",
+			U"██                                                                              ██              ██",
+			U"██                                             ████                                             ██",
+			U"██                                             ████                                             ██",
+			U"██                                             ████                                             ██",
+			U"██████████████████████  ██████████████████████████████████████████████████████████████████████████",
+			U"     ██                                  ██                                                       ",
+			U"     ██                                  ██                                                       ",
+			U"     ██                                  ██                                                       ",
+			U"     ██                                  ██                                                       ",
+			U"     ██                                  ██                                                       ",
+			U"     ██                                  ██                                                       ",
+			U"     ██                                  ██                                                       ",
+			U"     ██                                  ██                                                       ",
+			U"     ██                                  ██                                                       ",
+			U"     ██                                  ██                                                       ",
+			U"     ██                                  ██                                                       ",
+			U"     ██████████████████████████████████████                                                       " },
+		std::make_pair(8, 20), std::make_pair(4, 8),
+		std::vector<Enemy*> {
+			new Enemy(0, scorpion.symbol, 12, 10, scorpion.health,
+					  scorpion.damage, scorpion.speed, scorpion.attackSpeed),
+			new Enemy(1, scorpion.symbol, 15, 16, scorpion.health,
+					  scorpion.damage, scorpion.speed, scorpion.attackSpeed),
+			new Enemy(2, scorpion.symbol, 50, 13, scorpion.health,
+					  scorpion.damage, scorpion.speed, scorpion.attackSpeed),
+			new Enemy(3, snake.symbol, 52, 3, snake.health, snake.damage,
+					  snake.speed, snake.attackSpeed),
+			new Enemy(4, snake.symbol, 28, 3, snake.health, snake.damage,
+					  snake.speed, snake.attackSpeed),
+		}));
+
 	return allLevels;
 }

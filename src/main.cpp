@@ -3,6 +3,16 @@
 // #include "FontLoader.hpp"
 #include "Game.h"
 
+/**
+ * `SetConsoleOutputCP(CP_UTF8)` sets the console output code page to UTF-8
+ *
+ * @param hInstance A handle to the current instance of the application.
+ * @param hPrevInstance This parameter is always NULL.
+ * @param lpCmdLine The command line arguments.
+ * @param nCmdShow Specifies how the window is to be shown.
+ *
+ * @return The error code of the last error that occurred.
+ */
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 				   LPSTR lpCmdLine, int nCmdShow) {
 	// HANDLE font;

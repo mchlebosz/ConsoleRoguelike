@@ -54,6 +54,9 @@ Game::~Game() {
 	}
 }
 
+/**
+ * The game runs until the player dies or wins
+ */
 void Game::Run() {
 	// Load first map from Levels folder
 	LoadLevel(m_currentLevel);
@@ -95,6 +98,13 @@ void Game::Run() {
 	system("cls");
 }
 
+/**
+ * It loads a level
+ *
+ * @param level The level to load
+ *
+ * @return The return value is a reference to the enemy object.
+ */
 void Game::LoadLevel(UINT level) {
 	if (level < 0 || level >= allLevels.size()) {
 		m_isRunning = false;
@@ -132,6 +142,15 @@ void Game::LoadLevel(UINT level) {
 	return;
 }
 
+/**
+ * It creates a new enemy, sets its position, appearance, and ID, and then adds
+ * it to the map and the enemy list
+ *
+ * @param x The x coordinate of the enemy
+ * @param y The y coordinate of the enemy
+ *
+ * @return The ID of the enemy.
+ */
 int Game::AddEnemy(int x, int y) {
 	++m_lastId;
 	Enemy* enemy = new Enemy(m_lastId);
@@ -145,6 +164,13 @@ int Game::AddEnemy(int x, int y) {
 	return m_lastId;
 }
 
+/**
+ * Find the index of the enemy with the given id
+ *
+ * @param id The id of the enemy you want to find.
+ *
+ * @return The index of the enemy in the vector.
+ */
 int Game::FindEnemy(int id) {
 	for (size_t i = 0; i < m_enemies.size(); i++) {
 		if (m_enemies[i]->getId() == id) {
@@ -154,6 +180,17 @@ int Game::FindEnemy(int id) {
 	return -1;
 }
 
+/**
+ * It loops through the vector of enemies and checks if the enemy's x and y
+ * coordinates are equal to the x and y coordinates passed in as parameters. If
+ * they are, it returns the index of the enemy in the vector. If not, it returns
+ * -1
+ *
+ * @param x The x coordinate of the enemy
+ * @param y The y coordinate of the enemy
+ *
+ * @return The index of the enemy in the vector.
+ */
 int Game::FindEnemy(int x, int y) {
 	for (size_t i = 0; i < m_enemies.size(); i++) {
 		if (m_enemies[i]->getX() == x && m_enemies[i]->getY() == y) {
@@ -163,6 +200,11 @@ int Game::FindEnemy(int x, int y) {
 	return -1;
 }
 
+/**
+ * It removes an enemy from the game
+ *
+ * @param id The id of the enemy to remove
+ */
 void Game::RemoveEnemy(int id) {
 	const int index = FindEnemy(id);
 
@@ -171,16 +213,37 @@ void Game::RemoveEnemy(int id) {
 	m_enemies.erase(m_enemies.begin() + index);
 }
 
+/**
+ * "The function returns a reference to the enemy object with the given id, or a
+ * reference to the first enemy if the id is not found."
+ *
+ * The function first checks if the id is valid. If it is, it returns a
+ * reference to the enemy object with the given id. If the id is not valid, it
+ * returns a reference to the first enemy object
+ *
+ * @return A reference to the object.
+ */
 Enemy& Game::ModifyEnemy(int id) {
 	const int index = FindEnemy(id);
 	return *m_enemies[index];
 }
 
+/**
+ * This function moves the player to the specified x and y coordinates.
+ *
+ * @param x The x coordinate of the player.
+ * @param y The y coordinate of the player
+ */
 void Game::MovePlayer(int x, int y) {
 	m_player.setX(x);
 	m_player.setY(y);
 }
 
+/**
+ * If the player's health is less than 0, set it to 0
+ *
+ * @param damage The amount of damage to be dealt to the player.
+ */
 void Game::HurtPlayer(int damage) {
 	int newHealth = m_player.getHealth() - damage;
 	if (newHealth < 0) {
@@ -188,6 +251,13 @@ void Game::HurtPlayer(int damage) {
 	}
 	m_player.setHealth(newHealth);
 }
+/**
+ * HealPlayer() takes an integer as a parameter and adds it to the player's
+ * current health. If the new health is greater than the player's max health,
+ * then the new health is set to the player's max health
+ *
+ * @param health The amount of health to add to the player.
+ */
 void Game::HealPlayer(int health) {
 	int newHealth = m_player.getHealth() + health;
 	if (newHealth > m_player.getMaxHealth()) {
@@ -196,6 +266,13 @@ void Game::HealPlayer(int health) {
 	m_player.setHealth(newHealth);
 }
 
+/**
+ * It creates a string of hearts for the player's health, a string of bars for
+ * the player's experience, and then combines them with the player's attack
+ * power and level
+ *
+ * @return A string of the player's stats.
+ */
 std::wstring Game::showStats() {
 	std::wstring output = L"";
 
@@ -254,9 +331,12 @@ std::wstring Game::showStats() {
 	return output;
 }
 
-/// @brief
-/// @param x
-/// @param y
+/**
+ * It drops a random item at the given coordinates.
+ *
+ * @param x The x coordinate of the item to drop.
+ * @param y The y coordinate of the item to drop.
+ */
 void Game::DropRandomItem(int x, int y) {
 	// init random number generator
 	srand(time(NULL));
@@ -315,6 +395,11 @@ void Game::DropRandomItem(int x, int y) {
 	// TODO: make this better
 }
 
+/**
+ * It returns a string that contains the player's inventory
+ *
+ * @return A string.
+ */
 std::string Game::showInventory() {
 	std::vector<Item> inventory = m_player.getInventory();
 
@@ -327,12 +412,25 @@ std::string Game::showInventory() {
 	return output;
 }
 
+/**
+ * It checks if the creature is on the tile.
+ *
+ * @param creature The creature to check.
+ * @param tile The tile to check for.
+ */
 bool Game::isOnTile(Creature& creature, char32_t tile) {
 	return m_map.getTileAppearance(creature.getX(), creature.getY()) == tile ||
 		   m_map.getTileAppearance(creature.getX() + 1, creature.getY()) ==
 			   tile;
 }
 
+/**
+ * It checks if the creature is on an enemy
+ *
+ * @param creature The creature that is being checked.
+ *
+ * @return A boolean value.
+ */
 bool Game::isOnEnemy(Creature& creature) {
 	int id = creature.getId();
 	for (size_t i = 0; i < m_enemies.size(); i++) {
@@ -348,6 +446,9 @@ bool Game::isOnEnemy(Creature& creature) {
 }
 // Not using SDL
 
+/**
+ * It updates the game.
+ */
 void Game::Update() {
 	char32_t forbiddenTile = U'█';
 	int prevX              = m_player.getX();
@@ -505,6 +606,9 @@ void Game::Update() {
 	}
 }
 
+/**
+ * A function that is called before the render function.
+ */
 void Game::PreRender() {
 	// clear hidden buffer
 	for (int i = 0; i < SCREEN_WIDTH * SCREEN_HEIGHT; i++) {
@@ -605,6 +709,10 @@ void Game::PreRender() {
 	}
 }
 
+/**
+ * It copies the hidden buffer to the visible buffer, then draws the visible
+ * buffer
+ */
 void Game::Render() {
 	// copy hidden buffer to visible buffer
 	for (int i = 0; i < SCREEN_WIDTH * SCREEN_HEIGHT; i++) {

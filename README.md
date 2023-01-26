@@ -1,6 +1,7 @@
 # Roguelike game
 OOP project
 [This](https://github.com/mchlebosz/ConsoleRoguelike) is a link to the repository.
+[Documentation](https://mchlebosz.github.io/ConsoleRoguelike/) is available here.
 
 ## IMPORTANT!
 When commiting to main (and other branches too) please follow given structure:
