@@ -70,56 +70,70 @@ $(function() {
   <div class="headertitle"><div class="title">Level.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;Level.h&quot;</span></div>
+<a href="Level_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="Level_8h.html">Level.h</a>&quot;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span>Level::Level() {</div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>    m_tiles            = std::vector&lt;std::u32string&gt;();</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>    m_startingPosition = std::make_pair(1, 1);</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="classLevel.html#a7a696c928ca5d5354db6e50e46d0f67d">    3</a></span><a class="code hl_function" href="classLevel.html#a7a696c928ca5d5354db6e50e46d0f67d">Level::Level</a>() {</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>    <a class="code hl_variable" href="classLevel.html#a04fe3807d8374fcfd2bc875bb5f732a3">m_tiles</a>            = std::vector&lt;std::u32string&gt;();</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>    <a class="code hl_variable" href="classLevel.html#a479e37db86e6a8385598c8ccd2552c65">m_startingPosition</a> = std::make_pair(1, 1);</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>}</div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>Level::Level(std::vector&lt;std::u32string&gt; map,</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>             std::pair&lt;int, int&gt; startingPosition,</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>             std::pair&lt;int, int&gt; exitPosition, std::vector&lt;Enemy*&gt; enemies) {</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    m_tiles            = map;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    m_startingPosition = startingPosition;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    m_exitPosition     = exitPosition;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    m_enemies          = enemies;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>}</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">// getters</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>std::vector&lt;std::u32string&gt; Level::getMap()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordflow">return</span> m_tiles;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>}</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>std::pair&lt;int, int&gt; Level::getStartingPosition()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordflow">return</span> m_startingPosition;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>std::pair&lt;int, int&gt; Level::getExitPosition()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">return</span> m_exitPosition;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>}</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>std::vector&lt;Enemy*&gt; Level::getEnemies()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">return</span> m_enemies;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">// setters</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keywordtype">void</span> Level::setMap(std::vector&lt;std::u32string&gt; map) {</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    m_tiles = map;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>}</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keywordtype">void</span> Level::setStartingPosition(std::pair&lt;int, int&gt; startingPosition) {</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    m_startingPosition = startingPosition;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classLevel.html#acc5745f1867c0ec3b79fbaba2c0786b4">   16</a></span><a class="code hl_function" href="classLevel.html#a7a696c928ca5d5354db6e50e46d0f67d">Level::Level</a>(std::vector&lt;std::u32string&gt; map,</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>             std::pair&lt;int, int&gt; startingPosition,</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>             std::pair&lt;int, int&gt; exitPosition, std::vector&lt;Enemy*&gt; enemies) {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_variable" href="classLevel.html#a04fe3807d8374fcfd2bc875bb5f732a3">m_tiles</a>            = map;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <a class="code hl_variable" href="classLevel.html#a479e37db86e6a8385598c8ccd2552c65">m_startingPosition</a> = startingPosition;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <a class="code hl_variable" href="classLevel.html#a45156ef1031dd5af4d1e074cb7f9db3c">m_exitPosition</a>     = exitPosition;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <a class="code hl_variable" href="classLevel.html#ad70c9841ccd6dc747084fa4690832834">m_enemies</a>          = enemies;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>}</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">// getters</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classLevel.html#a04406f439238dfaef4937a69048ea37b">   31</a></span><span class="comment"></span>std::vector&lt;std::u32string&gt; <a class="code hl_function" href="classLevel.html#a04406f439238dfaef4937a69048ea37b">Level::getMap</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classLevel.html#a04fe3807d8374fcfd2bc875bb5f732a3">m_tiles</a>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>}</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classLevel.html#a914f2ad7be2471c495cf49fe331f7f6c">   40</a></span>std::pair&lt;int, int&gt; <a class="code hl_function" href="classLevel.html#a914f2ad7be2471c495cf49fe331f7f6c">Level::getStartingPosition</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classLevel.html#a479e37db86e6a8385598c8ccd2552c65">m_startingPosition</a>;</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>}</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keywordtype">void</span> Level::setExitPosition(std::pair&lt;int, int&gt; exitPosition) {</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    m_exitPosition = exitPosition;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>}</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keywordtype">void</span> Level::setEnemies(std::vector&lt;Enemy*&gt; enemies) {</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    m_enemies = enemies;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>}</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="classLevel.html#a47e810b7a4827b3c2afdff29b072c5e8">   49</a></span>std::pair&lt;int, int&gt; <a class="code hl_function" href="classLevel.html#a47e810b7a4827b3c2afdff29b072c5e8">Level::getExitPosition</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classLevel.html#a45156ef1031dd5af4d1e074cb7f9db3c">m_exitPosition</a>;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>}</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classLevel.html#a040ab08fd9e0c2915fd6d2b743f25723">   58</a></span>std::vector&lt;Enemy*&gt; <a class="code hl_function" href="classLevel.html#a040ab08fd9e0c2915fd6d2b743f25723">Level::getEnemies</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classLevel.html#ad70c9841ccd6dc747084fa4690832834">m_enemies</a>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>}</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">// setters</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classLevel.html#aa359f670529d83d759220dda9006ca28">   70</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classLevel.html#aa359f670529d83d759220dda9006ca28">Level::setMap</a>(std::vector&lt;std::u32string&gt; map) {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <a class="code hl_variable" href="classLevel.html#a04fe3807d8374fcfd2bc875bb5f732a3">m_tiles</a> = map;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classLevel.html#afdb885728c9b1ab41c1a4bd61e243eea">   79</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classLevel.html#afdb885728c9b1ab41c1a4bd61e243eea">Level::setStartingPosition</a>(std::pair&lt;int, int&gt; startingPosition) {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <a class="code hl_variable" href="classLevel.html#a479e37db86e6a8385598c8ccd2552c65">m_startingPosition</a> = startingPosition;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>}</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classLevel.html#aa47a472e3c55253f1faca9bb59483943">   88</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classLevel.html#aa47a472e3c55253f1faca9bb59483943">Level::setExitPosition</a>(std::pair&lt;int, int&gt; exitPosition) {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <a class="code hl_variable" href="classLevel.html#a45156ef1031dd5af4d1e074cb7f9db3c">m_exitPosition</a> = exitPosition;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>}</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classLevel.html#a7610568ed3d3786b0428b19c1009f5af">   99</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classLevel.html#a7610568ed3d3786b0428b19c1009f5af">Level::setEnemies</a>(std::vector&lt;Enemy*&gt; enemies) {</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <a class="code hl_variable" href="classLevel.html#ad70c9841ccd6dc747084fa4690832834">m_enemies</a> = enemies;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>}</div>
+<div class="ttc" id="aLevel_8h_html"><div class="ttname"><a href="Level_8h.html">Level.h</a></div></div>
+<div class="ttc" id="aclassLevel_html_a040ab08fd9e0c2915fd6d2b743f25723"><div class="ttname"><a href="classLevel.html#a040ab08fd9e0c2915fd6d2b743f25723">Level::getEnemies</a></div><div class="ttdeci">std::vector&lt; Enemy * &gt; getEnemies() const</div><div class="ttdef"><b>Definition:</b> <a href="Level_8cpp_source.html#l00058">Level.cpp:58</a></div></div>
+<div class="ttc" id="aclassLevel_html_a04406f439238dfaef4937a69048ea37b"><div class="ttname"><a href="classLevel.html#a04406f439238dfaef4937a69048ea37b">Level::getMap</a></div><div class="ttdeci">std::vector&lt; std::u32string &gt; getMap() const</div><div class="ttdef"><b>Definition:</b> <a href="Level_8cpp_source.html#l00031">Level.cpp:31</a></div></div>
+<div class="ttc" id="aclassLevel_html_a04fe3807d8374fcfd2bc875bb5f732a3"><div class="ttname"><a href="classLevel.html#a04fe3807d8374fcfd2bc875bb5f732a3">Level::m_tiles</a></div><div class="ttdeci">std::vector&lt; std::u32string &gt; m_tiles</div><div class="ttdef"><b>Definition:</b> <a href="Level_8h_source.html#l00033">Level.h:33</a></div></div>
+<div class="ttc" id="aclassLevel_html_a45156ef1031dd5af4d1e074cb7f9db3c"><div class="ttname"><a href="classLevel.html#a45156ef1031dd5af4d1e074cb7f9db3c">Level::m_exitPosition</a></div><div class="ttdeci">std::pair&lt; int, int &gt; m_exitPosition</div><div class="ttdef"><b>Definition:</b> <a href="Level_8h_source.html#l00038">Level.h:38</a></div></div>
+<div class="ttc" id="aclassLevel_html_a479e37db86e6a8385598c8ccd2552c65"><div class="ttname"><a href="classLevel.html#a479e37db86e6a8385598c8ccd2552c65">Level::m_startingPosition</a></div><div class="ttdeci">std::pair&lt; int, int &gt; m_startingPosition</div><div class="ttdef"><b>Definition:</b> <a href="Level_8h_source.html#l00036">Level.h:36</a></div></div>
+<div class="ttc" id="aclassLevel_html_a47e810b7a4827b3c2afdff29b072c5e8"><div class="ttname"><a href="classLevel.html#a47e810b7a4827b3c2afdff29b072c5e8">Level::getExitPosition</a></div><div class="ttdeci">std::pair&lt; int, int &gt; getExitPosition() const</div><div class="ttdef"><b>Definition:</b> <a href="Level_8cpp_source.html#l00049">Level.cpp:49</a></div></div>
+<div class="ttc" id="aclassLevel_html_a7610568ed3d3786b0428b19c1009f5af"><div class="ttname"><a href="classLevel.html#a7610568ed3d3786b0428b19c1009f5af">Level::setEnemies</a></div><div class="ttdeci">void setEnemies(std::vector&lt; Enemy * &gt; enemies)</div><div class="ttdef"><b>Definition:</b> <a href="Level_8cpp_source.html#l00099">Level.cpp:99</a></div></div>
+<div class="ttc" id="aclassLevel_html_a7a696c928ca5d5354db6e50e46d0f67d"><div class="ttname"><a href="classLevel.html#a7a696c928ca5d5354db6e50e46d0f67d">Level::Level</a></div><div class="ttdeci">Level()</div><div class="ttdef"><b>Definition:</b> <a href="Level_8cpp_source.html#l00003">Level.cpp:3</a></div></div>
+<div class="ttc" id="aclassLevel_html_a914f2ad7be2471c495cf49fe331f7f6c"><div class="ttname"><a href="classLevel.html#a914f2ad7be2471c495cf49fe331f7f6c">Level::getStartingPosition</a></div><div class="ttdeci">std::pair&lt; int, int &gt; getStartingPosition() const</div><div class="ttdef"><b>Definition:</b> <a href="Level_8cpp_source.html#l00040">Level.cpp:40</a></div></div>
+<div class="ttc" id="aclassLevel_html_aa359f670529d83d759220dda9006ca28"><div class="ttname"><a href="classLevel.html#aa359f670529d83d759220dda9006ca28">Level::setMap</a></div><div class="ttdeci">void setMap(std::vector&lt; std::u32string &gt;)</div><div class="ttdef"><b>Definition:</b> <a href="Level_8cpp_source.html#l00070">Level.cpp:70</a></div></div>
+<div class="ttc" id="aclassLevel_html_aa47a472e3c55253f1faca9bb59483943"><div class="ttname"><a href="classLevel.html#aa47a472e3c55253f1faca9bb59483943">Level::setExitPosition</a></div><div class="ttdeci">void setExitPosition(std::pair&lt; int, int &gt; exitPosition)</div><div class="ttdef"><b>Definition:</b> <a href="Level_8cpp_source.html#l00088">Level.cpp:88</a></div></div>
+<div class="ttc" id="aclassLevel_html_ad70c9841ccd6dc747084fa4690832834"><div class="ttname"><a href="classLevel.html#ad70c9841ccd6dc747084fa4690832834">Level::m_enemies</a></div><div class="ttdeci">std::vector&lt; Enemy * &gt; m_enemies</div><div class="ttdef"><b>Definition:</b> <a href="Level_8h_source.html#l00040">Level.h:40</a></div></div>
+<div class="ttc" id="aclassLevel_html_afdb885728c9b1ab41c1a4bd61e243eea"><div class="ttname"><a href="classLevel.html#afdb885728c9b1ab41c1a4bd61e243eea">Level::setStartingPosition</a></div><div class="ttdeci">void setStartingPosition(std::pair&lt; int, int &gt; startingPosition)</div><div class="ttdef"><b>Definition:</b> <a href="Level_8cpp_source.html#l00079">Level.cpp:79</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

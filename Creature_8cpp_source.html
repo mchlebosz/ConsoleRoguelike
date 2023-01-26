@@ -70,48 +70,59 @@ $(function() {
   <div class="headertitle"><div class="title">Creature.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;Creature.h&quot;</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span>Creature::Creature() :</div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>    m_id(0), m_x(0), m_y(0), m_health(0), m_appearance(U<span class="stringliteral">&#39;C&#39;</span>) {}</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>Creature::Creature(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, char32_t appearance, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> health) :</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    m_id(id), m_x(x), m_y(y), m_health(health), m_appearance(appearance) {}</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keywordtype">int</span> Creature::getId()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keywordflow">return</span> m_id;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>}</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keywordtype">int</span> Creature::getX()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keywordflow">return</span> m_x;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>}</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keywordtype">void</span> Creature::setX(<span class="keywordtype">int</span> x) {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    m_x = x;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>}</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keywordtype">int</span> Creature::getY()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordflow">return</span> m_y;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>}</div>
+<a href="Creature_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="Creature_8h.html">Creature.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="classCreature.html#a597cc3b08ee17de46c3e7ec3cf0d9b58">    7</a></span><a class="code hl_function" href="classCreature.html#a597cc3b08ee17de46c3e7ec3cf0d9b58">Creature::Creature</a>() :</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    m_id(0), m_x(0), m_y(0), m_health(0), m_appearance(U<span class="stringliteral">&#39;C&#39;</span>) {}</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classCreature.html#ae31f03fd315af6fb176ad5b84a332349">   21</a></span><a class="code hl_function" href="classCreature.html#a597cc3b08ee17de46c3e7ec3cf0d9b58">Creature::Creature</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, char32_t appearance, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> health) :</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    m_id(id), m_x(x), m_y(y), m_health(health), m_appearance(appearance) {}</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keywordtype">void</span> Creature::setY(<span class="keywordtype">int</span> y) {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    m_y = y;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keywordtype">int</span> Creature::getHealth()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordflow">return</span> m_health;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>}</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keywordtype">void</span> Creature::setHealth(<span class="keywordtype">int</span> health) {</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    m_health = health;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>char32_t Creature::getAppearance()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordflow">return</span> m_appearance;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>}</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keywordtype">void</span> Creature::setAppearance(char32_t appearance) {</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    m_appearance = appearance;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>}</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classCreature.html#a47a9ff1b61328b2894f92bc2b7ed3f89">   29</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="classCreature.html#a47a9ff1b61328b2894f92bc2b7ed3f89">Creature::getId</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classCreature.html#a3607bec5bda4478a6280192f9a7e4175">m_id</a>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>}</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classCreature.html#abe1e3a00f3063198d0528b6b474a79ad">   37</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="classCreature.html#abe1e3a00f3063198d0528b6b474a79ad">Creature::getX</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classCreature.html#aff9083d0304d85efcb5064d3ed17ea33">m_x</a>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classCreature.html#aa8659be7dd6c19b54d95a409cfb268ce">   47</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classCreature.html#aa8659be7dd6c19b54d95a409cfb268ce">Creature::setX</a>(<span class="keywordtype">int</span> x) {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <a class="code hl_variable" href="classCreature.html#aff9083d0304d85efcb5064d3ed17ea33">m_x</a> = x;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classCreature.html#ac22abd1b0a99cced826e898d94b4e497">   56</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="classCreature.html#ac22abd1b0a99cced826e898d94b4e497">Creature::getY</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classCreature.html#adfead36d9ad7127b85ffbbdbd7faab62">m_y</a>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>}</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classCreature.html#a4a7cb5af1a78ff8b93b6788d137b13b3">   66</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classCreature.html#a4a7cb5af1a78ff8b93b6788d137b13b3">Creature::setY</a>(<span class="keywordtype">int</span> y) {</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_variable" href="classCreature.html#adfead36d9ad7127b85ffbbdbd7faab62">m_y</a> = y;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classCreature.html#a9e6613a15720bd0bdf4eb8153d4d827c">   75</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="classCreature.html#a9e6613a15720bd0bdf4eb8153d4d827c">Creature::getHealth</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classCreature.html#a7ee7518a06a266abff11add056aaf320">m_health</a>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>}</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classCreature.html#abb4b58dae9f30075592073125d1a1403">   84</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classCreature.html#abb4b58dae9f30075592073125d1a1403">Creature::setHealth</a>(<span class="keywordtype">int</span> health) {</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <a class="code hl_variable" href="classCreature.html#a7ee7518a06a266abff11add056aaf320">m_health</a> = health;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="classCreature.html#aa77c27a00b2eb502f17f17f6dbc089ba">   94</a></span>char32_t <a class="code hl_function" href="classCreature.html#aa77c27a00b2eb502f17f17f6dbc089ba">Creature::getAppearance</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classCreature.html#ad0cab38ce6b2af76c923628f4e89ea94">m_appearance</a>;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>}</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="classCreature.html#abb40178d30ad35561559061a4d998b65">  104</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classCreature.html#abb40178d30ad35561559061a4d998b65">Creature::setAppearance</a>(char32_t appearance) {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <a class="code hl_variable" href="classCreature.html#ad0cab38ce6b2af76c923628f4e89ea94">m_appearance</a> = appearance;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>}</div>
+<div class="ttc" id="aCreature_8h_html"><div class="ttname"><a href="Creature_8h.html">Creature.h</a></div></div>
+<div class="ttc" id="aclassCreature_html_a3607bec5bda4478a6280192f9a7e4175"><div class="ttname"><a href="classCreature.html#a3607bec5bda4478a6280192f9a7e4175">Creature::m_id</a></div><div class="ttdeci">int m_id</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8h_source.html#l00074">Creature.h:74</a></div></div>
+<div class="ttc" id="aclassCreature_html_a47a9ff1b61328b2894f92bc2b7ed3f89"><div class="ttname"><a href="classCreature.html#a47a9ff1b61328b2894f92bc2b7ed3f89">Creature::getId</a></div><div class="ttdeci">int getId() const</div><div class="ttdoc">Get ID method.</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8cpp_source.html#l00029">Creature.cpp:29</a></div></div>
+<div class="ttc" id="aclassCreature_html_a4a7cb5af1a78ff8b93b6788d137b13b3"><div class="ttname"><a href="classCreature.html#a4a7cb5af1a78ff8b93b6788d137b13b3">Creature::setY</a></div><div class="ttdeci">void setY(int y)</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8cpp_source.html#l00066">Creature.cpp:66</a></div></div>
+<div class="ttc" id="aclassCreature_html_a597cc3b08ee17de46c3e7ec3cf0d9b58"><div class="ttname"><a href="classCreature.html#a597cc3b08ee17de46c3e7ec3cf0d9b58">Creature::Creature</a></div><div class="ttdeci">Creature()</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8cpp_source.html#l00007">Creature.cpp:7</a></div></div>
+<div class="ttc" id="aclassCreature_html_a7ee7518a06a266abff11add056aaf320"><div class="ttname"><a href="classCreature.html#a7ee7518a06a266abff11add056aaf320">Creature::m_health</a></div><div class="ttdeci">int m_health</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8h_source.html#l00080">Creature.h:80</a></div></div>
+<div class="ttc" id="aclassCreature_html_a9e6613a15720bd0bdf4eb8153d4d827c"><div class="ttname"><a href="classCreature.html#a9e6613a15720bd0bdf4eb8153d4d827c">Creature::getHealth</a></div><div class="ttdeci">int getHealth() const</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8cpp_source.html#l00075">Creature.cpp:75</a></div></div>
+<div class="ttc" id="aclassCreature_html_aa77c27a00b2eb502f17f17f6dbc089ba"><div class="ttname"><a href="classCreature.html#aa77c27a00b2eb502f17f17f6dbc089ba">Creature::getAppearance</a></div><div class="ttdeci">char32_t getAppearance() const</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8cpp_source.html#l00094">Creature.cpp:94</a></div></div>
+<div class="ttc" id="aclassCreature_html_aa8659be7dd6c19b54d95a409cfb268ce"><div class="ttname"><a href="classCreature.html#aa8659be7dd6c19b54d95a409cfb268ce">Creature::setX</a></div><div class="ttdeci">void setX(int x)</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8cpp_source.html#l00047">Creature.cpp:47</a></div></div>
+<div class="ttc" id="aclassCreature_html_abb40178d30ad35561559061a4d998b65"><div class="ttname"><a href="classCreature.html#abb40178d30ad35561559061a4d998b65">Creature::setAppearance</a></div><div class="ttdeci">void setAppearance(char32_t appearance)</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8cpp_source.html#l00104">Creature.cpp:104</a></div></div>
+<div class="ttc" id="aclassCreature_html_abb4b58dae9f30075592073125d1a1403"><div class="ttname"><a href="classCreature.html#abb4b58dae9f30075592073125d1a1403">Creature::setHealth</a></div><div class="ttdeci">virtual void setHealth(int health)</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8cpp_source.html#l00084">Creature.cpp:84</a></div></div>
+<div class="ttc" id="aclassCreature_html_abe1e3a00f3063198d0528b6b474a79ad"><div class="ttname"><a href="classCreature.html#abe1e3a00f3063198d0528b6b474a79ad">Creature::getX</a></div><div class="ttdeci">int getX() const</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8cpp_source.html#l00037">Creature.cpp:37</a></div></div>
+<div class="ttc" id="aclassCreature_html_ac22abd1b0a99cced826e898d94b4e497"><div class="ttname"><a href="classCreature.html#ac22abd1b0a99cced826e898d94b4e497">Creature::getY</a></div><div class="ttdeci">int getY() const</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8cpp_source.html#l00056">Creature.cpp:56</a></div></div>
+<div class="ttc" id="aclassCreature_html_ad0cab38ce6b2af76c923628f4e89ea94"><div class="ttname"><a href="classCreature.html#ad0cab38ce6b2af76c923628f4e89ea94">Creature::m_appearance</a></div><div class="ttdeci">char32_t m_appearance</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8h_source.html#l00082">Creature.h:82</a></div></div>
+<div class="ttc" id="aclassCreature_html_adfead36d9ad7127b85ffbbdbd7faab62"><div class="ttname"><a href="classCreature.html#adfead36d9ad7127b85ffbbdbd7faab62">Creature::m_y</a></div><div class="ttdeci">int m_y</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8h_source.html#l00078">Creature.h:78</a></div></div>
+<div class="ttc" id="aclassCreature_html_aff9083d0304d85efcb5064d3ed17ea33"><div class="ttname"><a href="classCreature.html#aff9083d0304d85efcb5064d3ed17ea33">Creature::m_x</a></div><div class="ttdeci">int m_x</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8h_source.html#l00076">Creature.h:76</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

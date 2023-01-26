@@ -70,6 +70,11 @@ $(function() {
   <div class="headertitle"><div class="title">Creature Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="classCreature.html" title="Creature class.">Creature</a> class.  
+ <a href="classCreature.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Creature_8h_source.html">Creature.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Creature:</div>
 <div class="dyncontent">
@@ -83,12 +88,18 @@ Inheritance diagram for Creature:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a597cc3b08ee17de46c3e7ec3cf0d9b58"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCreature.html#a597cc3b08ee17de46c3e7ec3cf0d9b58">Creature</a> ()</td></tr>
+<tr class="separator:a597cc3b08ee17de46c3e7ec3cf0d9b58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae31f03fd315af6fb176ad5b84a332349"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCreature.html#ae31f03fd315af6fb176ad5b84a332349">Creature</a> (int id, char32_t appearance, int x, int y, int health)</td></tr>
+<tr class="memdesc:ae31f03fd315af6fb176ad5b84a332349"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classCreature.html" title="Creature class.">Creature</a> constructor.  <a href="classCreature.html#ae31f03fd315af6fb176ad5b84a332349">More...</a><br /></td></tr>
 <tr class="separator:ae31f03fd315af6fb176ad5b84a332349"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab00c113453673d02edeed136b8a03742"><td class="memItemLeft" align="right" valign="top"><a id="ab00c113453673d02edeed136b8a03742" name="ab00c113453673d02edeed136b8a03742"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>attack</b> (<a class="el" href="classCreature.html">Creature</a> &amp;other)=0</td></tr>
+<tr class="memitem:a3dc2de2f09700ad61afe17300016d0d5"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCreature.html#a3dc2de2f09700ad61afe17300016d0d5">~Creature</a> ()=default</td></tr>
+<tr class="separator:a3dc2de2f09700ad61afe17300016d0d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab00c113453673d02edeed136b8a03742"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCreature.html#ab00c113453673d02edeed136b8a03742">attack</a> (<a class="el" href="classCreature.html">Creature</a> &amp;other)=0</td></tr>
+<tr class="memdesc:ab00c113453673d02edeed136b8a03742"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attack method.  <a href="classCreature.html#ab00c113453673d02edeed136b8a03742">More...</a><br /></td></tr>
 <tr class="separator:ab00c113453673d02edeed136b8a03742"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a47a9ff1b61328b2894f92bc2b7ed3f89"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCreature.html#a47a9ff1b61328b2894f92bc2b7ed3f89">getId</a> () const</td></tr>
+<tr class="memdesc:a47a9ff1b61328b2894f92bc2b7ed3f89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get ID method.  <a href="classCreature.html#a47a9ff1b61328b2894f92bc2b7ed3f89">More...</a><br /></td></tr>
 <tr class="separator:a47a9ff1b61328b2894f92bc2b7ed3f89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe1e3a00f3063198d0528b6b474a79ad"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCreature.html#abe1e3a00f3063198d0528b6b474a79ad">getX</a> () const</td></tr>
 <tr class="separator:abe1e3a00f3063198d0528b6b474a79ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,8 +132,10 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:ad0cab38ce6b2af76c923628f4e89ea94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="Creature_8h_source.html#l00009">9</a> of file <a class="el" href="Creature_8h_source.html">Creature.h</a>.</p>
+<div class="textblock"><p ><a class="el" href="classCreature.html" title="Creature class.">Creature</a> class. </p>
+<p >This class is the base class for all creatures in the game. It contains information about the creature's name, position on the map, health points and appearance. It also contains a pure virtual method for attacking another creature. </p>
+
+<p class="definition">Definition at line <a class="el" href="Creature_8h_source.html#l00017">17</a> of file <a class="el" href="Creature_8h_source.html">Creature.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a597cc3b08ee17de46c3e7ec3cf0d9b58" name="a597cc3b08ee17de46c3e7ec3cf0d9b58"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a597cc3b08ee17de46c3e7ec3cf0d9b58">&#9670;&nbsp;</a></span>Creature() <span class="overload">[1/2]</span></h2>
@@ -138,8 +151,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p ><a class="el" href="classCreature.html#ae31f03fd315af6fb176ad5b84a332349" title="Creature constructor.">Creature::Creature(int id, char32_t appearance, int x, int y, int health)</a> : m_id(id), m_x(x), m_y(y), m_health(health), m_appearance(appearance) {} </p>
 
-<p class="definition">Definition at line <a class="el" href="Creature_8cpp_source.html#l00003">3</a> of file <a class="el" href="Creature_8cpp_source.html">Creature.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Creature_8cpp_source.html#l00007">7</a> of file <a class="el" href="Creature_8cpp_source.html">Creature.cpp</a>.</p>
 
 </div>
 </div>
@@ -187,11 +201,95 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Creature_8cpp_source.html#l00006">6</a> of file <a class="el" href="Creature_8cpp_source.html">Creature.cpp</a>.</p>
+<p><a class="el" href="classCreature.html" title="Creature class.">Creature</a> constructor. </p>
+<p >This constructor takes the name, position on the map and health points of the creature. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The ID of the creature </td></tr>
+    <tr><td class="paramname">appearance</td><td>The appearance of the creature </td></tr>
+    <tr><td class="paramname">x</td><td>The X position of the creature on the map </td></tr>
+    <tr><td class="paramname">y</td><td>The Y position of the creature on the map </td></tr>
+    <tr><td class="paramname">health</td><td>The health points of the creature</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><a class="el" href="classCreature.html#ae31f03fd315af6fb176ad5b84a332349" title="Creature constructor.">Creature::Creature(int id, char32_t appearance, int x, int y, int health)</a> : m_id(id), m_x(x), m_y(y), m_health(health), m_appearance(appearance) {}</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The unique ID of the creature. </td></tr>
+    <tr><td class="paramname">appearance</td><td>The character that will be used to represent the creature on the map. </td></tr>
+    <tr><td class="paramname">x</td><td>The x coordinate of the creature. </td></tr>
+    <tr><td class="paramname">y</td><td>The y coordinate of the creature. </td></tr>
+    <tr><td class="paramname">health</td><td>The health of the creature. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="Creature_8cpp_source.html#l00021">21</a> of file <a class="el" href="Creature_8cpp_source.html">Creature.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3dc2de2f09700ad61afe17300016d0d5" name="a3dc2de2f09700ad61afe17300016d0d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dc2de2f09700ad61afe17300016d0d5">&#9670;&nbsp;</a></span>~Creature()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Creature::~Creature </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab00c113453673d02edeed136b8a03742" name="ab00c113453673d02edeed136b8a03742"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab00c113453673d02edeed136b8a03742">&#9670;&nbsp;</a></span>attack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Creature::attack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCreature.html">Creature</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Attack method. </p>
+<p >This method is responsible for attacking another creature. It is a pure virtual method, so it must be implemented in the derived classes. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The creature to attack </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classEnemy.html#ac036f2122c26fa45a43715e41d1ea7c7">Enemy</a>, and <a class="el" href="classPlayer.html#a84945df49634157800126ce1bdc718bf">Player</a>.</p>
+
+</div>
+</div>
 <a id="aa77c27a00b2eb502f17f17f6dbc089ba" name="aa77c27a00b2eb502f17f17f6dbc089ba"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa77c27a00b2eb502f17f17f6dbc089ba">&#9670;&nbsp;</a></span>getAppearance()</h2>
 
@@ -206,8 +304,10 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p ><a class="el" href="classCreature.html#aa77c27a00b2eb502f17f17f6dbc089ba">Creature::getAppearance() const </a>returns the value of the private member variable m_appearance</p>
+<dl class="section return"><dt>Returns</dt><dd>The appearance of the creature. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Creature_8cpp_source.html#l00036">36</a> of file <a class="el" href="Creature_8cpp_source.html">Creature.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Creature_8cpp_source.html#l00094">94</a> of file <a class="el" href="Creature_8cpp_source.html">Creature.cpp</a>.</p>
 
 </div>
 </div>
@@ -225,8 +325,10 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >The function returns the value of the private member variable m_health.</p>
+<dl class="section return"><dt>Returns</dt><dd>The health of the creature. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Creature_8cpp_source.html#l00028">28</a> of file <a class="el" href="Creature_8cpp_source.html">Creature.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Creature_8cpp_source.html#l00075">75</a> of file <a class="el" href="Creature_8cpp_source.html">Creature.cpp</a>.</p>
 
 </div>
 </div>
@@ -245,7 +347,12 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Creature_8cpp_source.html#l00009">9</a> of file <a class="el" href="Creature_8cpp_source.html">Creature.cpp</a>.</p>
+<p>Get ID method. </p>
+<p >This method returns the ID of the creature. </p><dl class="section return"><dt>Returns</dt><dd>The ID of the creature</dd></dl>
+<p>This function returns the value of the private member variable m_id</p>
+<dl class="section return"><dt>Returns</dt><dd>The id of the creature. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="Creature_8cpp_source.html#l00029">29</a> of file <a class="el" href="Creature_8cpp_source.html">Creature.cpp</a>.</p>
 
 </div>
 </div>
@@ -263,8 +370,10 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p ><code>getX</code> returns the value of the private member variable <code>m_x</code></p>
+<dl class="section return"><dt>Returns</dt><dd>The value of m_x. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Creature_8cpp_source.html#l00012">12</a> of file <a class="el" href="Creature_8cpp_source.html">Creature.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Creature_8cpp_source.html#l00037">37</a> of file <a class="el" href="Creature_8cpp_source.html">Creature.cpp</a>.</p>
 
 </div>
 </div>
@@ -282,8 +391,10 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >This function returns the value of the private member variable m_y.</p>
+<dl class="section return"><dt>Returns</dt><dd>The y coordinate of the creature. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Creature_8cpp_source.html#l00020">20</a> of file <a class="el" href="Creature_8cpp_source.html">Creature.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Creature_8cpp_source.html#l00056">56</a> of file <a class="el" href="Creature_8cpp_source.html">Creature.cpp</a>.</p>
 
 </div>
 </div>
@@ -302,8 +413,15 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Sets the appearance of the creature to the given appearance.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">appearance</td><td>The character that will be used to represent the creature on the map. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="Creature_8cpp_source.html#l00040">40</a> of file <a class="el" href="Creature_8cpp_source.html">Creature.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Creature_8cpp_source.html#l00104">104</a> of file <a class="el" href="Creature_8cpp_source.html">Creature.cpp</a>.</p>
 
 </div>
 </div>
@@ -330,8 +448,17 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >This function sets the health of the creature to the value passed in.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">health</td><td>The health of the creature. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="Creature_8cpp_source.html#l00032">32</a> of file <a class="el" href="Creature_8cpp_source.html">Creature.cpp</a>.</p>
+<p>Reimplemented in <a class="el" href="classPlayer.html#a8f28f6b069f7388877e02ae0a175d4ab">Player</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="Creature_8cpp_source.html#l00084">84</a> of file <a class="el" href="Creature_8cpp_source.html">Creature.cpp</a>.</p>
 
 </div>
 </div>
@@ -350,8 +477,15 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Creature::Creature(int x, int y, int health, char32_t appearance) : m_x(x), m_y(y), m_health(health), m_appearance(appearance) {}</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The x coordinate of the creature. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="Creature_8cpp_source.html#l00016">16</a> of file <a class="el" href="Creature_8cpp_source.html">Creature.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Creature_8cpp_source.html#l00047">47</a> of file <a class="el" href="Creature_8cpp_source.html">Creature.cpp</a>.</p>
 
 </div>
 </div>
@@ -370,8 +504,15 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >This function sets the y coordinate of the creature to the value of the parameter y.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">y</td><td>The y coordinate of the creature. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="Creature_8cpp_source.html#l00024">24</a> of file <a class="el" href="Creature_8cpp_source.html">Creature.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Creature_8cpp_source.html#l00066">66</a> of file <a class="el" href="Creature_8cpp_source.html">Creature.cpp</a>.</p>
 
 </div>
 </div>
@@ -396,7 +537,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Creature_8h_source.html#l00043">43</a> of file <a class="el" href="Creature_8h_source.html">Creature.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Creature_8h_source.html#l00082">82</a> of file <a class="el" href="Creature_8h_source.html">Creature.h</a>.</p>
 
 </div>
 </div>
@@ -420,7 +561,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Creature_8h_source.html#l00041">41</a> of file <a class="el" href="Creature_8h_source.html">Creature.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Creature_8h_source.html#l00080">80</a> of file <a class="el" href="Creature_8h_source.html">Creature.h</a>.</p>
 
 </div>
 </div>
@@ -444,7 +585,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Creature_8h_source.html#l00035">35</a> of file <a class="el" href="Creature_8h_source.html">Creature.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Creature_8h_source.html#l00074">74</a> of file <a class="el" href="Creature_8h_source.html">Creature.h</a>.</p>
 
 </div>
 </div>
@@ -468,7 +609,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Creature_8h_source.html#l00037">37</a> of file <a class="el" href="Creature_8h_source.html">Creature.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Creature_8h_source.html#l00076">76</a> of file <a class="el" href="Creature_8h_source.html">Creature.h</a>.</p>
 
 </div>
 </div>
@@ -492,7 +633,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Creature_8h_source.html#l00039">39</a> of file <a class="el" href="Creature_8h_source.html">Creature.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Creature_8h_source.html#l00078">78</a> of file <a class="el" href="Creature_8h_source.html">Creature.h</a>.</p>
 
 </div>
 </div>

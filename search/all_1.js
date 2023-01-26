@@ -1,5 +1,21 @@
 var searchData=
 [
-  ['enemy_0',['Enemy',['../classEnemy.html',1,'']]],
-  ['enemytype_1',['EnemyType',['../structEnemyType.html',1,'']]]
+  ['bg_5fblue_0',['BG_BLUE',['../Utils_8hpp.html#a13000fb524763c2257992505436a457ba9ef352990ea099ae830a329fe0e3f8a8',1,'Utils.hpp']]],
+  ['bg_5fcolors_1',['BG_COLORS',['../Utils_8hpp.html#a13000fb524763c2257992505436a457b',1,'BG_COLORS():&#160;Utils.hpp'],['../Utils_8hpp.html#acd3c07eca68dadf2370469755d5d360e',1,'BG_COLORS():&#160;Utils.hpp']]],
+  ['bg_5fcyan_2',['BG_CYAN',['../Utils_8hpp.html#a13000fb524763c2257992505436a457ba93c40c8386036f57d2a0496a562b7365',1,'Utils.hpp']]],
+  ['bg_5fgray_3',['BG_GRAY',['../Utils_8hpp.html#a13000fb524763c2257992505436a457ba9cc1407b9d70105ad4de7dbbee98389c',1,'Utils.hpp']]],
+  ['bg_5fgreen_4',['BG_GREEN',['../Utils_8hpp.html#a13000fb524763c2257992505436a457ba23ec75818e963eb7df7b8688a1b7b1ea',1,'Utils.hpp']]],
+  ['bg_5flime_5',['BG_LIME',['../Utils_8hpp.html#a13000fb524763c2257992505436a457ba76a42e5875596f541096a8cb48ca3150',1,'Utils.hpp']]],
+  ['bg_5fmagenta_6',['BG_MAGENTA',['../Utils_8hpp.html#a13000fb524763c2257992505436a457bace3a751d65c8857e4e50039addcbc48f',1,'Utils.hpp']]],
+  ['bg_5fmaroon_7',['BG_MAROON',['../Utils_8hpp.html#a13000fb524763c2257992505436a457ba6290773450948715ed2deb2a38ca1bc1',1,'Utils.hpp']]],
+  ['bg_5fnavyblue_8',['BG_NAVYBLUE',['../Utils_8hpp.html#a13000fb524763c2257992505436a457baa4e7604e45bc054339d09d1d499b6d25',1,'Utils.hpp']]],
+  ['bg_5folive_9',['BG_OLIVE',['../Utils_8hpp.html#a13000fb524763c2257992505436a457ba68fa68e82f27ed94d6fe195810553d63',1,'Utils.hpp']]],
+  ['bg_5fpurple_10',['BG_PURPLE',['../Utils_8hpp.html#a13000fb524763c2257992505436a457ba4a2265d87513cee597fd709bd9234505',1,'Utils.hpp']]],
+  ['bg_5fred_11',['BG_RED',['../Utils_8hpp.html#a13000fb524763c2257992505436a457ba2ff597ee3a5eafbc85d4762a6fa5dd91',1,'Utils.hpp']]],
+  ['bg_5fsilver_12',['BG_SILVER',['../Utils_8hpp.html#a13000fb524763c2257992505436a457ba35802d878faf5d41d6fd8333b6d9df13',1,'Utils.hpp']]],
+  ['bg_5fteal_13',['BG_TEAL',['../Utils_8hpp.html#a13000fb524763c2257992505436a457ba22e2384c137a17ce833b6fa3be70cf87',1,'Utils.hpp']]],
+  ['bg_5fwhite_14',['BG_WHITE',['../Utils_8hpp.html#a13000fb524763c2257992505436a457baecc0ff952194921d53813a10bfe2b4d6',1,'Utils.hpp']]],
+  ['bg_5fyellow_15',['BG_YELLOW',['../Utils_8hpp.html#a13000fb524763c2257992505436a457badc16c75fa1b6ca460dae363706307c43',1,'Utils.hpp']]],
+  ['bufferpos_16',['bufferPos',['../classGame.html#a40873ecce7ad79f98274f90d56cb798b',1,'Game']]],
+  ['buffersize_17',['bufferSize',['../classGame.html#ab8ef8ed0b528d8c1b66f806343aac2a6',1,'Game']]]
 ];

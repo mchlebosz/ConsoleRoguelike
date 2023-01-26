@@ -70,53 +70,70 @@ $(function() {
   <div class="headertitle"><div class="title">Item.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;Item.h&quot;</span></div>
+<a href="Item_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="Item_8h.html">Item.h</a>&quot;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// default constructor</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>Item::Item() :</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>    m_name(<span class="stringliteral">&quot;&quot;</span>), m_appearance(<span class="stringliteral">&#39; &#39;</span>), m_value(0), m_type(ItemType::Food) {}</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>Item::Item(std::string name, char32_t appearance, <span class="keywordtype">int</span> value, ItemType type) :</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    m_name(name), m_appearance(appearance), m_value(value), m_type(type) {}</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>Item::Item(<span class="keyword">const</span> <a class="code hl_class" href="classItem.html">Item</a> &amp;other) :</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    m_name(other.m_name),</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    m_appearance(other.m_appearance),</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    m_value(other.m_value),</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    m_type(other.m_type) {}</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>std::string Item::getName()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordflow">return</span> m_name;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>}</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keywordtype">void</span> Item::setName(std::string name) {</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    m_name = name;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>}</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>char32_t Item::getAppearance()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordflow">return</span> m_appearance;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keywordtype">void</span> Item::setAppearance(char32_t appearance) {</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    m_appearance = appearance;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>}</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="classItem.html#a297720c02984eab37332ae795d22189d">    5</a></span><a class="code hl_function" href="classItem.html#a297720c02984eab37332ae795d22189d">Item::Item</a>() :</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    m_name(<span class="stringliteral">&quot;&quot;</span>), m_appearance(<span class="stringliteral">&#39; &#39;</span>), m_value(0), m_type(<a class="code hl_enumeration" href="Item_8h.html#a443f647757dde85043b49343f5cbe66b">ItemType</a>::<a class="code hl_enumvalue" href="Item_8h.html#a443f647757dde85043b49343f5cbe66ba82b89f0b3ba4dac1d89386da86ec22ff">Food</a>) {}</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classItem.html#a42b04c445e259961e3932c36f5b6ec0c">   18</a></span><a class="code hl_function" href="classItem.html#a297720c02984eab37332ae795d22189d">Item::Item</a>(std::string name, char32_t appearance, <span class="keywordtype">int</span> value, <a class="code hl_enumeration" href="Item_8h.html#a443f647757dde85043b49343f5cbe66b">ItemType</a> type) :</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    m_name(name), m_appearance(appearance), m_value(value), m_type(type) {}</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classItem.html#a44f7e3f580bd6c0fa2e1c288dff484be">   26</a></span><a class="code hl_function" href="classItem.html#a297720c02984eab37332ae795d22189d">Item::Item</a>(<span class="keyword">const</span> <a class="code hl_class" href="classItem.html">Item</a> &amp;other) :</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    m_name(other.m_name),</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    m_appearance(other.m_appearance),</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    m_value(other.m_value),</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    m_type(other.m_type) {}</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keywordtype">int</span> Item::getValue()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordflow">return</span> m_value;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keywordtype">void</span> Item::setValue(<span class="keywordtype">int</span> value) {</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    m_value = value;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>}</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>ItemType Item::getType()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordflow">return</span> m_type;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>}</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keywordtype">void</span> Item::setType(ItemType type) {</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    m_type = type;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>}</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classItem.html#a5e4095868ead0c681bc2e18b8507f735">   37</a></span>std::string <a class="code hl_function" href="classItem.html#a5e4095868ead0c681bc2e18b8507f735">Item::getName</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classItem.html#a9f437f59055ce14b5345ccec641d244c">m_name</a>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classItem.html#ad1df8af319de8f613b85d99118a1e203">   46</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classItem.html#ad1df8af319de8f613b85d99118a1e203">Item::setName</a>(std::string name) {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_variable" href="classItem.html#a9f437f59055ce14b5345ccec641d244c">m_name</a> = name;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>}</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classItem.html#a1a7a2f8ba7fcbf4f113c343d1cd045ed">   58</a></span>char32_t <a class="code hl_function" href="classItem.html#a1a7a2f8ba7fcbf4f113c343d1cd045ed">Item::getAppearance</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classItem.html#a1a17ba6c0eaf1cd3e6068abed5171d05">m_appearance</a>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>}</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classItem.html#a007f6c662b1d2be77a599ef7f8798996">   72</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classItem.html#a007f6c662b1d2be77a599ef7f8798996">Item::setAppearance</a>(char32_t appearance) {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <a class="code hl_variable" href="classItem.html#a1a17ba6c0eaf1cd3e6068abed5171d05">m_appearance</a> = appearance;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="classItem.html#a17de078fe546a196b519dcb846ca87d5">   81</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="classItem.html#a17de078fe546a196b519dcb846ca87d5">Item::getValue</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classItem.html#abe0d8860c41db2bdcf69719fa06fa540">m_value</a>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>}</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="classItem.html#adaa9513af7a2f17488c5e7317d2b8e08">   90</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classItem.html#adaa9513af7a2f17488c5e7317d2b8e08">Item::setValue</a>(<span class="keywordtype">int</span> value) {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <a class="code hl_variable" href="classItem.html#abe0d8860c41db2bdcf69719fa06fa540">m_value</a> = value;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>}</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classItem.html#afaaef88ed00da21815eb04565994054b">   99</a></span><a class="code hl_enumeration" href="Item_8h.html#a443f647757dde85043b49343f5cbe66b">ItemType</a> <a class="code hl_function" href="classItem.html#afaaef88ed00da21815eb04565994054b">Item::getType</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classItem.html#ac8572345ed81a6a724d354e5f3ca6da7">m_type</a>;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>}</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="classItem.html#ae5de463cf65457c0690e7f93a43c5d55">  108</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classItem.html#ae5de463cf65457c0690e7f93a43c5d55">Item::setType</a>(<a class="code hl_enumeration" href="Item_8h.html#a443f647757dde85043b49343f5cbe66b">ItemType</a> type) {</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <a class="code hl_variable" href="classItem.html#ac8572345ed81a6a724d354e5f3ca6da7">m_type</a> = type;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>}</div>
+<div class="ttc" id="aItem_8h_html"><div class="ttname"><a href="Item_8h.html">Item.h</a></div></div>
+<div class="ttc" id="aItem_8h_html_a443f647757dde85043b49343f5cbe66b"><div class="ttname"><a href="Item_8h.html#a443f647757dde85043b49343f5cbe66b">ItemType</a></div><div class="ttdeci">ItemType</div><div class="ttdef"><b>Definition:</b> <a href="Item_8h_source.html#l00006">Item.h:6</a></div></div>
+<div class="ttc" id="aItem_8h_html_a443f647757dde85043b49343f5cbe66ba82b89f0b3ba4dac1d89386da86ec22ff"><div class="ttname"><a href="Item_8h.html#a443f647757dde85043b49343f5cbe66ba82b89f0b3ba4dac1d89386da86ec22ff">Food</a></div><div class="ttdeci">@ Food</div><div class="ttdef"><b>Definition:</b> <a href="Item_8h_source.html#l00006">Item.h:6</a></div></div>
 <div class="ttc" id="aclassItem_html"><div class="ttname"><a href="classItem.html">Item</a></div><div class="ttdef"><b>Definition:</b> <a href="Item_8h_source.html#l00007">Item.h:7</a></div></div>
+<div class="ttc" id="aclassItem_html_a007f6c662b1d2be77a599ef7f8798996"><div class="ttname"><a href="classItem.html#a007f6c662b1d2be77a599ef7f8798996">Item::setAppearance</a></div><div class="ttdeci">void setAppearance(char32_t appearance)</div><div class="ttdef"><b>Definition:</b> <a href="Item_8cpp_source.html#l00072">Item.cpp:72</a></div></div>
+<div class="ttc" id="aclassItem_html_a17de078fe546a196b519dcb846ca87d5"><div class="ttname"><a href="classItem.html#a17de078fe546a196b519dcb846ca87d5">Item::getValue</a></div><div class="ttdeci">int getValue() const</div><div class="ttdef"><b>Definition:</b> <a href="Item_8cpp_source.html#l00081">Item.cpp:81</a></div></div>
+<div class="ttc" id="aclassItem_html_a1a17ba6c0eaf1cd3e6068abed5171d05"><div class="ttname"><a href="classItem.html#a1a17ba6c0eaf1cd3e6068abed5171d05">Item::m_appearance</a></div><div class="ttdeci">char32_t m_appearance</div><div class="ttdef"><b>Definition:</b> <a href="Item_8h_source.html#l00039">Item.h:39</a></div></div>
+<div class="ttc" id="aclassItem_html_a1a7a2f8ba7fcbf4f113c343d1cd045ed"><div class="ttname"><a href="classItem.html#a1a7a2f8ba7fcbf4f113c343d1cd045ed">Item::getAppearance</a></div><div class="ttdeci">char32_t getAppearance() const</div><div class="ttdef"><b>Definition:</b> <a href="Item_8cpp_source.html#l00058">Item.cpp:58</a></div></div>
+<div class="ttc" id="aclassItem_html_a297720c02984eab37332ae795d22189d"><div class="ttname"><a href="classItem.html#a297720c02984eab37332ae795d22189d">Item::Item</a></div><div class="ttdeci">Item()</div><div class="ttdef"><b>Definition:</b> <a href="Item_8cpp_source.html#l00005">Item.cpp:5</a></div></div>
+<div class="ttc" id="aclassItem_html_a5e4095868ead0c681bc2e18b8507f735"><div class="ttname"><a href="classItem.html#a5e4095868ead0c681bc2e18b8507f735">Item::getName</a></div><div class="ttdeci">std::string getName() const</div><div class="ttdef"><b>Definition:</b> <a href="Item_8cpp_source.html#l00037">Item.cpp:37</a></div></div>
+<div class="ttc" id="aclassItem_html_a9f437f59055ce14b5345ccec641d244c"><div class="ttname"><a href="classItem.html#a9f437f59055ce14b5345ccec641d244c">Item::m_name</a></div><div class="ttdeci">std::string m_name</div><div class="ttdef"><b>Definition:</b> <a href="Item_8h_source.html#l00037">Item.h:37</a></div></div>
+<div class="ttc" id="aclassItem_html_abe0d8860c41db2bdcf69719fa06fa540"><div class="ttname"><a href="classItem.html#abe0d8860c41db2bdcf69719fa06fa540">Item::m_value</a></div><div class="ttdeci">int m_value</div><div class="ttdef"><b>Definition:</b> <a href="Item_8h_source.html#l00041">Item.h:41</a></div></div>
+<div class="ttc" id="aclassItem_html_ac8572345ed81a6a724d354e5f3ca6da7"><div class="ttname"><a href="classItem.html#ac8572345ed81a6a724d354e5f3ca6da7">Item::m_type</a></div><div class="ttdeci">ItemType m_type</div><div class="ttdef"><b>Definition:</b> <a href="Item_8h_source.html#l00043">Item.h:43</a></div></div>
+<div class="ttc" id="aclassItem_html_ad1df8af319de8f613b85d99118a1e203"><div class="ttname"><a href="classItem.html#ad1df8af319de8f613b85d99118a1e203">Item::setName</a></div><div class="ttdeci">void setName(std::string name)</div><div class="ttdef"><b>Definition:</b> <a href="Item_8cpp_source.html#l00046">Item.cpp:46</a></div></div>
+<div class="ttc" id="aclassItem_html_adaa9513af7a2f17488c5e7317d2b8e08"><div class="ttname"><a href="classItem.html#adaa9513af7a2f17488c5e7317d2b8e08">Item::setValue</a></div><div class="ttdeci">void setValue(int value)</div><div class="ttdef"><b>Definition:</b> <a href="Item_8cpp_source.html#l00090">Item.cpp:90</a></div></div>
+<div class="ttc" id="aclassItem_html_ae5de463cf65457c0690e7f93a43c5d55"><div class="ttname"><a href="classItem.html#ae5de463cf65457c0690e7f93a43c5d55">Item::setType</a></div><div class="ttdeci">void setType(ItemType type)</div><div class="ttdef"><b>Definition:</b> <a href="Item_8cpp_source.html#l00108">Item.cpp:108</a></div></div>
+<div class="ttc" id="aclassItem_html_afaaef88ed00da21815eb04565994054b"><div class="ttname"><a href="classItem.html#afaaef88ed00da21815eb04565994054b">Item::getType</a></div><div class="ttdeci">ItemType getType() const</div><div class="ttdef"><b>Definition:</b> <a href="Item_8cpp_source.html#l00099">Item.cpp:99</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

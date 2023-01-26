@@ -65,15 +65,23 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classLevel-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Level Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="Level_8h_source.html">Level.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a7a696c928ca5d5354db6e50e46d0f67d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevel.html#a7a696c928ca5d5354db6e50e46d0f67d">Level</a> ()</td></tr>
+<tr class="separator:a7a696c928ca5d5354db6e50e46d0f67d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc5745f1867c0ec3b79fbaba2c0786b4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevel.html#acc5745f1867c0ec3b79fbaba2c0786b4">Level</a> (std::vector&lt; std::u32string &gt; map, std::pair&lt; int, int &gt; startingPosition, std::pair&lt; int, int &gt; exitPosition, std::vector&lt; <a class="el" href="classEnemy.html">Enemy</a> * &gt; enemies)</td></tr>
+<tr class="memdesc:acc5745f1867c0ec3b79fbaba2c0786b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classLevel.html">Level</a> object.  <a href="classLevel.html#acc5745f1867c0ec3b79fbaba2c0786b4">More...</a><br /></td></tr>
 <tr class="separator:acc5745f1867c0ec3b79fbaba2c0786b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86fea7d7a703d321304d824ddaa7bac5"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevel.html#a86fea7d7a703d321304d824ddaa7bac5">~Level</a> ()=default</td></tr>
+<tr class="separator:a86fea7d7a703d321304d824ddaa7bac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04406f439238dfaef4937a69048ea37b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::u32string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevel.html#a04406f439238dfaef4937a69048ea37b">getMap</a> () const</td></tr>
 <tr class="separator:a04406f439238dfaef4937a69048ea37b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a914f2ad7be2471c495cf49fe331f7f6c"><td class="memItemLeft" align="right" valign="top">std::pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevel.html#a914f2ad7be2471c495cf49fe331f7f6c">getStartingPosition</a> () const</td></tr>
@@ -90,6 +98,17 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa47a472e3c55253f1faca9bb59483943"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7610568ed3d3786b0428b19c1009f5af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevel.html#a7610568ed3d3786b0428b19c1009f5af">setEnemies</a> (std::vector&lt; <a class="el" href="classEnemy.html">Enemy</a> * &gt; enemies)</td></tr>
 <tr class="separator:a7610568ed3d3786b0428b19c1009f5af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a04fe3807d8374fcfd2bc875bb5f732a3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::u32string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevel.html#a04fe3807d8374fcfd2bc875bb5f732a3">m_tiles</a></td></tr>
+<tr class="separator:a04fe3807d8374fcfd2bc875bb5f732a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a479e37db86e6a8385598c8ccd2552c65"><td class="memItemLeft" align="right" valign="top">std::pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevel.html#a479e37db86e6a8385598c8ccd2552c65">m_startingPosition</a></td></tr>
+<tr class="separator:a479e37db86e6a8385598c8ccd2552c65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45156ef1031dd5af4d1e074cb7f9db3c"><td class="memItemLeft" align="right" valign="top">std::pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevel.html#a45156ef1031dd5af4d1e074cb7f9db3c">m_exitPosition</a></td></tr>
+<tr class="separator:a45156ef1031dd5af4d1e074cb7f9db3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad70c9841ccd6dc747084fa4690832834"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classEnemy.html">Enemy</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevel.html#ad70c9841ccd6dc747084fa4690832834">m_enemies</a></td></tr>
+<tr class="separator:ad70c9841ccd6dc747084fa4690832834"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -152,7 +171,43 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00008">8</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
+<p>Construct a new <a class="el" href="classLevel.html">Level</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map</td><td>A vector of strings, each string representing a row of the map. </td></tr>
+    <tr><td class="paramname">startingPosition</td><td>The starting position of the player. </td></tr>
+    <tr><td class="paramname">exitPosition</td><td>The position of the exit tile. </td></tr>
+    <tr><td class="paramname">enemies</td><td>A vector of pointers to <a class="el" href="classEnemy.html">Enemy</a> objects. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00016">16</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a86fea7d7a703d321304d824ddaa7bac5" name="a86fea7d7a703d321304d824ddaa7bac5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86fea7d7a703d321304d824ddaa7bac5">&#9670;&nbsp;</a></span>~Level()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Level::~Level </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -171,8 +226,10 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >It returns a vector of pointers to <a class="el" href="classEnemy.html">Enemy</a> objects</p>
+<dl class="section return"><dt>Returns</dt><dd>A vector of pointers to <a class="el" href="classEnemy.html">Enemy</a> objects. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00030">30</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00058">58</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
 
 </div>
 </div>
@@ -190,8 +247,10 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >It returns the exit position of the level</p>
+<dl class="section return"><dt>Returns</dt><dd>A pair of integers. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00026">26</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00049">49</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
 
 </div>
 </div>
@@ -209,8 +268,10 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Returns a vector of strings containing the map data.</p>
+<dl class="section return"><dt>Returns</dt><dd>A vector of strings. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00018">18</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00031">31</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
 
 </div>
 </div>
@@ -228,8 +289,10 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >It returns the starting position of the player</p>
+<dl class="section return"><dt>Returns</dt><dd>A pair of integers. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00022">22</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00040">40</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
 
 </div>
 </div>
@@ -248,8 +311,16 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p ><code>void <a class="el" href="classLevel.html#a7610568ed3d3786b0428b19c1009f5af">Level::setEnemies</a>(std::vector&lt;Enemy*&gt; enemies)</code></p>
+<p ><code>void</code> is the return type of the function</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enemies</td><td>A vector of <a class="el" href="classEnemy.html">Enemy</a> pointers. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00048">48</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00099">99</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
 
 </div>
 </div>
@@ -268,8 +339,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >This function sets the exit position of the level.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">exitPosition</td><td>The position of the exit in the level. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00044">44</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00088">88</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
 
 </div>
 </div>
@@ -288,8 +366,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >This function takes a vector of strings and sets the m_tiles variable to the value of the parameter.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map</td><td>The map to set. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00036">36</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00070">70</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
 
 </div>
 </div>
@@ -308,8 +393,112 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p ><code>setStartingPosition</code> sets the starting position of the level</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">startingPosition</td><td>The starting position of the player. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00040">40</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00079">79</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ad70c9841ccd6dc747084fa4690832834" name="ad70c9841ccd6dc747084fa4690832834"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad70c9841ccd6dc747084fa4690832834">&#9670;&nbsp;</a></span>m_enemies</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="classEnemy.html">Enemy</a>*&gt; Level::m_enemies</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00040">40</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+
+</div>
+</div>
+<a id="a45156ef1031dd5af4d1e074cb7f9db3c" name="a45156ef1031dd5af4d1e074cb7f9db3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45156ef1031dd5af4d1e074cb7f9db3c">&#9670;&nbsp;</a></span>m_exitPosition</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt;int, int&gt; Level::m_exitPosition</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00038">38</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+
+</div>
+</div>
+<a id="a479e37db86e6a8385598c8ccd2552c65" name="a479e37db86e6a8385598c8ccd2552c65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a479e37db86e6a8385598c8ccd2552c65">&#9670;&nbsp;</a></span>m_startingPosition</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt;int, int&gt; Level::m_startingPosition</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00036">36</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+
+</div>
+</div>
+<a id="a04fe3807d8374fcfd2bc875bb5f732a3" name="a04fe3807d8374fcfd2bc875bb5f732a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04fe3807d8374fcfd2bc875bb5f732a3">&#9670;&nbsp;</a></span>m_tiles</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::u32string&gt; Level::m_tiles</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00033">33</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
 
 </div>
 </div>

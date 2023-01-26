@@ -70,262 +70,315 @@ $(function() {
   <div class="headertitle"><div class="title">Player.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;Player.h&quot;</span></div>
+<a href="Player_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="Player_8h.html">Player.h</a>&quot;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">using namespace </span>std::chrono;</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>Player::Player(<span class="keywordtype">int</span> <span class="keywordtype">id</span>) : <a class="code hl_class" href="classCreature.html">Creature</a>() {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    m_id          = id;</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    m_appearance  = U<span class="charliteral">&#39;@&#39;</span>;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    m_experience  = 0;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    m_attackPower = 1;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    m_maxHealth   = 10;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    setLevel(1);</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    m_health        = m_maxHealth;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    m_inventory     = std::vector&lt;Item&gt;();</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    m_x             = 0;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    m_y             = 0;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    m_moveTimer     = steady_clock::now();</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    m_speed         = 1;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    m_attackRange   = 1;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    m_isMeleeAttack = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    m_attackTimer   = steady_clock::now();</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    m_attackSpeed   = 1;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="classPlayer.html#a2591c43f324d98f184f7fdc57eb716fd">    7</a></span><a class="code hl_function" href="classPlayer.html#a2591c43f324d98f184f7fdc57eb716fd">Player::Player</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>) : <a class="code hl_class" href="classCreature.html">Creature</a>() {</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <a class="code hl_variable" href="classCreature.html#a3607bec5bda4478a6280192f9a7e4175">m_id</a>          = id;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <a class="code hl_variable" href="classCreature.html#ad0cab38ce6b2af76c923628f4e89ea94">m_appearance</a>  = U<span class="charliteral">&#39;@&#39;</span>;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <a class="code hl_variable" href="classPlayer.html#acd6e7ddec4243f254705d72e5cb7eb9c">m_experience</a>  = 0;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <a class="code hl_variable" href="classPlayer.html#ae2f0bef1ac3657e0f536eb8f4909660f">m_attackPower</a> = 1;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <a class="code hl_variable" href="classPlayer.html#a6f9298e716231bdb7de5a3a4f2274703">m_maxHealth</a>   = 10;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <a class="code hl_function" href="classPlayer.html#af717f3bf17090888a9d504d3919d62cd">setLevel</a>(1);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <a class="code hl_variable" href="classCreature.html#a7ee7518a06a266abff11add056aaf320">m_health</a>        = <a class="code hl_variable" href="classPlayer.html#a6f9298e716231bdb7de5a3a4f2274703">m_maxHealth</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_variable" href="classPlayer.html#a2d56f99e98f3f6dba15309cf94761056">m_inventory</a>     = std::vector&lt;Item&gt;();</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_variable" href="classCreature.html#aff9083d0304d85efcb5064d3ed17ea33">m_x</a>             = 0;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_variable" href="classCreature.html#adfead36d9ad7127b85ffbbdbd7faab62">m_y</a>             = 0;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <a class="code hl_variable" href="classPlayer.html#aefa244a7e716549aac714d0509455281">m_moveTimer</a>     = steady_clock::now();</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_variable" href="classPlayer.html#ad877261583b224a9cba8b19ac3e3cf01">m_speed</a>         = 1;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <a class="code hl_variable" href="classPlayer.html#abcda97fb77cff722dcf54c6d1fc9cf31">m_attackRange</a>   = 1;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <a class="code hl_variable" href="classPlayer.html#a5bcc34fad7a7f4813fd419aea9948c1a">m_isMeleeAttack</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <a class="code hl_variable" href="classPlayer.html#ac32eb0d52849e159f7c4d1df3cd0f972">m_attackTimer</a>   = steady_clock::now();</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_variable" href="classPlayer.html#a48fe061a86f60ad728bba62a3bf4b4c5">m_attackSpeed</a>   = 1;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>Player::Player(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, char32_t appearance, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> health,</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>               <span class="keywordtype">int</span> maxHealth, <span class="keywordtype">int</span> level, <span class="keywordtype">int</span> attackPower, int64_t speed) :</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_class" href="classCreature.html">Creature</a>(id, appearance, x, y, health),</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    m_experience(0),</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    m_attackPower(attackPower),</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    m_maxHealth(maxHealth),</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    m_speed(speed),</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    m_moveTimer(steady_clock::now()) {</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    setLevel(level);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    m_isMeleeAttack = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    m_attackTimer   = steady_clock::now();</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>}</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keywordtype">void</span> Player::moveUp() {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keyword">auto</span> time = steady_clock::now();</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordflow">if</span> (duration_cast&lt;milliseconds&gt;(time - m_moveTimer).count() &gt;= m_speed) {</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        m_y--;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        m_moveTimer = time;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    }</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    updateMeleeWeaponList();</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>}</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keywordtype">void</span> Player::moveDown() {</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keyword">auto</span> time = steady_clock::now();</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordflow">if</span> (duration_cast&lt;milliseconds&gt;(time - m_moveTimer).count() &gt;= m_speed) {</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        m_y++;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        m_moveTimer = time;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    }</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    updateMeleeWeaponList();</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>}</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keywordtype">void</span> Player::moveLeft() {</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">auto</span> time = steady_clock::now();</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordflow">if</span> (duration_cast&lt;milliseconds&gt;(time - m_moveTimer).count() &gt;= m_speed) {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        m_x--;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        m_moveTimer = time;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    }</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    updateMeleeWeaponList();</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keywordtype">void</span> Player::moveRight() {</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keyword">auto</span> time = steady_clock::now();</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordflow">if</span> (duration_cast&lt;milliseconds&gt;(time - m_moveTimer).count() &gt;= m_speed) {</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        m_x++;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        m_moveTimer = time;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    updateMeleeWeaponList();</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>}</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keywordtype">void</span> Player::attack() {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classPlayer.html#a351e3bd985f0c334c9b4648421cd3c60">   45</a></span><a class="code hl_function" href="classPlayer.html#a2591c43f324d98f184f7fdc57eb716fd">Player::Player</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, char32_t appearance, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> health,</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>               <span class="keywordtype">int</span> maxHealth, <span class="keywordtype">int</span> level, <span class="keywordtype">int</span> attackPower, int64_t speed) :</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_class" href="classCreature.html">Creature</a>(id, appearance, x, y, health),</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    m_experience(0),</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    m_attackPower(attackPower),</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    m_maxHealth(maxHealth),</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    m_speed(speed),</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    m_moveTimer(steady_clock::now()) {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <a class="code hl_function" href="classPlayer.html#af717f3bf17090888a9d504d3919d62cd">setLevel</a>(level);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <a class="code hl_variable" href="classPlayer.html#a5bcc34fad7a7f4813fd419aea9948c1a">m_isMeleeAttack</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <a class="code hl_variable" href="classPlayer.html#ac32eb0d52849e159f7c4d1df3cd0f972">m_attackTimer</a>   = steady_clock::now();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classPlayer.html#a225a3e732b737cb8a9d807f97b7930aa">   62</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#a225a3e732b737cb8a9d807f97b7930aa">Player::moveUp</a>() {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keyword">auto</span> time = steady_clock::now();</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordflow">if</span> (duration_cast&lt;milliseconds&gt;(time - <a class="code hl_variable" href="classPlayer.html#aefa244a7e716549aac714d0509455281">m_moveTimer</a>).count() &gt;= <a class="code hl_variable" href="classPlayer.html#ad877261583b224a9cba8b19ac3e3cf01">m_speed</a>) {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <a class="code hl_variable" href="classCreature.html#adfead36d9ad7127b85ffbbdbd7faab62">m_y</a>--;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <a class="code hl_variable" href="classPlayer.html#aefa244a7e716549aac714d0509455281">m_moveTimer</a> = time;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    }</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <a class="code hl_function" href="classPlayer.html#a0d8c008ed5ce08da69214349d1c79e9d">updateMeleeWeaponList</a>();</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>}</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classPlayer.html#a6e759d186d9d40609ecf0511e8f50e4c">   75</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#a6e759d186d9d40609ecf0511e8f50e4c">Player::moveDown</a>() {</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keyword">auto</span> time = steady_clock::now();</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordflow">if</span> (duration_cast&lt;milliseconds&gt;(time - m_attackTimer).count() &gt;=</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        m_attackSpeed) {</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        m_attackTimer   = time;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        m_isMeleeAttack = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        updateMeleeWeaponList();</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    }</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>}</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="keywordtype">void</span> Player::attack(<a class="code hl_class" href="classCreature.html">Creature</a> &amp;other) {</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keyword">auto</span> time = steady_clock::now();</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordflow">if</span> (duration_cast&lt;milliseconds&gt;(time - m_attackTimer).count() &gt;=</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        m_attackSpeed) {</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        other.setHealth(other.getHealth() - m_attackPower);</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        m_attackTimer   = time;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        m_isMeleeAttack = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        updateMeleeWeaponList();</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordflow">if</span> (duration_cast&lt;milliseconds&gt;(time - <a class="code hl_variable" href="classPlayer.html#aefa244a7e716549aac714d0509455281">m_moveTimer</a>).count() &gt;= <a class="code hl_variable" href="classPlayer.html#ad877261583b224a9cba8b19ac3e3cf01">m_speed</a>) {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <a class="code hl_variable" href="classCreature.html#adfead36d9ad7127b85ffbbdbd7faab62">m_y</a>++;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <a class="code hl_variable" href="classPlayer.html#aefa244a7e716549aac714d0509455281">m_moveTimer</a> = time;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    }</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <a class="code hl_function" href="classPlayer.html#a0d8c008ed5ce08da69214349d1c79e9d">updateMeleeWeaponList</a>();</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>}</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classPlayer.html#ae3bbcf1159bdc059bff1c2513f2505f7">   88</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#ae3bbcf1159bdc059bff1c2513f2505f7">Player::moveLeft</a>() {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keyword">auto</span> time = steady_clock::now();</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordflow">if</span> (duration_cast&lt;milliseconds&gt;(time - <a class="code hl_variable" href="classPlayer.html#aefa244a7e716549aac714d0509455281">m_moveTimer</a>).count() &gt;= <a class="code hl_variable" href="classPlayer.html#ad877261583b224a9cba8b19ac3e3cf01">m_speed</a>) {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <a class="code hl_variable" href="classCreature.html#aff9083d0304d85efcb5064d3ed17ea33">m_x</a>--;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <a class="code hl_variable" href="classPlayer.html#aefa244a7e716549aac714d0509455281">m_moveTimer</a> = time;</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    }</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>}</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>std::vector&lt;Item&gt; Player::getInventory()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordflow">return</span> m_inventory;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>}</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="keywordtype">void</span> Player::setInventory(std::vector&lt;Item&gt; inventory) {</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    m_inventory = inventory;</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>}</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="keywordtype">void</span> Player::addToInventory(<a class="code hl_class" href="classItem.html">Item</a> *item) {</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    m_inventory.push_back(*item);</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>}</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="keywordtype">int</span> Player::getExperience()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordflow">return</span> m_experience;</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>}</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="keywordtype">void</span> Player::setExperience(<span class="keywordtype">int</span> experience) {</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    m_experience = experience;</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keywordtype">int</span> newlevel = getLevel();</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="comment">// adapt level to experience without substracting sum of experience from</span></div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="comment">// player</span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keywordflow">if</span> (experience &gt;= getNextLevelExp()) {</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <span class="keywordflow">while</span> (experience &gt;= getNextLevelExp()) {</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>            experience -= getNextLevelExp();</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>            newlevel++;</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        }</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        setLevel(newlevel);</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    }</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>}</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="keywordtype">int</span> Player::getLevel()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keywordflow">return</span> m_level;</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>}</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="keywordtype">void</span> Player::setLevel(<span class="keywordtype">int</span> level) {</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    m_level = level;</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="comment">// adapt health and attack power to level (linearly)</span></div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="comment">//  1 health point per odd level</span></div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="comment">//  1 attack power per 3th level</span></div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordflow">if</span> (m_level % 2 == 1) setMaxHealth(getMaxHealth() + 1);</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keywordflow">if</span> (m_level % 3 == 0) setAttackPower(getAttackPower() + 1);</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    setHealth(getMaxHealth());</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>}</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="keywordtype">int</span> Player::getAttackPower()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="keywordflow">return</span> m_attackPower;</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>}</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="keywordtype">void</span> Player::setAttackPower(<span class="keywordtype">int</span> attackPower) {</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    m_attackPower = attackPower;</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>}</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="keywordtype">int</span> Player::getMaxHealth()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordflow">return</span> m_maxHealth;</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>}</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="keywordtype">void</span> Player::setMaxHealth(<span class="keywordtype">int</span> maxHealth) {</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    m_maxHealth = maxHealth;</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>}</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="keywordtype">int</span> Player::getNextLevelExp()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <span class="comment">// make it scale with level</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    <span class="comment">// (level/x)^y</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="keywordflow">return</span> round(pow((<span class="keywordtype">float</span>)(m_level + 1) / 0.5, 3)) + 1;</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>}</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="keywordtype">int</span> Player::getPrevLevelExp()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <span class="comment">// make it scale with level</span></div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <span class="keywordflow">return</span> round(pow((<span class="keywordtype">float</span>)(m_level) / 0.5, 3)) + 1;</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>}</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="comment">// move delay</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>time_point&lt;steady_clock&gt; Player::getMoveTimer()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="keywordflow">return</span> m_moveTimer;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <a class="code hl_function" href="classPlayer.html#a0d8c008ed5ce08da69214349d1c79e9d">updateMeleeWeaponList</a>();</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>}</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="classPlayer.html#a6a2b68bc4b21d4c4a79a23b498896ec2">  101</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#a6a2b68bc4b21d4c4a79a23b498896ec2">Player::moveRight</a>() {</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keyword">auto</span> time = steady_clock::now();</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordflow">if</span> (duration_cast&lt;milliseconds&gt;(time - <a class="code hl_variable" href="classPlayer.html#aefa244a7e716549aac714d0509455281">m_moveTimer</a>).count() &gt;= <a class="code hl_variable" href="classPlayer.html#ad877261583b224a9cba8b19ac3e3cf01">m_speed</a>) {</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <a class="code hl_variable" href="classCreature.html#aff9083d0304d85efcb5064d3ed17ea33">m_x</a>++;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <a class="code hl_variable" href="classPlayer.html#aefa244a7e716549aac714d0509455281">m_moveTimer</a> = time;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    }</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <a class="code hl_function" href="classPlayer.html#a0d8c008ed5ce08da69214349d1c79e9d">updateMeleeWeaponList</a>();</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>}</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="classPlayer.html#aeea45f839f224a5320dfadfd2ff3ebe9">  114</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#aeea45f839f224a5320dfadfd2ff3ebe9">Player::attack</a>() {</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keyword">auto</span> time = steady_clock::now();</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keywordflow">if</span> (duration_cast&lt;milliseconds&gt;(time - <a class="code hl_variable" href="classPlayer.html#ac32eb0d52849e159f7c4d1df3cd0f972">m_attackTimer</a>).count() &gt;=</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <a class="code hl_variable" href="classPlayer.html#a48fe061a86f60ad728bba62a3bf4b4c5">m_attackSpeed</a>) {</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <a class="code hl_variable" href="classPlayer.html#ac32eb0d52849e159f7c4d1df3cd0f972">m_attackTimer</a>   = time;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <a class="code hl_variable" href="classPlayer.html#a5bcc34fad7a7f4813fd419aea9948c1a">m_isMeleeAttack</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <a class="code hl_function" href="classPlayer.html#a0d8c008ed5ce08da69214349d1c79e9d">updateMeleeWeaponList</a>();</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    }</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>}</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="classPlayer.html#a84945df49634157800126ce1bdc718bf">  131</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#aeea45f839f224a5320dfadfd2ff3ebe9">Player::attack</a>(<a class="code hl_class" href="classCreature.html">Creature</a> &amp;other) {</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keyword">auto</span> time = steady_clock::now();</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keywordflow">if</span> (duration_cast&lt;milliseconds&gt;(time - <a class="code hl_variable" href="classPlayer.html#ac32eb0d52849e159f7c4d1df3cd0f972">m_attackTimer</a>).count() &gt;=</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <a class="code hl_variable" href="classPlayer.html#a48fe061a86f60ad728bba62a3bf4b4c5">m_attackSpeed</a>) {</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        other.<a class="code hl_function" href="classCreature.html#abb4b58dae9f30075592073125d1a1403">setHealth</a>(other.<a class="code hl_function" href="classCreature.html#a9e6613a15720bd0bdf4eb8153d4d827c">getHealth</a>() - <a class="code hl_variable" href="classPlayer.html#ae2f0bef1ac3657e0f536eb8f4909660f">m_attackPower</a>);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <a class="code hl_variable" href="classPlayer.html#ac32eb0d52849e159f7c4d1df3cd0f972">m_attackTimer</a>   = time;</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <a class="code hl_variable" href="classPlayer.html#a5bcc34fad7a7f4813fd419aea9948c1a">m_isMeleeAttack</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        <a class="code hl_function" href="classPlayer.html#a0d8c008ed5ce08da69214349d1c79e9d">updateMeleeWeaponList</a>();</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    }</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>}</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno"><a class="line" href="classPlayer.html#a0e8340d93c53fe9ab68c7bf67723594e">  147</a></span>std::vector&lt;Item&gt; <a class="code hl_function" href="classPlayer.html#a0e8340d93c53fe9ab68c7bf67723594e">Player::getInventory</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classPlayer.html#a2d56f99e98f3f6dba15309cf94761056">m_inventory</a>;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>}</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="classPlayer.html#a1864ef0ae824d936acd1ad8c201af11a">  160</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#a1864ef0ae824d936acd1ad8c201af11a">Player::setInventory</a>(std::vector&lt;Item&gt; inventory) {</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <a class="code hl_variable" href="classPlayer.html#a2d56f99e98f3f6dba15309cf94761056">m_inventory</a> = inventory;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>}</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno"><a class="line" href="classPlayer.html#a0d56b7cde4dff001b2c1e573290920e9">  169</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#a0d56b7cde4dff001b2c1e573290920e9">Player::addToInventory</a>(<a class="code hl_class" href="classItem.html">Item</a> *item) {</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <a class="code hl_variable" href="classPlayer.html#a2d56f99e98f3f6dba15309cf94761056">m_inventory</a>.push_back(*item);</div>
 <div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>}</div>
 <div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="keywordtype">void</span> Player::setMoveTimer(time_point&lt;steady_clock&gt; moveTimer) {</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    m_moveTimer = moveTimer;</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>}</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="comment">// speed of the player</span></div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>int64_t Player::getSpeed()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    <span class="keywordflow">return</span> m_speed;</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno"><a class="line" href="classPlayer.html#af7d44d671e60b35fa223de28cd84e624">  178</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="classPlayer.html#af7d44d671e60b35fa223de28cd84e624">Player::getExperience</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classPlayer.html#acd6e7ddec4243f254705d72e5cb7eb9c">m_experience</a>;</div>
 <div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>}</div>
 <div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="keywordtype">void</span> Player::setSpeed(int64_t speed) {</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    m_speed = speed;</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>}</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="comment">// attack delay</span></div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>time_point&lt;steady_clock&gt; Player::getAttackTimer()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="keywordflow">return</span> m_attackTimer;</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>}</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="keywordtype">void</span> Player::setAttackTimer(time_point&lt;steady_clock&gt; attackTimer) {</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    m_attackTimer = attackTimer;</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>}</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="comment">// attack speed of the player</span></div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>int64_t Player::getAttackSpeed()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    <span class="keywordflow">return</span> m_attackSpeed;</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>}</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="keywordtype">void</span> Player::setAttackSpeed(int64_t attackSpeed) {</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    m_attackSpeed = attackSpeed;</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>}</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="comment">// attack range</span></div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="keywordtype">int</span> Player::getAttackRange()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    <span class="keywordflow">return</span> m_attackRange;</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>}</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span> </div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="keywordtype">void</span> Player::setAttackRange(<span class="keywordtype">int</span> attackRange) {</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    m_attackRange = attackRange;</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>}</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="comment">// melee weapon list</span></div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span><span class="keywordtype">bool</span> Player::getIsMeleeAttack()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    <span class="keywordflow">return</span> m_isMeleeAttack;</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>}</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="keywordtype">void</span> Player::setIsMeleeAttack(<span class="keywordtype">bool</span> isMeleeAttack) {</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    m_isMeleeAttack = isMeleeAttack;</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    updateMeleeWeaponList();</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>}</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="keywordtype">void</span> Player::updateMeleeWeaponList() {</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    <span class="comment">// clear old swords</span></div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    m_meleeWeaponList.clear();</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="comment">// add swords as m_meleeWeaponList at cross with coords max attack range</span></div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    char32_t sword = U<span class="stringliteral">&#39;🔪&#39;</span>;</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    <span class="keywordflow">if</span> (!m_isMeleeAttack) {</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        sword = U<span class="charliteral">&#39; &#39;</span>;</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    }</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt;= m_attackRange; i++) {</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        m_meleeWeaponList.push_back(</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>            <span class="keyword">new</span> <a class="code hl_class" href="classPlayer.html">Player</a>(i, sword, getX() + i * 2, getY(), 1, 1, 1, 1, 1));</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        m_meleeWeaponList.push_back(<span class="keyword">new</span> <a class="code hl_class" href="classPlayer.html">Player</a>(</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>            i + m_attackRange, sword, getX() - i * 2, getY(), 1, 1, 1, 1, 1));</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        m_meleeWeaponList.push_back(<span class="keyword">new</span> <a class="code hl_class" href="classPlayer.html">Player</a>(</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>            i + m_attackRange * 2, sword, getX(), getY() - i, 1, 1, 1, 1, 1));</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        m_meleeWeaponList.push_back(<span class="keyword">new</span> <a class="code hl_class" href="classPlayer.html">Player</a>(</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>            i + m_attackRange * 3, sword, getX(), getY() + i, 1, 1, 1, 1, 1));</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    }</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>}</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>std::vector&lt;Creature *&gt; Player::getMeleeWeaponList()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    <span class="keywordflow">return</span> m_meleeWeaponList;</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>}</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span><span class="keywordtype">void</span> Player::setHealth(<span class="keywordtype">int</span> health) {</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    <span class="keywordflow">if</span> (health &gt; m_maxHealth) {</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        m_health = m_maxHealth;</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        m_health = health;</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    }</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno"><a class="line" href="classPlayer.html#af1ceb57893c5359a0f82b4e99424a76e">  188</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#af1ceb57893c5359a0f82b4e99424a76e">Player::setExperience</a>(<span class="keywordtype">int</span> experience) {</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    <a class="code hl_variable" href="classPlayer.html#acd6e7ddec4243f254705d72e5cb7eb9c">m_experience</a> = experience;</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="keywordtype">int</span> newlevel = <a class="code hl_function" href="classPlayer.html#a1d0d5551086ebf6b5e4407d98697f8e0">getLevel</a>();</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="comment">// adapt level to experience without substracting sum of experience from</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    <span class="comment">// player</span></div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keywordflow">if</span> (experience &gt;= <a class="code hl_function" href="classPlayer.html#a0e5e6e981389b2e336e62d35ad93da1f">getNextLevelExp</a>()) {</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        <span class="keywordflow">while</span> (experience &gt;= <a class="code hl_function" href="classPlayer.html#a0e5e6e981389b2e336e62d35ad93da1f">getNextLevelExp</a>()) {</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>            experience -= <a class="code hl_function" href="classPlayer.html#a0e5e6e981389b2e336e62d35ad93da1f">getNextLevelExp</a>();</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>            newlevel++;</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        }</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        <a class="code hl_function" href="classPlayer.html#af717f3bf17090888a9d504d3919d62cd">setLevel</a>(newlevel);</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    }</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>}</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno"><a class="line" href="classPlayer.html#a1d0d5551086ebf6b5e4407d98697f8e0">  207</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="classPlayer.html#a1d0d5551086ebf6b5e4407d98697f8e0">Player::getLevel</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classPlayer.html#a9e7c522d47dbf00fabf8ac7d1e8369ae">m_level</a>;</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>}</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno"><a class="line" href="classPlayer.html#af717f3bf17090888a9d504d3919d62cd">  217</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#af717f3bf17090888a9d504d3919d62cd">Player::setLevel</a>(<span class="keywordtype">int</span> level) {</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <a class="code hl_variable" href="classPlayer.html#a9e7c522d47dbf00fabf8ac7d1e8369ae">m_level</a> = level;</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    <span class="comment">// adapt health and attack power to level (linearly)</span></div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    <span class="comment">//  1 health point per odd level</span></div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <span class="comment">//  1 attack power per 3th level</span></div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classPlayer.html#a9e7c522d47dbf00fabf8ac7d1e8369ae">m_level</a> % 2 == 1) <a class="code hl_function" href="classPlayer.html#a35af6ba8af84436db32241cee97aa790">setMaxHealth</a>(<a class="code hl_function" href="classPlayer.html#a24a0506d7271d24c9c9a54e47646bb6b">getMaxHealth</a>() + 1);</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classPlayer.html#a9e7c522d47dbf00fabf8ac7d1e8369ae">m_level</a> % 3 == 0) <a class="code hl_function" href="classPlayer.html#a3ba1b79c1defee5c26714342ec739f29">setAttackPower</a>(<a class="code hl_function" href="classPlayer.html#a9d43e2876bbc07670c9fb8bd1188ffc0">getAttackPower</a>() + 1);</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    <a class="code hl_function" href="classPlayer.html#a8f28f6b069f7388877e02ae0a175d4ab">setHealth</a>(<a class="code hl_function" href="classPlayer.html#a24a0506d7271d24c9c9a54e47646bb6b">getMaxHealth</a>());</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>}</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno"><a class="line" href="classPlayer.html#a9d43e2876bbc07670c9fb8bd1188ffc0">  233</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="classPlayer.html#a9d43e2876bbc07670c9fb8bd1188ffc0">Player::getAttackPower</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classPlayer.html#ae2f0bef1ac3657e0f536eb8f4909660f">m_attackPower</a>;</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>}</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span> </div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno"><a class="line" href="classPlayer.html#a3ba1b79c1defee5c26714342ec739f29">  242</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#a3ba1b79c1defee5c26714342ec739f29">Player::setAttackPower</a>(<span class="keywordtype">int</span> attackPower) {</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    <a class="code hl_variable" href="classPlayer.html#ae2f0bef1ac3657e0f536eb8f4909660f">m_attackPower</a> = attackPower;</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>}</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno"><a class="line" href="classPlayer.html#a24a0506d7271d24c9c9a54e47646bb6b">  251</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="classPlayer.html#a24a0506d7271d24c9c9a54e47646bb6b">Player::getMaxHealth</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classPlayer.html#a6f9298e716231bdb7de5a3a4f2274703">m_maxHealth</a>;</div>
 <div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>}</div>
-<div class="ttc" id="aclassCreature_html"><div class="ttname"><a href="classCreature.html">Creature</a></div><div class="ttdef"><b>Definition:</b> <a href="Creature_8h_source.html#l00009">Creature.h:9</a></div></div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span> </div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno"><a class="line" href="classPlayer.html#a35af6ba8af84436db32241cee97aa790">  260</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#a35af6ba8af84436db32241cee97aa790">Player::setMaxHealth</a>(<span class="keywordtype">int</span> maxHealth) {</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    <a class="code hl_variable" href="classPlayer.html#a6f9298e716231bdb7de5a3a4f2274703">m_maxHealth</a> = maxHealth;</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>}</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span> </div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno"><a class="line" href="classPlayer.html#a0e5e6e981389b2e336e62d35ad93da1f">  269</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="classPlayer.html#a0e5e6e981389b2e336e62d35ad93da1f">Player::getNextLevelExp</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>    <span class="comment">// make it scale with level</span></div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    <span class="comment">// (level/x)^y</span></div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    <span class="keywordflow">return</span> round(pow((<span class="keywordtype">float</span>)(<a class="code hl_variable" href="classPlayer.html#a9e7c522d47dbf00fabf8ac7d1e8369ae">m_level</a> + 1) / 0.5, 3)) + 1;</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>}</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span> </div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno"><a class="line" href="classPlayer.html#afbef0be3e93f21f9c9e30b53c4557098">  280</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="classPlayer.html#afbef0be3e93f21f9c9e30b53c4557098">Player::getPrevLevelExp</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    <span class="comment">// make it scale with level</span></div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>    <span class="keywordflow">return</span> round(pow((<span class="keywordtype">float</span>)(<a class="code hl_variable" href="classPlayer.html#a9e7c522d47dbf00fabf8ac7d1e8369ae">m_level</a>) / 0.5, 3)) + 1;</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>}</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span> </div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno"><a class="line" href="classPlayer.html#aa973d3d0ae6bdeaa62ea1b2942a10575">  290</a></span>time_point&lt;steady_clock&gt; <a class="code hl_function" href="classPlayer.html#aa973d3d0ae6bdeaa62ea1b2942a10575">Player::getMoveTimer</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classPlayer.html#aefa244a7e716549aac714d0509455281">m_moveTimer</a>;</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>}</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span> </div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno"><a class="line" href="classPlayer.html#a3c1da882c8458154df30b3e33c603426">  299</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#a3c1da882c8458154df30b3e33c603426">Player::setMoveTimer</a>(time_point&lt;steady_clock&gt; moveTimer) {</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>    <a class="code hl_variable" href="classPlayer.html#aefa244a7e716549aac714d0509455281">m_moveTimer</a> = moveTimer;</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>}</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span> </div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span><span class="comment">// speed of the player</span></div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno"><a class="line" href="classPlayer.html#a0d2f51fe0e2ca34f3da5417c74e40dfc">  309</a></span><span class="comment"></span>int64_t <a class="code hl_function" href="classPlayer.html#a0d2f51fe0e2ca34f3da5417c74e40dfc">Player::getSpeed</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classPlayer.html#ad877261583b224a9cba8b19ac3e3cf01">m_speed</a>;</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>}</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span> </div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno"><a class="line" href="classPlayer.html#a7b6177a75c068eb16d6d4ee8b80f771b">  318</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#a7b6177a75c068eb16d6d4ee8b80f771b">Player::setSpeed</a>(int64_t speed) {</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    <a class="code hl_variable" href="classPlayer.html#ad877261583b224a9cba8b19ac3e3cf01">m_speed</a> = speed;</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>}</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span> </div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span><span class="comment">// attack delay</span></div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno"><a class="line" href="classPlayer.html#a21ae420328e54096f890238bc0cc1263">  328</a></span><span class="comment"></span>time_point&lt;steady_clock&gt; <a class="code hl_function" href="classPlayer.html#a21ae420328e54096f890238bc0cc1263">Player::getAttackTimer</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classPlayer.html#ac32eb0d52849e159f7c4d1df3cd0f972">m_attackTimer</a>;</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>}</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span> </div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno"><a class="line" href="classPlayer.html#a791eae682f86afa2da0d7da39e2947b9">  337</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#a791eae682f86afa2da0d7da39e2947b9">Player::setAttackTimer</a>(time_point&lt;steady_clock&gt; attackTimer) {</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>    <a class="code hl_variable" href="classPlayer.html#ac32eb0d52849e159f7c4d1df3cd0f972">m_attackTimer</a> = attackTimer;</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>}</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span> </div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span><span class="comment">// attack speed of the player</span></div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno"><a class="line" href="classPlayer.html#ad969c7e5e132bbedfa48ceb0991290bb">  347</a></span><span class="comment"></span>int64_t <a class="code hl_function" href="classPlayer.html#ad969c7e5e132bbedfa48ceb0991290bb">Player::getAttackSpeed</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classPlayer.html#a48fe061a86f60ad728bba62a3bf4b4c5">m_attackSpeed</a>;</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>}</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span> </div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno"><a class="line" href="classPlayer.html#a2f7941f9cff713b05ee62372beaefdc9">  356</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#a2f7941f9cff713b05ee62372beaefdc9">Player::setAttackSpeed</a>(int64_t attackSpeed) {</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>    <a class="code hl_variable" href="classPlayer.html#a48fe061a86f60ad728bba62a3bf4b4c5">m_attackSpeed</a> = attackSpeed;</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>}</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span> </div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span><span class="comment">// attack range</span></div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno"><a class="line" href="classPlayer.html#a6d1f4fdb504ba2bf3937ba28cc7f9e75">  366</a></span><span class="comment"></span><span class="keywordtype">int</span> <a class="code hl_function" href="classPlayer.html#a6d1f4fdb504ba2bf3937ba28cc7f9e75">Player::getAttackRange</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classPlayer.html#abcda97fb77cff722dcf54c6d1fc9cf31">m_attackRange</a>;</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>}</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span> </div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno"><a class="line" href="classPlayer.html#afe1a98ff20e9275bfc5879f80aa979c7">  375</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#afe1a98ff20e9275bfc5879f80aa979c7">Player::setAttackRange</a>(<span class="keywordtype">int</span> attackRange) {</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>    <a class="code hl_variable" href="classPlayer.html#abcda97fb77cff722dcf54c6d1fc9cf31">m_attackRange</a> = attackRange;</div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>}</div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span> </div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span><span class="comment">// melee weapon list</span></div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno"><a class="line" href="classPlayer.html#a628a56d500bacd8cd2dad4d4e6824a8a">  386</a></span><span class="comment"></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classPlayer.html#a628a56d500bacd8cd2dad4d4e6824a8a">Player::getIsMeleeAttack</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classPlayer.html#a5bcc34fad7a7f4813fd419aea9948c1a">m_isMeleeAttack</a>;</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>}</div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span> </div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno"><a class="line" href="classPlayer.html#a4b16e6a946ea0077fc9ff476f687fc5a">  398</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#a4b16e6a946ea0077fc9ff476f687fc5a">Player::setIsMeleeAttack</a>(<span class="keywordtype">bool</span> isMeleeAttack) {</div>
+<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>    <a class="code hl_variable" href="classPlayer.html#a5bcc34fad7a7f4813fd419aea9948c1a">m_isMeleeAttack</a> = isMeleeAttack;</div>
+<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>    <a class="code hl_function" href="classPlayer.html#a0d8c008ed5ce08da69214349d1c79e9d">updateMeleeWeaponList</a>();</div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>}</div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span> </div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno"><a class="line" href="classPlayer.html#a0d8c008ed5ce08da69214349d1c79e9d">  407</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#a0d8c008ed5ce08da69214349d1c79e9d">Player::updateMeleeWeaponList</a>() {</div>
+<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>    <span class="comment">// clear old swords</span></div>
+<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>    <a class="code hl_variable" href="classPlayer.html#a4c16affd699aef077ba83330fdcffbb8">m_meleeWeaponList</a>.clear();</div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>    <span class="comment">// add swords as m_meleeWeaponList at cross with coords max attack range</span></div>
+<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>    char32_t sword = U<span class="stringliteral">&#39;🔪&#39;</span>;</div>
+<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classPlayer.html#a5bcc34fad7a7f4813fd419aea9948c1a">m_isMeleeAttack</a>) {</div>
+<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>        sword = U<span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>    }</div>
+<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt;= <a class="code hl_variable" href="classPlayer.html#abcda97fb77cff722dcf54c6d1fc9cf31">m_attackRange</a>; i++) {</div>
+<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>        <a class="code hl_variable" href="classPlayer.html#a4c16affd699aef077ba83330fdcffbb8">m_meleeWeaponList</a>.push_back(</div>
+<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>            <span class="keyword">new</span> <a class="code hl_function" href="classPlayer.html#a2591c43f324d98f184f7fdc57eb716fd">Player</a>(i, sword, <a class="code hl_function" href="classCreature.html#abe1e3a00f3063198d0528b6b474a79ad">getX</a>() + i * 2, <a class="code hl_function" href="classCreature.html#ac22abd1b0a99cced826e898d94b4e497">getY</a>(), 1, 1, 1, 1, 1));</div>
+<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span>        <a class="code hl_variable" href="classPlayer.html#a4c16affd699aef077ba83330fdcffbb8">m_meleeWeaponList</a>.push_back(<span class="keyword">new</span> <a class="code hl_function" href="classPlayer.html#a2591c43f324d98f184f7fdc57eb716fd">Player</a>(</div>
+<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span>            i + <a class="code hl_variable" href="classPlayer.html#abcda97fb77cff722dcf54c6d1fc9cf31">m_attackRange</a>, sword, <a class="code hl_function" href="classCreature.html#abe1e3a00f3063198d0528b6b474a79ad">getX</a>() - i * 2, <a class="code hl_function" href="classCreature.html#ac22abd1b0a99cced826e898d94b4e497">getY</a>(), 1, 1, 1, 1, 1));</div>
+<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>        <a class="code hl_variable" href="classPlayer.html#a4c16affd699aef077ba83330fdcffbb8">m_meleeWeaponList</a>.push_back(<span class="keyword">new</span> <a class="code hl_function" href="classPlayer.html#a2591c43f324d98f184f7fdc57eb716fd">Player</a>(</div>
+<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span>            i + <a class="code hl_variable" href="classPlayer.html#abcda97fb77cff722dcf54c6d1fc9cf31">m_attackRange</a> * 2, sword, <a class="code hl_function" href="classCreature.html#abe1e3a00f3063198d0528b6b474a79ad">getX</a>(), <a class="code hl_function" href="classCreature.html#ac22abd1b0a99cced826e898d94b4e497">getY</a>() - i, 1, 1, 1, 1, 1));</div>
+<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span>        <a class="code hl_variable" href="classPlayer.html#a4c16affd699aef077ba83330fdcffbb8">m_meleeWeaponList</a>.push_back(<span class="keyword">new</span> <a class="code hl_function" href="classPlayer.html#a2591c43f324d98f184f7fdc57eb716fd">Player</a>(</div>
+<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>            i + <a class="code hl_variable" href="classPlayer.html#abcda97fb77cff722dcf54c6d1fc9cf31">m_attackRange</a> * 3, sword, <a class="code hl_function" href="classCreature.html#abe1e3a00f3063198d0528b6b474a79ad">getX</a>(), <a class="code hl_function" href="classCreature.html#ac22abd1b0a99cced826e898d94b4e497">getY</a>() + i, 1, 1, 1, 1, 1));</div>
+<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>    }</div>
+<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>}</div>
+<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span> </div>
+<div class="line"><a id="l00432" name="l00432"></a><span class="lineno"><a class="line" href="classPlayer.html#a1e7d13ede71afc6c43aab4645ec308bc">  432</a></span>std::vector&lt;Creature *&gt; <a class="code hl_function" href="classPlayer.html#a1e7d13ede71afc6c43aab4645ec308bc">Player::getMeleeWeaponList</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classPlayer.html#a4c16affd699aef077ba83330fdcffbb8">m_meleeWeaponList</a>;</div>
+<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span>}</div>
+<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span> </div>
+<div class="line"><a id="l00442" name="l00442"></a><span class="lineno"><a class="line" href="classPlayer.html#a8f28f6b069f7388877e02ae0a175d4ab">  442</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#a8f28f6b069f7388877e02ae0a175d4ab">Player::setHealth</a>(<span class="keywordtype">int</span> health) {</div>
+<div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span>    <span class="keywordflow">if</span> (health &gt; <a class="code hl_variable" href="classPlayer.html#a6f9298e716231bdb7de5a3a4f2274703">m_maxHealth</a>) {</div>
+<div class="line"><a id="l00444" name="l00444"></a><span class="lineno">  444</span>        <a class="code hl_variable" href="classCreature.html#a7ee7518a06a266abff11add056aaf320">m_health</a> = <a class="code hl_variable" href="classPlayer.html#a6f9298e716231bdb7de5a3a4f2274703">m_maxHealth</a>;</div>
+<div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span>        <a class="code hl_variable" href="classCreature.html#a7ee7518a06a266abff11add056aaf320">m_health</a> = health;</div>
+<div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span>    }</div>
+<div class="line"><a id="l00448" name="l00448"></a><span class="lineno">  448</span>}</div>
+<div class="ttc" id="aPlayer_8h_html"><div class="ttname"><a href="Player_8h.html">Player.h</a></div></div>
+<div class="ttc" id="aclassCreature_html"><div class="ttname"><a href="classCreature.html">Creature</a></div><div class="ttdoc">Creature class.</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8h_source.html#l00017">Creature.h:17</a></div></div>
+<div class="ttc" id="aclassCreature_html_a3607bec5bda4478a6280192f9a7e4175"><div class="ttname"><a href="classCreature.html#a3607bec5bda4478a6280192f9a7e4175">Creature::m_id</a></div><div class="ttdeci">int m_id</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8h_source.html#l00074">Creature.h:74</a></div></div>
+<div class="ttc" id="aclassCreature_html_a7ee7518a06a266abff11add056aaf320"><div class="ttname"><a href="classCreature.html#a7ee7518a06a266abff11add056aaf320">Creature::m_health</a></div><div class="ttdeci">int m_health</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8h_source.html#l00080">Creature.h:80</a></div></div>
+<div class="ttc" id="aclassCreature_html_a9e6613a15720bd0bdf4eb8153d4d827c"><div class="ttname"><a href="classCreature.html#a9e6613a15720bd0bdf4eb8153d4d827c">Creature::getHealth</a></div><div class="ttdeci">int getHealth() const</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8cpp_source.html#l00075">Creature.cpp:75</a></div></div>
+<div class="ttc" id="aclassCreature_html_abb4b58dae9f30075592073125d1a1403"><div class="ttname"><a href="classCreature.html#abb4b58dae9f30075592073125d1a1403">Creature::setHealth</a></div><div class="ttdeci">virtual void setHealth(int health)</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8cpp_source.html#l00084">Creature.cpp:84</a></div></div>
+<div class="ttc" id="aclassCreature_html_abe1e3a00f3063198d0528b6b474a79ad"><div class="ttname"><a href="classCreature.html#abe1e3a00f3063198d0528b6b474a79ad">Creature::getX</a></div><div class="ttdeci">int getX() const</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8cpp_source.html#l00037">Creature.cpp:37</a></div></div>
+<div class="ttc" id="aclassCreature_html_ac22abd1b0a99cced826e898d94b4e497"><div class="ttname"><a href="classCreature.html#ac22abd1b0a99cced826e898d94b4e497">Creature::getY</a></div><div class="ttdeci">int getY() const</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8cpp_source.html#l00056">Creature.cpp:56</a></div></div>
+<div class="ttc" id="aclassCreature_html_ad0cab38ce6b2af76c923628f4e89ea94"><div class="ttname"><a href="classCreature.html#ad0cab38ce6b2af76c923628f4e89ea94">Creature::m_appearance</a></div><div class="ttdeci">char32_t m_appearance</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8h_source.html#l00082">Creature.h:82</a></div></div>
+<div class="ttc" id="aclassCreature_html_adfead36d9ad7127b85ffbbdbd7faab62"><div class="ttname"><a href="classCreature.html#adfead36d9ad7127b85ffbbdbd7faab62">Creature::m_y</a></div><div class="ttdeci">int m_y</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8h_source.html#l00078">Creature.h:78</a></div></div>
+<div class="ttc" id="aclassCreature_html_aff9083d0304d85efcb5064d3ed17ea33"><div class="ttname"><a href="classCreature.html#aff9083d0304d85efcb5064d3ed17ea33">Creature::m_x</a></div><div class="ttdeci">int m_x</div><div class="ttdef"><b>Definition:</b> <a href="Creature_8h_source.html#l00076">Creature.h:76</a></div></div>
 <div class="ttc" id="aclassItem_html"><div class="ttname"><a href="classItem.html">Item</a></div><div class="ttdef"><b>Definition:</b> <a href="Item_8h_source.html#l00007">Item.h:7</a></div></div>
-<div class="ttc" id="aclassPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdef"><b>Definition:</b> <a href="Player_8h_source.html#l00010">Player.h:10</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a0d2f51fe0e2ca34f3da5417c74e40dfc"><div class="ttname"><a href="classPlayer.html#a0d2f51fe0e2ca34f3da5417c74e40dfc">Player::getSpeed</a></div><div class="ttdeci">int64_t getSpeed() const</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00309">Player.cpp:309</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a0d56b7cde4dff001b2c1e573290920e9"><div class="ttname"><a href="classPlayer.html#a0d56b7cde4dff001b2c1e573290920e9">Player::addToInventory</a></div><div class="ttdeci">void addToInventory(Item *item)</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00169">Player.cpp:169</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a0d8c008ed5ce08da69214349d1c79e9d"><div class="ttname"><a href="classPlayer.html#a0d8c008ed5ce08da69214349d1c79e9d">Player::updateMeleeWeaponList</a></div><div class="ttdeci">void updateMeleeWeaponList()</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00407">Player.cpp:407</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a0e5e6e981389b2e336e62d35ad93da1f"><div class="ttname"><a href="classPlayer.html#a0e5e6e981389b2e336e62d35ad93da1f">Player::getNextLevelExp</a></div><div class="ttdeci">int getNextLevelExp() const</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00269">Player.cpp:269</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a0e8340d93c53fe9ab68c7bf67723594e"><div class="ttname"><a href="classPlayer.html#a0e8340d93c53fe9ab68c7bf67723594e">Player::getInventory</a></div><div class="ttdeci">std::vector&lt; Item &gt; getInventory() const</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00147">Player.cpp:147</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a1864ef0ae824d936acd1ad8c201af11a"><div class="ttname"><a href="classPlayer.html#a1864ef0ae824d936acd1ad8c201af11a">Player::setInventory</a></div><div class="ttdeci">void setInventory(std::vector&lt; Item &gt; inventory)</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00160">Player.cpp:160</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a1d0d5551086ebf6b5e4407d98697f8e0"><div class="ttname"><a href="classPlayer.html#a1d0d5551086ebf6b5e4407d98697f8e0">Player::getLevel</a></div><div class="ttdeci">int getLevel() const</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00207">Player.cpp:207</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a1e7d13ede71afc6c43aab4645ec308bc"><div class="ttname"><a href="classPlayer.html#a1e7d13ede71afc6c43aab4645ec308bc">Player::getMeleeWeaponList</a></div><div class="ttdeci">std::vector&lt; Creature * &gt; getMeleeWeaponList() const</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00432">Player.cpp:432</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a21ae420328e54096f890238bc0cc1263"><div class="ttname"><a href="classPlayer.html#a21ae420328e54096f890238bc0cc1263">Player::getAttackTimer</a></div><div class="ttdeci">time_point&lt; steady_clock &gt; getAttackTimer() const</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00328">Player.cpp:328</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a225a3e732b737cb8a9d807f97b7930aa"><div class="ttname"><a href="classPlayer.html#a225a3e732b737cb8a9d807f97b7930aa">Player::moveUp</a></div><div class="ttdeci">virtual void moveUp()</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00062">Player.cpp:62</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a24a0506d7271d24c9c9a54e47646bb6b"><div class="ttname"><a href="classPlayer.html#a24a0506d7271d24c9c9a54e47646bb6b">Player::getMaxHealth</a></div><div class="ttdeci">int getMaxHealth() const</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00251">Player.cpp:251</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a2591c43f324d98f184f7fdc57eb716fd"><div class="ttname"><a href="classPlayer.html#a2591c43f324d98f184f7fdc57eb716fd">Player::Player</a></div><div class="ttdeci">Player(int id)</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00007">Player.cpp:7</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a2d56f99e98f3f6dba15309cf94761056"><div class="ttname"><a href="classPlayer.html#a2d56f99e98f3f6dba15309cf94761056">Player::m_inventory</a></div><div class="ttdeci">std::vector&lt; Item &gt; m_inventory</div><div class="ttdef"><b>Definition:</b> <a href="Player_8h_source.html#l00083">Player.h:83</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a2f7941f9cff713b05ee62372beaefdc9"><div class="ttname"><a href="classPlayer.html#a2f7941f9cff713b05ee62372beaefdc9">Player::setAttackSpeed</a></div><div class="ttdeci">void setAttackSpeed(int64_t attackSpeed)</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00356">Player.cpp:356</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a35af6ba8af84436db32241cee97aa790"><div class="ttname"><a href="classPlayer.html#a35af6ba8af84436db32241cee97aa790">Player::setMaxHealth</a></div><div class="ttdeci">void setMaxHealth(int maxHealth)</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00260">Player.cpp:260</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a3ba1b79c1defee5c26714342ec739f29"><div class="ttname"><a href="classPlayer.html#a3ba1b79c1defee5c26714342ec739f29">Player::setAttackPower</a></div><div class="ttdeci">void setAttackPower(int attackPower)</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00242">Player.cpp:242</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a3c1da882c8458154df30b3e33c603426"><div class="ttname"><a href="classPlayer.html#a3c1da882c8458154df30b3e33c603426">Player::setMoveTimer</a></div><div class="ttdeci">void setMoveTimer(time_point&lt; steady_clock &gt; moveTimer)</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00299">Player.cpp:299</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a48fe061a86f60ad728bba62a3bf4b4c5"><div class="ttname"><a href="classPlayer.html#a48fe061a86f60ad728bba62a3bf4b4c5">Player::m_attackSpeed</a></div><div class="ttdeci">int64_t m_attackSpeed</div><div class="ttdef"><b>Definition:</b> <a href="Player_8h_source.html#l00095">Player.h:95</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a4b16e6a946ea0077fc9ff476f687fc5a"><div class="ttname"><a href="classPlayer.html#a4b16e6a946ea0077fc9ff476f687fc5a">Player::setIsMeleeAttack</a></div><div class="ttdeci">void setIsMeleeAttack(bool isMeleeAttack)</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00398">Player.cpp:398</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a4c16affd699aef077ba83330fdcffbb8"><div class="ttname"><a href="classPlayer.html#a4c16affd699aef077ba83330fdcffbb8">Player::m_meleeWeaponList</a></div><div class="ttdeci">std::vector&lt; Creature * &gt; m_meleeWeaponList</div><div class="ttdef"><b>Definition:</b> <a href="Player_8h_source.html#l00105">Player.h:105</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a5bcc34fad7a7f4813fd419aea9948c1a"><div class="ttname"><a href="classPlayer.html#a5bcc34fad7a7f4813fd419aea9948c1a">Player::m_isMeleeAttack</a></div><div class="ttdeci">bool m_isMeleeAttack</div><div class="ttdef"><b>Definition:</b> <a href="Player_8h_source.html#l00103">Player.h:103</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a628a56d500bacd8cd2dad4d4e6824a8a"><div class="ttname"><a href="classPlayer.html#a628a56d500bacd8cd2dad4d4e6824a8a">Player::getIsMeleeAttack</a></div><div class="ttdeci">bool getIsMeleeAttack() const</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00386">Player.cpp:386</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a6a2b68bc4b21d4c4a79a23b498896ec2"><div class="ttname"><a href="classPlayer.html#a6a2b68bc4b21d4c4a79a23b498896ec2">Player::moveRight</a></div><div class="ttdeci">virtual void moveRight()</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00101">Player.cpp:101</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a6d1f4fdb504ba2bf3937ba28cc7f9e75"><div class="ttname"><a href="classPlayer.html#a6d1f4fdb504ba2bf3937ba28cc7f9e75">Player::getAttackRange</a></div><div class="ttdeci">int getAttackRange() const</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00366">Player.cpp:366</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a6e759d186d9d40609ecf0511e8f50e4c"><div class="ttname"><a href="classPlayer.html#a6e759d186d9d40609ecf0511e8f50e4c">Player::moveDown</a></div><div class="ttdeci">virtual void moveDown()</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00075">Player.cpp:75</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a6f9298e716231bdb7de5a3a4f2274703"><div class="ttname"><a href="classPlayer.html#a6f9298e716231bdb7de5a3a4f2274703">Player::m_maxHealth</a></div><div class="ttdeci">int m_maxHealth</div><div class="ttdef"><b>Definition:</b> <a href="Player_8h_source.html#l00091">Player.h:91</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a791eae682f86afa2da0d7da39e2947b9"><div class="ttname"><a href="classPlayer.html#a791eae682f86afa2da0d7da39e2947b9">Player::setAttackTimer</a></div><div class="ttdeci">void setAttackTimer(time_point&lt; steady_clock &gt; attackTimer)</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00337">Player.cpp:337</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a7b6177a75c068eb16d6d4ee8b80f771b"><div class="ttname"><a href="classPlayer.html#a7b6177a75c068eb16d6d4ee8b80f771b">Player::setSpeed</a></div><div class="ttdeci">void setSpeed(int64_t speed)</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00318">Player.cpp:318</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a8f28f6b069f7388877e02ae0a175d4ab"><div class="ttname"><a href="classPlayer.html#a8f28f6b069f7388877e02ae0a175d4ab">Player::setHealth</a></div><div class="ttdeci">void setHealth(int health)</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00442">Player.cpp:442</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a9d43e2876bbc07670c9fb8bd1188ffc0"><div class="ttname"><a href="classPlayer.html#a9d43e2876bbc07670c9fb8bd1188ffc0">Player::getAttackPower</a></div><div class="ttdeci">int getAttackPower() const</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00233">Player.cpp:233</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a9e7c522d47dbf00fabf8ac7d1e8369ae"><div class="ttname"><a href="classPlayer.html#a9e7c522d47dbf00fabf8ac7d1e8369ae">Player::m_level</a></div><div class="ttdeci">int m_level</div><div class="ttdef"><b>Definition:</b> <a href="Player_8h_source.html#l00087">Player.h:87</a></div></div>
+<div class="ttc" id="aclassPlayer_html_aa973d3d0ae6bdeaa62ea1b2942a10575"><div class="ttname"><a href="classPlayer.html#aa973d3d0ae6bdeaa62ea1b2942a10575">Player::getMoveTimer</a></div><div class="ttdeci">time_point&lt; steady_clock &gt; getMoveTimer() const</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00290">Player.cpp:290</a></div></div>
+<div class="ttc" id="aclassPlayer_html_abcda97fb77cff722dcf54c6d1fc9cf31"><div class="ttname"><a href="classPlayer.html#abcda97fb77cff722dcf54c6d1fc9cf31">Player::m_attackRange</a></div><div class="ttdeci">int m_attackRange</div><div class="ttdef"><b>Definition:</b> <a href="Player_8h_source.html#l00101">Player.h:101</a></div></div>
+<div class="ttc" id="aclassPlayer_html_ac32eb0d52849e159f7c4d1df3cd0f972"><div class="ttname"><a href="classPlayer.html#ac32eb0d52849e159f7c4d1df3cd0f972">Player::m_attackTimer</a></div><div class="ttdeci">time_point&lt; steady_clock &gt; m_attackTimer</div><div class="ttdef"><b>Definition:</b> <a href="Player_8h_source.html#l00099">Player.h:99</a></div></div>
+<div class="ttc" id="aclassPlayer_html_acd6e7ddec4243f254705d72e5cb7eb9c"><div class="ttname"><a href="classPlayer.html#acd6e7ddec4243f254705d72e5cb7eb9c">Player::m_experience</a></div><div class="ttdeci">int m_experience</div><div class="ttdef"><b>Definition:</b> <a href="Player_8h_source.html#l00085">Player.h:85</a></div></div>
+<div class="ttc" id="aclassPlayer_html_ad877261583b224a9cba8b19ac3e3cf01"><div class="ttname"><a href="classPlayer.html#ad877261583b224a9cba8b19ac3e3cf01">Player::m_speed</a></div><div class="ttdeci">int64_t m_speed</div><div class="ttdef"><b>Definition:</b> <a href="Player_8h_source.html#l00093">Player.h:93</a></div></div>
+<div class="ttc" id="aclassPlayer_html_ad969c7e5e132bbedfa48ceb0991290bb"><div class="ttname"><a href="classPlayer.html#ad969c7e5e132bbedfa48ceb0991290bb">Player::getAttackSpeed</a></div><div class="ttdeci">int64_t getAttackSpeed() const</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00347">Player.cpp:347</a></div></div>
+<div class="ttc" id="aclassPlayer_html_ae2f0bef1ac3657e0f536eb8f4909660f"><div class="ttname"><a href="classPlayer.html#ae2f0bef1ac3657e0f536eb8f4909660f">Player::m_attackPower</a></div><div class="ttdeci">int m_attackPower</div><div class="ttdef"><b>Definition:</b> <a href="Player_8h_source.html#l00089">Player.h:89</a></div></div>
+<div class="ttc" id="aclassPlayer_html_ae3bbcf1159bdc059bff1c2513f2505f7"><div class="ttname"><a href="classPlayer.html#ae3bbcf1159bdc059bff1c2513f2505f7">Player::moveLeft</a></div><div class="ttdeci">virtual void moveLeft()</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00088">Player.cpp:88</a></div></div>
+<div class="ttc" id="aclassPlayer_html_aeea45f839f224a5320dfadfd2ff3ebe9"><div class="ttname"><a href="classPlayer.html#aeea45f839f224a5320dfadfd2ff3ebe9">Player::attack</a></div><div class="ttdeci">virtual void attack()</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00114">Player.cpp:114</a></div></div>
+<div class="ttc" id="aclassPlayer_html_aefa244a7e716549aac714d0509455281"><div class="ttname"><a href="classPlayer.html#aefa244a7e716549aac714d0509455281">Player::m_moveTimer</a></div><div class="ttdeci">time_point&lt; steady_clock &gt; m_moveTimer</div><div class="ttdef"><b>Definition:</b> <a href="Player_8h_source.html#l00097">Player.h:97</a></div></div>
+<div class="ttc" id="aclassPlayer_html_af1ceb57893c5359a0f82b4e99424a76e"><div class="ttname"><a href="classPlayer.html#af1ceb57893c5359a0f82b4e99424a76e">Player::setExperience</a></div><div class="ttdeci">void setExperience(int experience)</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00188">Player.cpp:188</a></div></div>
+<div class="ttc" id="aclassPlayer_html_af717f3bf17090888a9d504d3919d62cd"><div class="ttname"><a href="classPlayer.html#af717f3bf17090888a9d504d3919d62cd">Player::setLevel</a></div><div class="ttdeci">void setLevel(int level)</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00217">Player.cpp:217</a></div></div>
+<div class="ttc" id="aclassPlayer_html_af7d44d671e60b35fa223de28cd84e624"><div class="ttname"><a href="classPlayer.html#af7d44d671e60b35fa223de28cd84e624">Player::getExperience</a></div><div class="ttdeci">int getExperience() const</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00178">Player.cpp:178</a></div></div>
+<div class="ttc" id="aclassPlayer_html_afbef0be3e93f21f9c9e30b53c4557098"><div class="ttname"><a href="classPlayer.html#afbef0be3e93f21f9c9e30b53c4557098">Player::getPrevLevelExp</a></div><div class="ttdeci">int getPrevLevelExp() const</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00280">Player.cpp:280</a></div></div>
+<div class="ttc" id="aclassPlayer_html_afe1a98ff20e9275bfc5879f80aa979c7"><div class="ttname"><a href="classPlayer.html#afe1a98ff20e9275bfc5879f80aa979c7">Player::setAttackRange</a></div><div class="ttdeci">void setAttackRange(int attackRange)</div><div class="ttdef"><b>Definition:</b> <a href="Player_8cpp_source.html#l00375">Player.cpp:375</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
