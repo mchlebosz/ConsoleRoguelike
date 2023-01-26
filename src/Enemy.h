@@ -2,9 +2,13 @@
 
 #include <string.h>
 
+#include <chrono>
+#include <utility>
 #include <vector>
 
-#include "Creature.h"
+using namespace std::chrono;
+
+#include "Map.h"
 
 // Class representing an enemy
 class Enemy : public Creature {
@@ -14,7 +18,8 @@ public:
 	// Constructor taking name, position on the map, health points, type, dodge
 	// chance, attack power, and items
 	// Enemy.h
-	Enemy(int id, char appearance, int x, int y, int health, int attackPower);
+	Enemy(int id, char32_t appearance, int x, int y, int health,
+		  int attackPower);
 
 	virtual ~Enemy() = default;
 
@@ -22,6 +27,7 @@ public:
 	virtual void move();
 	// Method responsible for attacking another creature
 	virtual void attack(Creature &other);
+	void moveTowardsPlayer(Creature &player);
 	// Getters and setters for type
 	std::string getType() const;
 	void setType(std::string type);
@@ -40,6 +46,11 @@ public:
 	// Method for adding an item to the list of items
 	void addToItems(Item item);
 
+	int getExperience() const;
+
+	// Method for checking if player is in staight line of sight
+	bool checkLineOfSight(Creature &player, Map &map);
+
 protected:
 	// Type of the enemy
 	std::string m_type;
@@ -49,4 +60,10 @@ protected:
 	int m_attackPower;
 	// List of items possessed by the enemy
 	std::vector<Item> m_items;
+
+	int m_experience;
+
+	// move timer
+	steady_clock::time_point m_moveTimer;
+	steady_clock::time_point m_attackTimer;
 };

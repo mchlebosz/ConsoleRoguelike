@@ -6,47 +6,6 @@
 
 #include "Level.h"
 
-std::vector<Level> loadLevels() {
-	// load levels from file and return as vector of Level objects
-
-	std::vector<Level> allLevels;
-
-	std::ifstream file("./src/levels.txt");
-
-	std::cout << "Loading levels..." << std::endl;
-	if (file.is_open()) {
-		std::vector<std::u32string> levelMap;
-		std::pair<int, int> playerPos;
-		// load levels in utf8 format but then save them as utf32
-		std::string line;
-		while (std::getline(file, line)) {
-			if (line == "START") {
-				// start of new level
-				std::cout << "Loading level..." << std::endl;
-				levelMap.clear();
-			} else if (line == "END") {
-				// end of level
-				allLevels.push_back(Level(levelMap, playerPos));
-			} else if (line == "PLAYER") {
-				// player position
-				std::getline(file, line);
-				playerPos.first = std::stoi(line);
-				std::getline(file, line);
-				playerPos.second = std::stoi(line);
-			} else {
-				// add line to level map
-				std::cout << line << std::endl;
-				levelMap.push_back(std::u32string(line.begin(), line.end()));
-			}
-		}
-		file.close();
-	} else {
-		std::cout << "Unable to open file" << std::endl;
-	}
-
-	return allLevels;
-}
-
 std::vector<Level> initLevels() {
 	std::vector<Level> allLevels;
 
@@ -56,6 +15,7 @@ std::vector<Level> initLevels() {
 
 	*/
 	// add levels here
+
 	allLevels.push_back(Level(
 		std::vector<std::u32string> {
 			U"█████████████████████████████████████████████████",
@@ -64,9 +24,9 @@ std::vector<Level> initLevels() {
 			U"██                                             ██",
 			U"██                                             ██",
 			U"██                                             ██",
-			U"███████████████    ██                          ██",
-			U"██   ◎                                         ██",
-			U"██                                             🚪",
+			U"█████████████████████████    ██                ██",
+			U"██                                             ██",
+			U"██                                             ██",
 			U"██                                             ██",
 			U"██                                             ██",
 			U"██                                             ██",
@@ -74,7 +34,10 @@ std::vector<Level> initLevels() {
 			U"██                                             ██",
 			U"██                                             ██",
 			U"█████████████████████████████████████████████████" },
-		std::make_pair(4, 2)));
+		std::make_pair(4, 2), std::make_pair(4, 8),
+		std::vector<Enemy*> { new Enemy(0, U'😈', 40, 3, 5, 1),
+							  new Enemy(1, U'💀', 10, 10, 5, 1),
+							  new Enemy(2, U'👻', 30, 12, 5, 1) }));
 
 	allLevels.push_back(Level(
 		std::vector<std::u32string> {
@@ -90,7 +53,10 @@ std::vector<Level> initLevels() {
 			U"██           ████████              ██",
 			U"██                                 ██",
 			U"█████████████████████████████████████" },
-		std::make_pair(4, 2)));
+		std::make_pair(4, 2), std::make_pair(4, 8),
+		std::vector<Enemy*> { new Enemy(0, U'😈', 7, 6, 5, 1),
+							  new Enemy(1, U'💀', 3, 5, 5, 1),
+							  new Enemy(2, U'👻', 10, 12, 5, 1) }));
 
 	allLevels.push_back(Level(
 		std::vector<std::u32string> {
@@ -106,7 +72,10 @@ std::vector<Level> initLevels() {
 			U"██           ████████              ██",
 			U"██                                 ██",
 			U"█████████████████████████████████████" },
-		std::make_pair(2, 2)));
+		std::make_pair(4, 2), std::make_pair(4, 8),
+		std::vector<Enemy*> { new Enemy(0, U'😈', 10, 20, 5, 1),
+							  new Enemy(1, U'💀', 10, 6, 5, 1),
+							  new Enemy(2, U'👻', 10, 30, 5, 1) }));
 
 	return allLevels;
 }

@@ -1,6 +1,10 @@
 #pragma once
 
+#include <chrono>
+#include <vector>
+
 #include "Creature.h"
+using namespace std::chrono;
 
 // Class representing a player
 class Player : public Creature {
@@ -10,7 +14,7 @@ public:
 	// Constructor taking name, position on the map, health points, experience,
 	// level, attack power, maximum health and starting inventory
 	Player(int id, char32_t appearance, int x, int y, int health, int maxHealth,
-		   int level, int attackPower, int speed);
+		   int level, int attackPower, int64_t speed);
 
 	virtual ~Player() = default;
 	// Method responsible for moving the player
@@ -19,6 +23,8 @@ public:
 	virtual void moveLeft();
 	virtual void moveRight();
 	// Method responsible for attacking another creature
+	virtual void attack();
+
 	virtual void attack(Creature &other);
 
 	// Getters and setters for inventory
@@ -36,18 +42,39 @@ public:
 	void setAttackPower(int attackPower);
 	// Method for getting the experience needed to reach the next level
 	int getNextLevelExp() const;
+	int getPrevLevelExp() const;
 
 	// Getter and setter for maximum health
 	int getMaxHealth() const;
 	void setMaxHealth(int maxHealth);
 
 	// Getter and setter for move delay
-	int getMoveTimer() const;
-	void setMoveTimer(int moveTimer);
+	time_point<steady_clock> getMoveTimer() const;
+	void setMoveTimer(time_point<steady_clock> moveTimer);
+
+	// Getter and setter for attack delay
+	time_point<steady_clock> getAttackTimer() const;
+	void setAttackTimer(time_point<steady_clock> attackTimer);
 
 	// Getter and setter for speed
-	int getSpeed() const;
-	void setSpeed(int speed);
+	int64_t getSpeed() const;
+	void setSpeed(int64_t speed);
+
+	// Getter and setter for attack speed
+	int64_t getAttackSpeed() const;
+	void setAttackSpeed(int64_t attackSpeed);
+
+	// Getter and setter for attack range
+	int getAttackRange() const;
+	void setAttackRange(int attackRange);
+
+	// Getter and setter for isMeleeAttack
+	bool getIsMeleeAttack() const;
+	void setIsMeleeAttack(bool isMeleeAttack);
+
+	void updateMeleeWeaponList();
+
+	std::vector<Creature *> getMeleeWeaponList() const;
 
 protected:
 	// Inventory of the player (list of items)
@@ -61,7 +88,17 @@ protected:
 	// Maximum health of the player
 	int m_maxHealth;
 	// speed of the player
-	int m_speed;
-	// move delay
-	time_t m_moveTimer;
+	int64_t m_speed;
+	// attack speed
+	int64_t m_attackSpeed;
+	// move time
+	time_point<steady_clock> m_moveTimer;
+	//
+	time_point<steady_clock> m_attackTimer;
+	// attack range
+	int m_attackRange;
+
+	bool m_isMeleeAttack;
+
+	std::vector<Creature *> m_meleeWeaponList;
 };

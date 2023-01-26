@@ -6,11 +6,33 @@ When commiting to main (and other branches too) please follow given structure:
 [Commit Guidelines](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines)
 
 ## About
+Goal of the game is to go thru the dungeons and kill enemies. You can move around the map using WASD keys. You can attack enemies by pressing Space. You can exit the level by going to the Door. You can exit the game by pressing Esc.
+
 using C++ 17
 Compiler [MinGW64](https://winlibs.com/#download-release)
 Console application
 For UML using [PlantUML](https://plantuml.com/)
 For documentation using [Doxygen](https://www.doxygen.nl/index.html)
+
+## Controls
+- <kbd>W</kbd>  - Move Up
+- <kbd>S</kbd>  - Move Down
+- <kbd>A</kbd>  - Move Left
+- <kbd>D</kbd>  - Move Right
+- <kbd>Space</kbd>  - Attack
+- <kbd>Esc</kbd>  - Exit Game
+
+
+## TODO
+- [x] Create basic structure of the game
+- [x] Add enemies to Levels entries
+- [x] Atack Enemy
+- [ ] (Optional) Ranged atack
+- [x] Enemy Die
+- [ ] Dropping items
+- [x] Enemy folow player
+- [x] Exiting levels
+
 
 ## Prerequisites
 1. MinGW64 v12 with C++ 17 support
@@ -34,3 +56,6 @@ Line |
      | or statement.
 ```
 This is a bug in VSCode and can be ignored. It is caused by the fact that VSCode tries to debug the program and it is not a debuggable program. To fix this error, just run the program again.
+
+## Authors
+* [Mateusz Chlebosz](https://github.com/mchlebosz)

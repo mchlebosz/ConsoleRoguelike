@@ -23,6 +23,7 @@ private:
 	int AddEnemy(int x, int y);
 	void RemoveEnemy(int id);
 	int FindEnemy(int id);
+	int FindEnemy(int x, int y);
 	Enemy& ModifyEnemy(int id);
 
 	// player methods
@@ -36,9 +37,12 @@ private:
 	std::wstring showStats();
 	std::string showInventory();
 
+	void DropRandomItem(int x, int y);
+
 	void Update();
 	void PreRender();
 	void Render();
+	void LoadLevel(UINT level);
 
 	std::vector<Enemy*> m_enemies;
 	Player m_player;
@@ -63,4 +67,5 @@ private:
 						 (short int)(SCREEN_HEIGHT - 1) };
 
 	std::vector<Level> allLevels;
+	UINT m_currentLevel;
 };

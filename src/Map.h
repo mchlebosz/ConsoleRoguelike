@@ -8,7 +8,6 @@
 #include <vector>
 
 #include "Creature.h"
-#include "Level.h"
 
 // Class responsible for storing information about the map and displaying it
 class Map {

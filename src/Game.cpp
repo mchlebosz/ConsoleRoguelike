@@ -5,6 +5,7 @@
 #include <chrono>
 #include <codecvt>
 #include <ctime>
+#include <future>
 #include <iostream>
 #include <locale>
 #include <thread>
@@ -23,15 +24,17 @@ Game::Game() :
 	SCREEN_HEIGHT(50),
 	visibleBuffer(new CHAR_INFO[SCREEN_WIDTH * SCREEN_HEIGHT]),
 	hiddenBuffer(new CHAR_INFO[SCREEN_WIDTH * SCREEN_HEIGHT]) {
-	allLevels = initLevels();
+	allLevels      = initLevels();
+	m_currentLevel = 0;
 
 	m_player.setX(allLevels[0].getStartingPosition().first);
 	m_player.setY(allLevels[0].getStartingPosition().second);
 	m_player.setAppearance(U'😀');
-	m_player.setHealth(3);
-	m_player.setMaxHealth(5);
 	m_player.setExperience(1);
-	m_player.setSpeed(2);
+	m_player.setSpeed(50);
+	m_player.setAttackPower(1);
+	m_player.setAttackRange(2);
+	m_player.setAttackSpeed(1000);
 	m_map.loadMap(allLevels[0].getMap());
 }
 
@@ -43,14 +46,7 @@ Game::~Game() {
 
 void Game::Run() {
 	// Load first map from Levels folder
-	m_map.loadMap(allLevels[0].getMap());
-	m_player.setX(allLevels[0].getStartingPosition().first);
-	m_player.setY(allLevels[0].getStartingPosition().second);
-	m_map.addCreature(0, &m_player);
-
-	ModifyEnemy(AddEnemy(20, 8)).setAppearance(U'👹');
-
-	ModifyEnemy(AddEnemy(25, 8)).setAppearance(U'👺');
+	LoadLevel(m_currentLevel);
 
 	while (m_isRunning) {
 		DWORD currentTime = GetTickCount();
@@ -66,17 +62,59 @@ void Game::Run() {
 		m_lastTicks = GetTickCount();
 	}
 
+	std::wstring_convert<std::codecvt_utf8<char32_t>, char32_t> converter;
+
 	// clean console
 	system("cls");
+	// if player is dead
+	if (m_player.getHealth() <= 0) {
+		std::cout << converter.to_bytes(U"You died!😵") << std::endl;
+		Sleep(2000);
+	}
+
 	// say goodbye
-	std::wcout << L"Thanks for playing!😉" << std::endl;
-	Sleep(1000);
+	std::cout << converter.to_bytes(U"Thanks for playing!😉") << std::endl;
+	Sleep(2000);
 	// clear console
 	system("cls");
 }
 
+void Game::LoadLevel(UINT level) {
+	if (level < 0 || level >= allLevels.size()) {
+		return;
+	}
+	// clear enemies
+	for (size_t i = 0; i < m_enemies.size(); i++) {
+		m_map.removeCreature(m_enemies[i]->getId());
+		delete m_enemies[i];
+	}
+	m_enemies.clear();
+
+	// load new map
+	m_map.loadMap(allLevels[level].getMap());
+	m_player.setX(allLevels[level].getStartingPosition().first);
+	m_player.setY(allLevels[level].getStartingPosition().second);
+	m_map.addCreature(0, &m_player);
+
+	// clear creatures id counter
+	m_lastId = 0;
+
+	for (size_t i = 0; i < allLevels[level].getEnemies().size(); i++) {
+		Enemy* newEnemy = allLevels[level].getEnemies()[i];
+
+		int newEnemyId = AddEnemy(newEnemy->getX(), newEnemy->getY());
+
+		ModifyEnemy(newEnemyId).setAppearance(newEnemy->getAppearance());
+		ModifyEnemy(newEnemyId).setAttackPower(newEnemy->getAttackPower());
+		ModifyEnemy(newEnemyId).setHealth(newEnemy->getHealth());
+	}
+
+	return;
+}
+
 int Game::AddEnemy(int x, int y) {
-	Enemy* enemy = new Enemy(++m_lastId);
+	++m_lastId;
+	Enemy* enemy = new Enemy(m_lastId);
 	enemy->setX(x);
 	enemy->setY(y);
 	enemy->setAppearance(U'X');
@@ -96,11 +134,20 @@ int Game::FindEnemy(int id) {
 	return -1;
 }
 
+int Game::FindEnemy(int x, int y) {
+	for (size_t i = 0; i < m_enemies.size(); i++) {
+		if (m_enemies[i]->getX() == x && m_enemies[i]->getY() == y) {
+			return i;
+		}
+	}
+	return -1;
+}
+
 void Game::RemoveEnemy(int id) {
 	const int index = FindEnemy(id);
-	delete m_enemies[index];
 
-	m_map.removeCreature(index);
+	m_map.removeCreature(id);
+	delete m_enemies[index];
 	m_enemies.erase(m_enemies.begin() + index);
 }
 
@@ -150,7 +197,7 @@ std::wstring Game::showStats() {
 		}
 	}
 	// add empty hearts
-	for (int i = 0; i < m_player.getMaxHealth() / 2 - health / 2; i++) {
+	for (int i = 0; i < (m_player.getMaxHealth() - health) / 2; i++) {
 		for (int j = 0; j < 2; j++) {
 			healthHearts += emptyHeartString[j];
 		}
@@ -165,15 +212,18 @@ std::wstring Game::showStats() {
 
 	int exp          = m_player.getExperience();
 	int nextLevelExp = m_player.getNextLevelExp();
+	int prevLevelExp = m_player.getPrevLevelExp();
+	// int expToNext    = nextLevelExp - exp;
+	// int nowExp	   = exp - prevLevelExp;
 	// always show 20 exp bars proportionally to the exp
 	short int expBars = 20;
 	for (int i = 0; i < expBars; i++) {
-		if (i < exp * expBars / nextLevelExp) {
-			for (UINT j = 0; j < fullExp.length(); j++) {
+		if (exp >= prevLevelExp + (nextLevelExp - prevLevelExp) * i / expBars) {
+			for (int j = 0; j < 2; j++) {
 				expString += fullExp[j];
 			}
 		} else {
-			for (UINT j = 0; j < emptyExp.length(); j++) {
+			for (int j = 0; j < 2; j++) {
 				expString += emptyExp[j];
 			}
 		}
@@ -182,6 +232,11 @@ std::wstring Game::showStats() {
 	output += attack + L'\t' + healthHearts + L'\n' + level + L'\t' +
 			  expString + L'\n';
 	return output;
+}
+
+void Game::DropRandomItem(int x, int y) {
+	/// int random = rand() % 100;
+	// TODO: make this better
 }
 
 std::string Game::showInventory() {
@@ -243,9 +298,59 @@ void Game::Update() {
 			m_player.moveRight();
 		}
 	}
+	if (GetAsyncKeyState(VK_SPACE)) {
+		bool wasAttacked = false;
+		// find m_enemies in m_player.getAttackRange
+		for (int i = -m_player.getAttackRange() * 2;
+			 i <= m_player.getAttackRange() * 2; i++) {
+			int foundEnemy = FindEnemy(m_player.getX() + i, m_player.getY());
+			if (foundEnemy != -1) {
+				// attack enemy
+				wasAttacked = true;
+				m_player.attack(*m_enemies[foundEnemy]);
+				bool isDead = m_enemies[foundEnemy]->getHealth() <= 0;
 
-	if (m_player.getMoveTimer() <= m_player.getSpeed()) {
-		m_player.setMoveTimer(m_player.getMoveTimer() + 1);
+				if (isDead) {
+					// add exp
+					m_player.setExperience(
+						m_player.getExperience() +
+						m_enemies[foundEnemy]->getExperience());
+					// enemy is dead
+					DropRandomItem(m_enemies[foundEnemy]->getX(),
+								   m_enemies[foundEnemy]->getY());
+					RemoveEnemy(m_enemies[foundEnemy]->getId());
+				}
+			}
+		}
+		for (int i = -m_player.getAttackRange(); i <= m_player.getAttackRange();
+			 i++) {
+			int foundEnemy = FindEnemy(m_player.getX(), m_player.getY() + i);
+			if (foundEnemy != -1) {
+				// attack enemy
+				wasAttacked = true;
+				m_player.attack(*m_enemies[foundEnemy]);
+				bool isDead = m_enemies[foundEnemy]->getHealth() <= 0;
+
+				if (isDead) {
+					// add exp
+					m_player.setExperience(
+						m_player.getExperience() +
+						m_enemies[foundEnemy]->getExperience());
+					// enemy is dead
+					DropRandomItem(m_enemies[foundEnemy]->getX(),
+								   m_enemies[foundEnemy]->getY());
+					RemoveEnemy(m_enemies[foundEnemy]->getId());
+				}
+			}
+		}
+		if (!wasAttacked) {
+			m_player.attack();
+		}
+	}
+
+	if (GetAsyncKeyState((int)'E')) {
+		// increase experience
+		m_player.setExperience(m_player.getExperience() + 1);
 	}
 
 	if (isOnTile(m_player, forbiddenTile) || isOnEnemy(m_player)) {
@@ -254,8 +359,49 @@ void Game::Update() {
 		m_player.setY(prevY);
 	}
 
+	// update position of visible melee weapons
+	// if timer for attack is below attack speed /2
+
+	if (duration_cast<milliseconds>(steady_clock::now() -
+									m_player.getAttackTimer())
+			.count() >= m_player.getAttackSpeed() / 4) {
+		m_player.setIsMeleeAttack(false);
+	}
+	// add them to the map
+
 	// exit game on escape
 	if (GetAsyncKeyState(VK_ESCAPE)) {
+		m_isRunning = false;
+	}
+
+	// if all enemies are dead, show exit
+	if (m_enemies.size() == 0) {
+		// add exit to map
+		m_map.setTileAppearance(
+			allLevels[m_currentLevel].getExitPosition().first,
+			allLevels[m_currentLevel].getExitPosition().second, U'🚪');
+		// if player on exit load next level
+		if ((m_player.getX() ==
+				 allLevels[m_currentLevel].getExitPosition().first ||
+			 m_player.getX() + 1 ==
+				 allLevels[m_currentLevel].getExitPosition().first) &&
+			m_player.getY() ==
+				allLevels[m_currentLevel].getExitPosition().second) {
+			// load next level
+			m_currentLevel++;
+			LoadLevel(m_currentLevel);
+		}
+	}
+
+	// update position of enemies
+	for (size_t i = 0; i < m_enemies.size(); i++) {
+		if (m_enemies[i]->checkLineOfSight(m_player, m_map)) {
+			m_enemies[i]->moveTowardsPlayer(m_player);
+		}
+	}
+
+	// check if player is dead
+	if (m_player.getHealth() <= 0) {
 		m_isRunning = false;
 	}
 }
@@ -314,6 +460,23 @@ void Game::PreRender() {
 				hiddenBuffer[x + SCREEN_WIDTH * y].Attributes =
 					FG_COLORS::FG_WHITE;
 				x += 1;
+			}
+		}
+	}
+	// draw swords if player is attacking
+	if (m_player.getIsMeleeAttack()) {
+		std::vector<Creature*> attacks = m_player.getMeleeWeaponList();
+		for (UINT i = 0; i < attacks.size(); i++) {
+			bool isSurrogatePair;
+			// check if
+			std::wstring wstr =
+				char32to16(attacks[i]->getAppearance(), &isSurrogatePair);
+
+			for (UINT j = 0; j < wstr.length(); j++) {
+				UINT coord = attacks[i]->getX() + j + 2 +
+							 SCREEN_WIDTH * (attacks[i]->getY() + 4);
+				hiddenBuffer[coord].Char.UnicodeChar = wstr[j];
+				hiddenBuffer[coord].Attributes       = FG_COLORS::FG_WHITE;
 			}
 		}
 	}
