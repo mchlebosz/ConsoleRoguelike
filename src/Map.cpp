@@ -10,6 +10,19 @@ Map::Map(int width, int height) : m_width(width), m_height(height) {
 	}
 }
 
+// destroys the map
+Map::~Map() {
+	// Delete all the creatures on the map
+	for (auto& creature : m_creatures) {
+		delete creature.second;
+	}
+
+	// Delete all the items on the map
+	for (auto& item : m_items) {
+		delete item.first;
+	}
+}
+
 int Map::getWidth() const {
 	return m_width;
 }
@@ -48,21 +61,21 @@ Creature* Map::getCreature(int id) const {
 
 void Map::display() const {
 	// Display the top border of the map
-	std::wcout << U"╔";
+	std::wcout << U"╔══";
 	for (int x = 0; x < m_width; x++) {
 		std::wcout << U"═";
 	}
-	std::wcout << U"═╗" << std::endl;
+	std::wcout << U"══╗" << std::endl;
 	// empty line
-	std::wcout << U"║ ";
+	std::wcout << U"║  ";
 	for (int x = 0; x < m_width; x++) {
 		std::wcout << U" ";
 	}
-	std::wcout << U" ║" << std::endl;
+	std::wcout << U"  ║" << std::endl;
 
 	// Display the tiles of the map
 	for (int y = 0; y < m_height; y++) {
-		std::wcout << U"║ ";
+		std::wcout << U"║  ";
 		for (int x = 0; x < m_width; x++) {
 			// Check if there is a creature on the current tile
 			bool creatureOnTile = false;
@@ -80,44 +93,55 @@ void Map::display() const {
 				std::wcout << m_tiles[y][x];
 			}
 		}
-		std::wcout << U" ║" << std::endl;
+		std::wcout << U"  ║" << std::endl;
 	}
 
 	// empty line
-	std::wcout << U"║ ";
+	std::wcout << U"║  ";
 	for (int x = 0; x < m_width; x++) {
 		std::wcout << U" ";
 	}
-	std::wcout << U" ║" << std::endl;
+	std::wcout << U"  ║" << std::endl;
 
 	// Display the bottom border of the map
-	std::wcout << U"╚";
+	std::wcout << U"╚══";
 	for (int x = 0; x < m_width; x++) {
 		std::wcout << U"═";
 	}
-	std::wcout << U"═╝" << std::endl;
+	std::wcout << U"══╝" << std::endl;
 }
 
 std::u32string Map::getMapString() const {
 	std::u32string mapString = U"";
 	// Display the top border of the map
 
-	mapString += U"╔═";
+	mapString += U"╔══";
 	for (int x = 0; x < m_width; x++) {
 		mapString += U"═";
 	}
-	mapString += U"═╗\n";
+	mapString += U"══╗\n";
 	// empty line
-	mapString += U"║ ";
+	mapString += U"║  ";
 	for (int x = 0; x < m_width; x++) {
 		mapString += U" ";
 	}
-	mapString += U" ║\n";
+	mapString += U"  ║\n";
 
 	// Display the tiles of the map
 	for (int y = 0; y < m_height; y++) {
-		mapString += U"║ ";
+		mapString += U"║  ";
 		for (int x = 0; x < m_width; x++) {
+			// Check if there is an item on the current tile
+			bool itemOnTile = false;
+			for (auto& item : m_items) {
+				if (item.second.first == x && item.second.second == y) {
+					// Display the appearance of the item
+					mapString += item.first->getAppearance();
+					itemOnTile = true;
+					break;
+				}
+			}
+
 			// Check if there is a creature on the current tile
 			bool creatureOnTile = false;
 			for (auto& creature : m_creatures) {
@@ -129,27 +153,27 @@ std::u32string Map::getMapString() const {
 					break;
 				}
 			}
-			if (!creatureOnTile) {
+			if (!creatureOnTile && !itemOnTile) {
 				// Display the appearance of the tile
 				mapString += m_tiles[y][x];
 			}
 		}
-		mapString += U" ║\n";
+		mapString += U"  ║\n";
 	}
 
 	// empty line
-	mapString += U"║ ";
+	mapString += U"║  ";
 	for (int x = 0; x < m_width; x++) {
 		mapString += U" ";
 	}
-	mapString += U" ║\n";
+	mapString += U"  ║\n";
 
 	// Display the bottom border of the map
-	mapString += U"╚═";
+	mapString += U"╚══";
 	for (int x = 0; x < m_width; x++) {
 		mapString += U"═";
 	}
-	mapString += U"═╝\n";
+	mapString += U"══╝\n";
 
 	return mapString;
 }
@@ -169,4 +193,29 @@ void Map::loadMap(std::vector<std::u32string> newMap) {
 			m_tiles[y][x] = newMap[y][x];
 		}
 	}
+}
+
+// Method for adding an item to the map
+void Map::addItem(Item* item, int x, int y) {
+	m_items.insert(std::make_pair(new Item(*item), std::make_pair(x, y)));
+}
+
+// Method for removing an item from the map
+void Map::removeItem(Item* item) {
+	m_items.erase(item);
+}
+
+// Method for getting the  item
+Item* Map::getItem(int x, int y) const {
+	for (auto& item : m_items) {
+		if (item.second.first == x && item.second.second == y) {
+			return item.first;
+		}
+	}
+	return nullptr;
+}
+
+// Method for getting the position of an item
+std::pair<int, int> Map::getItemPosition(Item* item) const {
+	return m_items.at(item);
 }

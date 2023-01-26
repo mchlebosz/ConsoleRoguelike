@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "Creature.h"
+#include "Item.h"
 
 // Class responsible for storing information about the map and displaying it
 class Map {
@@ -15,7 +16,7 @@ public:
 	// Constructor taking the width and height of the map
 	Map(int width, int height);
 
-	virtual ~Map() = default;
+	virtual ~Map();
 
 	// Getters and setters for the width and height of the map
 	int getWidth() const;
@@ -40,6 +41,15 @@ public:
 	// Method for getting a creature from the map
 	Creature* getCreature(int id) const;
 
+	// Method for adding an item to the map
+	void addItem(Item* item, int x, int y);
+	// Method for removing an item from the map
+	void removeItem(Item* item);
+	// Method for getting an item from the map
+	Item* getItem(int x, int y) const;
+	// Method for getting the position of an item on the map
+	std::pair<int, int> getItemPosition(Item* item) const;
+
 	// Method for displaying the map
 	void display() const;
 
@@ -58,4 +68,7 @@ private:
 	// Map of creatures on the map (key: ID of the creature, value: reference to
 	// the creature)
 	std::unordered_map<int, Creature*> m_creatures;
+
+	// Item objects on the map and their positions in the list
+	std::unordered_map<Item*, std::pair<int, int>> m_items;
 };

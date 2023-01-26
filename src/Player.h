@@ -31,7 +31,7 @@ public:
 	std::vector<Item> getInventory() const;
 	void setInventory(std::vector<Item> inventory);
 	// Method for adding an item to the inventory
-	void addToInventory(Item item);
+	void addToInventory(Item *item);
 
 	// Getters and setters for experience, level and attack power
 	int getExperience() const;
@@ -47,6 +47,8 @@ public:
 	// Getter and setter for maximum health
 	int getMaxHealth() const;
 	void setMaxHealth(int maxHealth);
+
+	void setHealth(int health);
 
 	// Getter and setter for move delay
 	time_point<steady_clock> getMoveTimer() const;

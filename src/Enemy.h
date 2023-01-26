@@ -19,7 +19,7 @@ public:
 	// chance, attack power, and items
 	// Enemy.h
 	Enemy(int id, char32_t appearance, int x, int y, int health,
-		  int attackPower);
+		  int attackPower, int speed, int attackSpeed);
 
 	virtual ~Enemy() = default;
 
@@ -47,9 +47,16 @@ public:
 	void addToItems(Item item);
 
 	int getExperience() const;
+	void updateExperience();
 
 	// Method for checking if player is in staight line of sight
 	bool checkLineOfSight(Creature &player, Map &map);
+
+	// getters and setters for speed and attack speed
+	int getSpeed() const;
+	void setSpeed(int speed);
+	int getAttackSpeed() const;
+	void setAttackSpeed(int attackSpeed);
 
 protected:
 	// Type of the enemy
@@ -66,4 +73,7 @@ protected:
 	// move timer
 	steady_clock::time_point m_moveTimer;
 	steady_clock::time_point m_attackTimer;
+
+	int m_speed;
+	int m_attackSpeed;
 };

@@ -5,9 +5,11 @@
 using namespace std::chrono;
 
 Player::Player(int id) : Creature() {
-	m_id         = id;
-	m_appearance = U'@';
-	m_experience = 0;
+	m_id          = id;
+	m_appearance  = U'@';
+	m_experience  = 0;
+	m_attackPower = 1;
+	m_maxHealth   = 10;
 	setLevel(1);
 	m_health        = m_maxHealth;
 	m_inventory     = std::vector<Item>();
@@ -26,6 +28,7 @@ Player::Player(int id, char32_t appearance, int x, int y, int health,
 	Creature(id, appearance, x, y, health),
 	m_experience(0),
 	m_attackPower(attackPower),
+	m_maxHealth(maxHealth),
 	m_speed(speed),
 	m_moveTimer(steady_clock::now()) {
 	setLevel(level);
@@ -98,8 +101,8 @@ void Player::setInventory(std::vector<Item> inventory) {
 	m_inventory = inventory;
 }
 
-void Player::addToInventory(Item item) {
-	m_inventory.push_back(item);
+void Player::addToInventory(Item *item) {
+	m_inventory.push_back(*item);
 }
 
 int Player::getExperience() const {
@@ -129,8 +132,8 @@ void Player::setLevel(int level) {
 	// adapt health and attack power to level (linearly)
 	//  1 health point per odd level
 	//  1 attack power per 3th level
-	if (m_level % 2 == 1) setMaxHealth(m_level / 2 + 4);
-	if (m_level % 3 == 0) setAttackPower(m_level / 3);
+	if (m_level % 2 == 1) setMaxHealth(getMaxHealth() + 1);
+	if (m_level % 3 == 0) setAttackPower(getAttackPower() + 1);
 
 	setHealth(getMaxHealth());
 }
@@ -154,12 +157,12 @@ void Player::setMaxHealth(int maxHealth) {
 int Player::getNextLevelExp() const {
 	// make it scale with level
 	// (level/x)^y
-	return round(pow((float)(m_level + 1) / 0.6, 2.2)) + 1;
+	return round(pow((float)(m_level + 1) / 0.5, 3)) + 1;
 }
 
 int Player::getPrevLevelExp() const {
 	// make it scale with level
-	return round(pow((float)(m_level) / 0.6, 2.2)) + 1;
+	return round(pow((float)(m_level) / 0.5, 3)) + 1;
 }
 
 // move delay
@@ -239,4 +242,12 @@ void Player::updateMeleeWeaponList() {
 
 std::vector<Creature *> Player::getMeleeWeaponList() const {
 	return m_meleeWeaponList;
+}
+
+void Player::setHealth(int health) {
+	if (health > m_maxHealth) {
+		m_health = m_maxHealth;
+	} else {
+		m_health = health;
+	}
 }

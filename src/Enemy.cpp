@@ -10,15 +10,20 @@ Enemy::Enemy(int id) : Creature() {
 	m_health      = 10;
 	m_x           = 0;
 	m_y           = 0;
-	m_experience  = m_health * m_attackPower;
+	m_experience  = m_health * m_attackPower * m_speed * m_attackSpeed;
 	m_moveTimer   = steady_clock::now();
 	m_attackTimer = steady_clock::now();
+	m_speed       = 500;
+	m_attackSpeed = 1000;
 }
 
 Enemy::Enemy(int id, char32_t appearance, int x, int y, int health,
-			 int attackPower) :
-	Creature(id, appearance, x, y, health), m_attackPower(attackPower) {
-	m_experience  = health * attackPower;
+			 int attackPower, int speed, int attackSpeed) :
+	Creature(id, appearance, x, y, health),
+	m_attackPower(attackPower),
+	m_speed(speed),
+	m_attackSpeed(attackSpeed) {
+	m_experience  = m_health * m_attackPower * m_speed * m_attackSpeed;
 	m_moveTimer   = steady_clock::now();
 	m_attackTimer = steady_clock::now();
 }
@@ -30,7 +35,8 @@ void Enemy::move() {
 void Enemy::attack(Creature &other) {
 	auto timer = steady_clock::now();
 
-	if (duration_cast<milliseconds>(timer - m_attackTimer).count() > 1000) {
+	if (duration_cast<milliseconds>(timer - m_attackTimer).count() >
+		3000 / m_attackSpeed) {
 		m_attackTimer = timer;
 		other.setHealth(other.getHealth() - m_attackPower);
 	}
@@ -76,10 +82,15 @@ int Enemy::getExperience() const {
 	return m_experience;
 }
 
+void Enemy::updateExperience() {
+	m_experience = m_health * m_attackPower * m_speed * m_attackSpeed;
+}
+
 void Enemy::moveTowardsPlayer(Creature &player) {
 	auto timer = steady_clock::now();
 
-	if (duration_cast<milliseconds>(timer - m_moveTimer).count() > 500) {
+	if (duration_cast<milliseconds>(timer - m_moveTimer).count() >
+		3000 / m_speed) {
 		int prevX = getX();
 		int prevY = getY();
 
@@ -162,4 +173,21 @@ bool Enemy::checkLineOfSight(Creature &player, Map &map) {
 	}
 
 	return true;
+}
+
+// getters and setters for speed and attack speed
+int Enemy::getSpeed() const {
+	return m_speed;
+}
+
+void Enemy::setSpeed(int speed) {
+	m_speed = speed;
+}
+
+int Enemy::getAttackSpeed() const {
+	return m_attackSpeed;
+}
+
+void Enemy::setAttackSpeed(int attackSpeed) {
+	m_attackSpeed = attackSpeed;
 }

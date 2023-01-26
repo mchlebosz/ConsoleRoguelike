@@ -13,6 +13,12 @@
 #include "AllLevels.hpp"
 #include "Utils.hpp"
 
+/// @brief
+/// Constructor for the Game class
+/// @details
+/// This constructor initializes the game by setting the player's position to
+/// the starting position of the first level, loading the map of the first level
+/// and setting the game to running.
 Game::Game() :
 	m_player(0),
 	m_map(100, 30),
@@ -42,6 +48,10 @@ Game::~Game() {
 	// clean up
 	delete[] visibleBuffer;
 	delete[] hiddenBuffer;
+
+	for (size_t i = 0; i < m_enemies.size(); i++) {
+		delete m_enemies[i];
+	}
 }
 
 void Game::Run() {
@@ -66,6 +76,12 @@ void Game::Run() {
 
 	// clean console
 	system("cls");
+
+	// if player won
+	if (m_currentLevel >= allLevels.size()) {
+		std::cout << converter.to_bytes(U"You won!🎉") << std::endl;
+		Sleep(2000);
+	}
 	// if player is dead
 	if (m_player.getHealth() <= 0) {
 		std::cout << converter.to_bytes(U"You died!😵") << std::endl;
@@ -81,6 +97,7 @@ void Game::Run() {
 
 void Game::LoadLevel(UINT level) {
 	if (level < 0 || level >= allLevels.size()) {
+		m_isRunning = false;
 		return;
 	}
 	// clear enemies
@@ -107,6 +124,9 @@ void Game::LoadLevel(UINT level) {
 		ModifyEnemy(newEnemyId).setAppearance(newEnemy->getAppearance());
 		ModifyEnemy(newEnemyId).setAttackPower(newEnemy->getAttackPower());
 		ModifyEnemy(newEnemyId).setHealth(newEnemy->getHealth());
+		ModifyEnemy(newEnemyId).setSpeed(newEnemy->getSpeed());
+		ModifyEnemy(newEnemyId).setAttackSpeed(newEnemy->getAttackSpeed());
+		ModifyEnemy(newEnemyId).updateExperience();
 	}
 
 	return;
@@ -234,8 +254,64 @@ std::wstring Game::showStats() {
 	return output;
 }
 
+/// @brief
+/// @param x
+/// @param y
 void Game::DropRandomItem(int x, int y) {
-	/// int random = rand() % 100;
+	// init random number generator
+	srand(time(NULL));
+
+	// healing sprites 🍪 🍩 🍭 🍦 🍔 🥕 🥐 🍏
+	// Exp sprites 🌟
+	// Attack sprites 🗡️
+	// Range 🏹
+
+	// Items we can drop
+	std::vector<Item> healingItems = {
+		Item("Cookie", U'🍪', 1, ItemType::Food),
+		Item("Candy", U'🍭', 1, ItemType::Food),
+		Item("Donut", U'🍩', 2, ItemType::Food),
+		Item("Croissant", U'🥐', 2, ItemType::Food),
+		Item("Ice Cream", U'🍦', 3, ItemType::Food),
+		Item("Hamburger", U'🍔', 4, ItemType::Food),
+		Item("Carrot", U'🥕', 5, ItemType::Food),
+		Item("Apple", U'🍏', 5, ItemType::Food),
+	};
+
+	std::vector<Item> expItems = {
+		Item("Star", U'🌟', rand() % 100, ItemType::Experience),
+	};
+
+	std::vector<Item> attackItems = {
+		Item("Sword", U'💪', 1, ItemType::Weapon),
+	};
+
+	std::vector<Item> rangeItems = {
+		Item("Bow", U'🏹', 1, ItemType::RangedWeapon),
+	};
+
+	int random = rand() % 1000;
+	// 58% chance of dropping nothing
+	//  20% chance of dropping healing item
+	//  20% chance of dropping exp item
+	//  1% chance of dropping attack item
+	//  1% chance of dropping range item
+	if (random < 580) {
+		return;
+	} else if (random < 780) {
+		int randomItem = rand() % healingItems.size();
+		m_map.addItem(&healingItems[randomItem], x, y);
+	} else if (random < 980) {
+		int randomItem = rand() % expItems.size();
+		m_map.addItem(&expItems[randomItem], x, y);
+	} else if (random < 990) {
+		int randomItem = rand() % attackItems.size();
+		m_map.addItem(&attackItems[randomItem], x, y);
+	} else {
+		int randomItem = rand() % rangeItems.size();
+		m_map.addItem(&rangeItems[randomItem], x, y);
+	}
+
 	// TODO: make this better
 }
 
@@ -359,6 +435,29 @@ void Game::Update() {
 		m_player.setY(prevY);
 	}
 
+	// Pick up item
+	if (m_map.getItem(m_player.getX(), m_player.getY()) != nullptr) {
+		Item* pickedItem = m_map.getItem(m_player.getX(), m_player.getY());
+		if (pickedItem->getType() == ItemType::Food) {
+			m_player.setHealth(m_player.getHealth() + pickedItem->getValue());
+		}
+		if (pickedItem->getType() == ItemType::Weapon) {
+			m_player.setAttackPower(m_player.getAttackPower() +
+									pickedItem->getValue());
+		}
+		if (pickedItem->getType() == ItemType::RangedWeapon) {
+			m_player.setAttackRange(m_player.getAttackRange() +
+									pickedItem->getValue());
+		}
+		if (pickedItem->getType() == ItemType::Experience) {
+			m_player.setExperience(m_player.getExperience() +
+								   pickedItem->getValue());
+		}
+		m_player.addToInventory(pickedItem);
+
+		m_map.removeItem(pickedItem);
+	}
+
 	// update position of visible melee weapons
 	// if timer for attack is below attack speed /2
 
@@ -473,13 +572,16 @@ void Game::PreRender() {
 				char32to16(attacks[i]->getAppearance(), &isSurrogatePair);
 
 			for (UINT j = 0; j < wstr.length(); j++) {
-				UINT coord = attacks[i]->getX() + j + 2 +
+				UINT coord = attacks[i]->getX() + j + 3 +
 							 SCREEN_WIDTH * (attacks[i]->getY() + 4);
 				hiddenBuffer[coord].Char.UnicodeChar = wstr[j];
 				hiddenBuffer[coord].Attributes       = FG_COLORS::FG_WHITE;
 			}
 		}
 	}
+
+	// inventory no use
+	// return;
 
 	x = 0;
 	y = m_map.getHeight() + 6;

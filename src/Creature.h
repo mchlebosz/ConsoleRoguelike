@@ -26,7 +26,7 @@ public:
 	int getY() const;
 	void setY(int y);
 	int getHealth() const;
-	void setHealth(int health);
+	virtual void setHealth(int health);
 	char32_t getAppearance() const;
 	void setAppearance(char32_t appearance);
 

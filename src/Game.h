@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "Enemy.h"
+#include "Item.h"
 #include "Level.h"
 #include "Map.h"
 #include "Player.h"
