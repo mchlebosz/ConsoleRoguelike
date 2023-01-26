@@ -1,5 +1,6 @@
 # Roguelike game
 OOP project
+[This](https://github.com/mchlebosz/ConsoleRoguelike) is a link to the repository.
 
 ## IMPORTANT!
 When commiting to main (and other branches too) please follow given structure:
@@ -21,17 +22,6 @@ For documentation using [Doxygen](https://www.doxygen.nl/index.html)
 - <kbd>D</kbd>  - Move Right
 - <kbd>Space</kbd>  - Attack
 - <kbd>Esc</kbd>  - Exit Game
-
-
-## TODO
-- [x] Create basic structure of the game
-- [x] Add enemies to Levels entries
-- [x] Atack Enemy
-- [ ] (Optional) Ranged atack
-- [x] Enemy Die
-- [ ] Dropping items
-- [x] Enemy folow player
-- [x] Exiting levels
 
 
 ## Prerequisites
@@ -57,5 +47,16 @@ Line |
 ```
 This is a bug in VSCode and can be ignored. It is caused by the fact that VSCode tries to debug the program and it is not a debuggable program. To fix this error, just run the program again.
 
+
+
+## TODO
+- [x] Create basic structure of the game
+- [x] Add enemies to Levels entries
+- [x] Atack Enemy
+- [ ] (Optional) Ranged atack
+- [x] Enemy Die
+- [x] Dropping items
+- [x] Enemy folow player
+- [x] Exiting levels
 ## Authors
 * [Mateusz Chlebosz](https://github.com/mchlebosz)
